@@ -14,7 +14,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ReactiveFormsModule} from "@angular/forms";
-import { AdminComponent } from './admin/admin.component';
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -24,11 +24,11 @@ import { AdminComponent } from './admin/admin.component';
     CarouselComponent,
     LoginComponent,
     RegisterComponent,
-    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
     NgbModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

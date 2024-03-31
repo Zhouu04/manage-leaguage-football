@@ -1,1 +1,10 @@
-<p>admin works!</p>
+
+<div class="container-fluid p-0">
+  <app-admin-navbar  (sideNavToggled)="sideNavStatus = $event"></app-admin-navbar>
+  <main >
+    <app-admin-sidenav [sidenavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}" ></app-admin-sidenav>
+    <div class="display-are p-3" [ngClass]="{'display-are-shrink': sideNavStatus}">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
