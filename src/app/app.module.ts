@@ -15,6 +15,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AdminModule} from "./admin/admin.module";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {AdminModule} from "./admin/admin.module";
     CarouselComponent,
     LoginComponent,
     RegisterComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,11 @@ import {ScheduleComponent} from "./schedule/schedule.component";
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'leaguage', // Điều hướng người dùng đến component Leaguage đầu tiên
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     component: AdminComponent,
     children: [
       {path: 'team', component: TeamComponent},
@@ -17,7 +22,9 @@ const routes: Routes = [
       {path: 'standing', component: StandingComponent},
       {path: 'schedule', component: ScheduleComponent},
     ]
-  }
+  },
+
+
 ];
 
 @NgModule({

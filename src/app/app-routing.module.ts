@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {AuthGuard} from "./service/guard.service";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {
@@ -16,9 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule)
+    loadChildren: () => import("./admin/admin.module").then((m) => m.AdminModule),
+    canActivate: [AuthGuard]
   },
 
+  { path: '**', component: PageNotFoundComponent },
   {path:'', redirectTo: 'home', pathMatch: "full"}
 ];
 
