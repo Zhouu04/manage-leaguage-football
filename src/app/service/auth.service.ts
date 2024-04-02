@@ -10,6 +10,7 @@ export class AuthService {
   login(username: string, pass: string) {
     if( username === 'tungdao' && pass === '123456') {
       this.loggedIn = true;
+      localStorage.setItem('isLoggedIn', 'true');
       return 200;
     }
     else {
@@ -19,6 +20,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.loggedIn;
+
+    return localStorage.getItem('isLoggedIn') === 'true';
   }
 }

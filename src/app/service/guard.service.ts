@@ -12,11 +12,12 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn() || localStorage.getItem('isLoggedIn') === 'true') {
       return true; // Cho phép truy cập nếu người dùng đã đăng nhập
     } else {
       // Nếu chưa đăng nhập, điều hướng đến trang đăng nhập
-      return this.router.navigate(['login']);
+      this.router.navigate(['login']);
+      return false;
     }
   }
 }
