@@ -9,6 +9,12 @@ import { LeaguageComponent } from './leaguage/leaguage.component';
 import { TeamComponent } from './team/team.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { StandingComponent } from './standing/standing.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { AddLeaguageComponent } from './add-leaguage/add-leaguage.component';
+import { ListLeaguageComponent } from './list-leaguage/list-leaguage.component';
+import {MatInputModule} from "@angular/material/input";
+import {ControlMessagesComponent} from "../share/control-message/control-message.component";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -19,13 +25,19 @@ import { StandingComponent } from './standing/standing.component';
     LeaguageComponent,
     TeamComponent,
     ScheduleComponent,
-    StandingComponent
+    StandingComponent,
+    AddLeaguageComponent,
+    ListLeaguageComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
     ReactiveFormsModule,
+    NgbModule,
+    MatInputModule,
+    HttpClientModule,
+    ControlMessagesComponent,
   ],
   exports: [
 

@@ -18,27 +18,29 @@ import {AdminModule} from "./admin/admin.module";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    CarouselComponent,
-    LoginComponent,
-    RegisterComponent,
-    PageNotFoundComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AdminModule,
-    NgbModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCheckboxModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NavbarComponent,
+        CarouselComponent,
+        LoginComponent,
+        RegisterComponent,
+        PageNotFoundComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AdminModule,
+        NgbModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCheckboxModule
+    ],
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
