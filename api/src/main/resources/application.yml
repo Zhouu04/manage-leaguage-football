@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ManageLeagueFootball
+  jackson:
+    time-zone: Asia/Ho_Chi_Minh
+

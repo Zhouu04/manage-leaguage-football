@@ -1,1 +1,38 @@
-<p>leaguage works!</p>
+<ul
+  ngbNav
+  #nav="ngbNav"
+  [(activeId)]="active"
+  (navChange)="onNavChange($event)"
+  class="nav-tabs"
+>
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>
+      <i class="fa-solid fa-list" style="color: #74C0FC;"></i>
+      Danh sách giải đấu
+    </button>
+    <ng-template  ngbNavContent>
+      <app-list-leaguage ></app-list-leaguage>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2"  >
+    <button ngbNavLink>
+      <i class="fa-solid fa-plus" style="color: #74C0FC;"></i>
+      Thêm giải đấu
+    </button>
+    <ng-template ngbNavContent>
+      <app-add-leaguage></app-add-leaguage>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-4"></div>
+
+<!--<ng-container *ngIf="active === 1">-->
+<!--  <button-->
+<!--    class="btn mb-3 mt-3 btn-sm btn-outline-primary"-->
+<!--    (click)="nav.select(2)"-->
+<!--  >-->
+<!--    <i class="fa-solid fa-plus" style="color: #74C0FC;"></i>-->
+<!--    Tạo giải đấu mới-->
+<!--  </button>-->
+<!--</ng-container>-->
