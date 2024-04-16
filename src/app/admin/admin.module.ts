@@ -15,6 +15,8 @@ import { ListLeaguageComponent } from './list-leaguage/list-leaguage.component';
 import {MatInputModule} from "@angular/material/input";
 import {ControlMessagesComponent} from "../share/control-message/control-message.component";
 import {HttpClientModule} from "@angular/common/http";
+import { ListSeasonComponent } from './list-season/list-season.component';
+import { FormAddSeasonComponent } from './form-add-season/form-add-season.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     StandingComponent,
     AddLeaguageComponent,
     ListLeaguageComponent,
+    ListSeasonComponent,
+    FormAddSeasonComponent,
   ],
   imports: [
     CommonModule,

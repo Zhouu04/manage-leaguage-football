@@ -9,7 +9,8 @@ import {CommonModule} from "@angular/common";
   `,
   standalone: true,
   imports: [CommonModule] ,// Thêm CommonModule vào @Component.imports
-  styles: ['.help-block.has-error { color: red; }']
+  styles: ['.help-block.has-error { color: red; }'],
+  styleUrls: ['control-message.component.css']
 })
 export class ControlMessagesComponent {
   @Input() control: AbstractControl;
