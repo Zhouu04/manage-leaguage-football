@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {LeagueService} from "../service/leaguage.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {LeagueDTO} from "../../../dto/LeagueDTO";
+import {LeagueDTO} from "../../dto/LeagueDTO";
+import {SeasonService} from "../service/season.service";
+import {SharedDataService} from "../service/share-data-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-leaguage',
@@ -12,10 +15,14 @@ import {LeagueDTO} from "../../../dto/LeagueDTO";
 export class ListLeaguageComponent implements OnInit{
   listLeaguage: any[] = [] ;
   dataUpdate: LeagueDTO;
-  seasonValue: any;
   closeResult = '';
   form: FormGroup;
-  constructor(private leaguageService: LeagueService, private modalService: NgbModal, private fb: FormBuilder,) {
+  constructor(private leaguageService: LeagueService,
+              private modalService: NgbModal,
+              private seasonService: SeasonService,
+              private fb: FormBuilder,
+              private router: Router,
+              private sharedDataService: SharedDataService) {
   }
 
   ngOnInit() {
@@ -73,7 +80,6 @@ export class ListLeaguageComponent implements OnInit{
 
   saveChanges() {
     this.leaguageService.updateLeague({id: this.dataUpdate.id, name: this.form.value.name}).subscribe(data => {
-      console.log('update thanh cong', this.form.value);
       this.initData();
     });
 
@@ -90,32 +96,12 @@ export class ListLeaguageComponent implements OnInit{
     }
   }
 
-  getSeason(season: string) {
-    this.seasonValue = season;
-    console.log('seasonvalue ' , this.seasonValue);
-  }
-
-  submitForm() {
-    if (this.form.valid) {
-      const formData = this.form.value;
-      const seasonData = {
-        name: formData.season,
-        place: formData.place,
-        team: formData.team,
-        startTime: formData.startTime,
-        endTime: formData.endTime,
-        tournamentType: formData.tournamentType,
-        player: formData.player,
-        coach: formData.coach,
-        time: formData.time
-      };
-
-      // this.leaguageService.addSeasonToLeague(formData.name, seasonData);
-      console.log(formData);
-    } else {
-      // Xử lý khi biểu mẫu không hợp lệ
-      console.log('Invalid form');
-    }
+  getSeason(id: string) {
+    this.seasonService.getAllByIdLeague(id).subscribe(data => {
+      console.log(data);
+      this.sharedDataService.setData(data);
+      this.router.navigate(['admin/season']);
+    })
   }
 
 }

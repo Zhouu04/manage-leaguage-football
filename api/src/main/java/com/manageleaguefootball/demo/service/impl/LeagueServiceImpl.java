@@ -3,6 +3,7 @@ package com.manageleaguefootball.demo.service.impl;
 import com.manageleaguefootball.demo.dto.LeagueDTO;
 import com.manageleaguefootball.demo.model.League;
 import com.manageleaguefootball.demo.repository.LeagueRepository;
+import com.manageleaguefootball.demo.repository.SeasonRepository;
 import com.manageleaguefootball.demo.service.LeagueService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class LeagueServiceImpl implements LeagueService {
     private final LeagueRepository repository;
+    private final SeasonRepository seasonRepository;
 
     public static ModelMapper mapper() {
         ModelMapper modelMapper = new ModelMapper();
@@ -34,8 +36,8 @@ public class LeagueServiceImpl implements LeagueService {
         return mapper().map(league, LeagueDTO.class);
     }
 
-    public static List<LeagueDTO> mapToView(List<League> categories) {
-        return categories.stream().map(d -> mapper().map(d, LeagueDTO.class))
+    public static List<LeagueDTO> mapToView(List<League> leagues) {
+        return leagues.stream().map(d -> mapper().map(d, LeagueDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -66,6 +68,7 @@ public class LeagueServiceImpl implements LeagueService {
         if(league == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "League not found");
         }
+        seasonRepository.deleteByIdLeague(id);
         repository.delete(league);
         return mapToView(league);
     }

@@ -6,11 +6,12 @@ import {TeamComponent} from "./team/team.component";
 import {LeaguageComponent} from "./leaguage/leaguage.component";
 import {StandingComponent} from "./standing/standing.component";
 import {ScheduleComponent} from "./schedule/schedule.component";
+import {ListSeasonComponent} from "./list-season/list-season.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'leaguage', // Điều hướng người dùng đến component Leaguage đầu tiên
+    redirectTo: 'league', // Điều hướng người dùng đến component Leaguage đầu tiên
     pathMatch: 'full'
   },
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {path: 'team', component: TeamComponent},
-      {path: 'leaguage', component: LeaguageComponent},
+      {path: 'season', component: ListSeasonComponent},
+      {path: 'league', component: LeaguageComponent},
       {path: 'standing', component: StandingComponent},
       {path: 'schedule', component: ScheduleComponent},
     ]

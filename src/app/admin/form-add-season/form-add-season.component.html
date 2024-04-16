@@ -1,0 +1,72 @@
+
+<form [formGroup]="form">
+  <div class="row">
+    <div class="form-group mb-3">
+      <label for="season">Tên mùa giải <span class="text-danger">*</span></label>
+      <input type="text" id="season" class="form-control" formControlName="name">
+      <app-control-messages [control]="form.controls['name']" [label]="'Tên mùa giải'"></app-control-messages>
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+      <label for="place">Địa điểm thi đấu</label>
+      <input type="text" id="place" class="form-control" formControlName="place">
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+      <label for="team">Số đội tham dự <span class="text-danger">*</span></label>
+      <input type="number" id="team" class="form-control" formControlName="team">
+      <app-control-messages [control]="form.controls['team']" [label]="'Số đội tham dự '"></app-control-messages>
+    </div>
+
+<!--    <div class="form-group col-md-6 mb-3">-->
+<!--      <label>Thời gian bắt đầu</label>-->
+<!--      <div class="input-group">-->
+<!--        <input class="form-control" placeholder="dd-mm-yyyy" name="dp" ngbDatepicker #d1="ngbDatepicker" formControlName="startTime">-->
+<!--        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d1.toggle()" type="button"></button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="form-group col-md-6 mb-3">-->
+<!--      <label>Thời gian kết thúc</label>-->
+<!--      <div class="input-group">-->
+<!--        <input class="form-control" placeholder="dd-mm-yyyy" name="dp" ngbDatepicker #d2="ngbDatepicker" formControlName="endTime">-->
+<!--        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="form-group col-md-6 mb-3">
+      <label for="tournamentType">Thể thức thi đấu <span class="text-danger">*</span></label>
+      <select id="tournamentType" class="form-select" formControlName="tournamentType">
+        <option value="vongtron">Vòng tròn</option>
+        <option value="loaitructiep">Loại trực tiếp</option>
+      </select>
+      <app-control-messages [control]="form.controls['tournamentType']" [label]="'Thể thức thi đấu '"></app-control-messages>
+
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+      <label for="player">Số cầu thủ mỗi đội</label>
+      <input type="number" id="player" class="form-control" formControlName="player">
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+      <label for="coach">Số thành viên ban huấn luyện</label>
+      <input type="number" id="coach" class="form-control" formControlName="coach">
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+      <label for="time">Số phút 1 hiệp</label>
+      <input type="number" id="time" class="form-control" formControlName="time">
+    </div>
+  </div>
+</form>
+<ngb-alert class="mt-3" [dismissible]="false" *ngIf="showAlert" type="success">
+  Thêm thành công mùa giải.
+</ngb-alert>
+
+<ngb-alert class="mt-3" [dismissible]="false" *ngIf="showUpdate" type="warning">
+  Cập nhật giải đấu thành công
+</ngb-alert>
+<button class="btn btn-outline-info" (click)="addSeason()">Lưu</button>
+<button class="btn btn-outline-secondary " style="margin-left: 10px" (click)="reset()">Nhập lại</button>
+
