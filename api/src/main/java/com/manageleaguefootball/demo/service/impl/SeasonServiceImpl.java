@@ -69,10 +69,6 @@ public class SeasonServiceImpl implements SeasonService {
 
   @Override
   public SeasonDTO updateSeason(SeasonDTO model) {
-//    League league = leagueRepository.findById(model.getIdLeague()).orElse(null);
-//    if(league == null) {
-//      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "League id not found" + model.getIdLeague());
-//    }
     Season season = seasonRepository.findById(model.getId()).orElse(null);
     if(season == null) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Season not found");
