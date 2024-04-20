@@ -1,0 +1,85 @@
+<h1> <i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách đội bóng</h1>
+<button class="btn btn-primary mb-3">Thêm đội bóng</button>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Stt</th>
+    <th>Tên đội bóng </th>
+    <th>Số điện thoại </th>
+    <th >Đội trưởng</th>
+    <th>Cấu hình</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="teams$?.length > 0; else noData">
+  <tr *ngFor="let team of teams$; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{team.name}}</td>
+    <td>{{team.phoneNumber}}</td>
+    <td>
+      {{team.captainName}}
+    </td>
+    <td>
+      <button class="btn btn-sm btn-success"  style="margin-right: 10px" >
+        <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+        Cập nhật
+      </button>
+      <button class="btn btn-sm btn-danger" style="margin-right: 10px" >
+        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+        Xóa
+      </button>
+      <a class="btn btn-sm btn-primary" >
+        <i class="fa-solid fa-people-group" style="color: #ffffff;"></i>
+        Đội bóng
+      </a>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+<!--<ng-template #form let-modal>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title" id="modal-add">Thêm mùa giải</h4>-->
+<!--    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <app-form-add-season [idLeague]="idLeague"></app-form-add-season>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-outline-dark" (click)="close()">Thoát</button>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+<!--<ng-template #deleteModal let-modal>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title" id="delete-modal">Xóa mùa giải</h4>-->
+<!--    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <p class="text-danger">-->
+<!--      Bạn có chắc chắn muốn xóa mùa giải ?-->
+<!--    </p>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-danger" (click)="deleteSeason()">Xóa</button>-->
+<!--  </div>-->
+<!--</ng-template>-->
+<!--<ng-template #update let-modal>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title" id="modal-update">Cập nhật mùa giải</h4>-->
+<!--    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <app-form-add-season [idLeague]="idLeague" [dataUpdate]="dataUpdate"></app-form-add-season>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button type="button" class="btn btn-outline-dark" (click)="close()">Thoát</button>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+<ng-template #noData>
+  Chưa có đội bóng nào được thêm
+</ng-template>
+
+
+
+

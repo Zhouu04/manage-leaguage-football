@@ -1,30 +1,38 @@
-<h1>Danh sách mùa giải</h1>
+<h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
 <button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Stt</th>
       <th>Tên mùa giải</th>
-      <th>Số lượng đội tham gia</th>
+      <th>Địa điểm</th>
+      <th class="text-end">Số lượng đội tham gia</th>
       <th>Thể thức</th>
       <th>Cấu hình</th>
     </tr>
   </thead>
-  <tbody *ngIf="seasons.length > 0; else noData">
+  <tbody *ngIf="seasons?.length > 0; else noData">
     <tr *ngFor="let season of seasons; let i = index">
       <td>{{i + 1}}</td>
       <td>{{season.name}}</td>
-      <td>{{season.numberOfTeams}}</td>
+      <td>{{season.place}}</td>
+      <td class="text-end">
+        {{season.numberOfTeams}}
+      </td>
       <td>{{season.typeTournament}}</td>
       <td>
         <button class="btn btn-sm btn-success"  style="margin-right: 10px" (click)="openUpdate(update, season)">
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
           Cập nhật
         </button>
-        <button class="btn btn-sm btn-danger" (click)="openDelete(deleteModal, season.id)">
+        <button class="btn btn-sm btn-danger" style="margin-right: 10px" (click)="openDelete(deleteModal, season.id)">
           <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
           Xóa
         </button>
+        <a class="btn btn-sm btn-primary" [routerLink]="season.id">
+          <i class="fa-solid fa-people-group" style="color: #ffffff;"></i>
+          Đội bóng
+        </a>
       </td>
 
     </tr>

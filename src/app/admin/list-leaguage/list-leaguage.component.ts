@@ -71,7 +71,6 @@ export class ListLeaguageComponent implements OnInit{
 
   deleteLeague() {
     this.leaguageService.deleteLeague(this.dataUpdate.id).subscribe(data => {
-      console.log("Xoa thanh cong ", this.dataUpdate.name);
       this.initData();
     })
     this.modalService.dismissAll();
@@ -98,10 +97,10 @@ export class ListLeaguageComponent implements OnInit{
 
   getSeason(id: string) {
     this.seasonService.getAllByIdLeague(id).subscribe(data => {
-      console.log(data);
       this.sharedDataService.setData(data);
       this.router.navigate(['admin/season']);
     })
   }
+
 
 }
