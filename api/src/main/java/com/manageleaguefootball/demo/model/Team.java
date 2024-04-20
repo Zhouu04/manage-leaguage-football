@@ -9,4 +9,6 @@ public class Team {
   private String id;
   private String idSeason;
   private String name;
+  private String phoneNumber;
+  private String captainName;
 }

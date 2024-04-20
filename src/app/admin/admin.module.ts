@@ -17,6 +17,7 @@ import {ControlMessagesComponent} from "../share/control-message/control-message
 import {HttpClientModule} from "@angular/common/http";
 import { ListSeasonComponent } from './list-season/list-season.component';
 import { FormAddSeasonComponent } from './form-add-season/form-add-season.component';
+import { ListTeamComponent } from './list-team/list-team.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FormAddSeasonComponent } from './form-add-season/form-add-season.compon
     ListLeaguageComponent,
     ListSeasonComponent,
     FormAddSeasonComponent,
+    ListTeamComponent,
   ],
   imports: [
     CommonModule,

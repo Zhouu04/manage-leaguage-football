@@ -3,6 +3,8 @@ import {SharedDataService} from "../service/share-data-service.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SeasonService} from "../service/season.service";
 import {FormAddSeasonComponent} from "../form-add-season/form-add-season.component";
+import {Router} from "@angular/router";
+import {TeamService} from "../service/team.service";
 
 @Component({
   selector: 'app-list-season',
@@ -19,10 +21,15 @@ export class ListSeasonComponent implements OnInit{
 
   constructor(private sharedDataService: SharedDataService,
               private modalService: NgbModal,
+              private router: Router,
+              private teamService: TeamService,
               private seasonService: SeasonService) {}
 
   ngOnInit() {
     this.sharedDataService.getData().subscribe(data => {
+      if(data == null) {
+        this.router.navigate(['admin'])
+      }
       this.seasons = data;
       this.idLeague = data[0].idLeague;
     });
@@ -83,7 +90,6 @@ export class ListSeasonComponent implements OnInit{
       },
     );
   }
-
 
 
   private getDismissReason(reason: any): string {
