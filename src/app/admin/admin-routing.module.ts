@@ -21,11 +21,11 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {path: 'team', component: TeamComponent},
-      {path: 'season', component: ListSeasonComponent},
-      {path: 'season/:id', component: ListTeamComponent},
+      {path: 'season/:id', component: ListSeasonComponent},
+      {path: 'season/teams/:id', component: ListTeamComponent},
       {path: 'league', component: LeaguageComponent},
-      {path: 'standing', component: StandingComponent},
-      {path: 'schedule', component: ScheduleComponent},
+      {path: 'season/standing/:id', component: StandingComponent},
+      {path: 'season/schedule/:id', component: ScheduleComponent},
     ]
   },
 

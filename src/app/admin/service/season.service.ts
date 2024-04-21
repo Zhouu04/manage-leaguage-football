@@ -15,7 +15,7 @@ export class SeasonService {
     return this.http.get<SeasonDTO[]>(this.apiUrl);
   }
 
-  getAllByIdLeague(leagueId: string): Observable<SeasonDTO[]> {
+  getAllByIdLeague(leagueId: string | null): Observable<SeasonDTO[]> {
     const url = `${this.apiUrl}/league/${leagueId}`;
     return this.http.get<SeasonDTO[]>(url);
   }
