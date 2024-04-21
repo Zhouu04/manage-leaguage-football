@@ -9,4 +9,5 @@ public class TeamDTO {
     private String name;
     private String phoneNumber;
     private String captainName;
+    private int score = 0;
 }
