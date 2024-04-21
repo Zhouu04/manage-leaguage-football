@@ -1,6 +1,6 @@
 <h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
 <button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
-<table class="table table-striped">
+<table class="table  table-striped table-bordered">
   <thead>
     <tr>
       <th>Stt</th>
@@ -21,18 +21,24 @@
       </td>
       <td>{{season.typeTournament}}</td>
       <td>
-        <button class="btn btn-sm btn-success"  style="margin-right: 10px" (click)="openUpdate(update, season)">
-          <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-          Cập nhật
-        </button>
-        <button class="btn btn-sm btn-danger" style="margin-right: 10px" (click)="openDelete(deleteModal, season.id)">
-          <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-          Xóa
-        </button>
-        <a class="btn btn-sm btn-primary" [routerLink]="season.id">
+        <a class="btn btn-sm btn-primary" style="margin-right: 10px" [routerLink]="'../teams/' + season.id">
           <i class="fa-solid fa-people-group" style="color: #ffffff;"></i>
           Đội bóng
         </a>
+        <a class="btn btn-sm btn-info" style="margin-right: 10px" [routerLink]="'../schedule/' + season.id">
+          <i class="fa-regular fa-calendar-days" style="color: #000"></i>
+          Lịch thi đấu
+        </a>
+        <button class="btn btn-sm btn-warning" style="margin-right: 10px" [routerLink]="'../standing/' + season.id">
+          <i class="fa-solid fa-list-ol" style="color: #000"></i>
+          Bảng xếp hạng
+        </button>
+        <button class="btn btn-sm btn-success" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, season)">
+          <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+        </button>
+        <button class="btn btn-sm btn-danger" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, season.id)">
+          <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+        </button>
       </td>
 
     </tr>

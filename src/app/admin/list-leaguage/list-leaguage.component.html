@@ -9,10 +9,10 @@
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
           Cập nhật
         </button>
-        <button class="btn btn-sm btn-secondary" style="margin-right: 10px" (click)="getSeason(leaguage.id)">
+        <a class="btn btn-sm btn-secondary" style="margin-right: 10px" [routerLink]="'../season/' + leaguage.id">
           <i class="fa-solid fa-trophy" style="color: #ffffff;"></i>
           Mùa giải
-        </button>
+        </a>
         <button class="btn btn-sm btn-danger" (click)="openDelete(deleteModal, leaguage)">
           <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
           Xóa
@@ -52,8 +52,6 @@
       </ng-template>
 
     </div>
-
-
 
   </div>
 </div>

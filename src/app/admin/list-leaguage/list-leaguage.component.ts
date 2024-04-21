@@ -19,10 +19,7 @@ export class ListLeaguageComponent implements OnInit{
   form: FormGroup;
   constructor(private leaguageService: LeagueService,
               private modalService: NgbModal,
-              private seasonService: SeasonService,
-              private fb: FormBuilder,
-              private router: Router,
-              private sharedDataService: SharedDataService) {
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -94,13 +91,5 @@ export class ListLeaguageComponent implements OnInit{
       return `with: ${reason}`;
     }
   }
-
-  getSeason(id: string) {
-    this.seasonService.getAllByIdLeague(id).subscribe(data => {
-      this.sharedDataService.setData(data);
-      this.router.navigate(['admin/season']);
-    })
-  }
-
 
 }
