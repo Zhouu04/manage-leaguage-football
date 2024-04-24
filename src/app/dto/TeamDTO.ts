@@ -1,11 +1,7 @@
-export interface TeamDTO{
-    id?: string;
-    name?: string;
-    coach?: string;
-    email?: string;
-    phone?: number;
-    facebook?: string;
-    
-
-  }
-  
+export interface TeamDTO {
+  id?: string;
+  idSeason?: string;
+  name?: string;
+  phoneNumber?: string;
+  captainName?: string;
+}

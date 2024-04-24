@@ -19,7 +19,7 @@ export class ListSeasonComponent implements OnInit{
   dataUpdate: any;
   @ViewChild(FormAddSeasonComponent) formAddSeasonComponent: FormAddSeasonComponent;
 
-  constructor(private sharedDataService: SharedDataService,
+  constructor(
               private modalService: NgbModal,
               private router: ActivatedRoute,
               private seasonService: SeasonService) {}
