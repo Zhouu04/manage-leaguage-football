@@ -1,11 +1,11 @@
 package com.manageleaguefootball.demo.service.impl;
 
-import com.manageleaguefootball.demo.dto.LeagueDTO;
 import com.manageleaguefootball.demo.dto.SeasonDTO;
 import com.manageleaguefootball.demo.model.League;
 import com.manageleaguefootball.demo.model.Season;
 import com.manageleaguefootball.demo.repository.LeagueRepository;
 import com.manageleaguefootball.demo.repository.SeasonRepository;
+import com.manageleaguefootball.demo.repository.TeamRepository;
 import com.manageleaguefootball.demo.service.SeasonService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 public class SeasonServiceImpl implements SeasonService {
   private final SeasonRepository seasonRepository;
   private final LeagueRepository leagueRepository;
+  private final TeamRepository teamRepository;
 
   public static ModelMapper mapper() {
     ModelMapper modelMapper = new ModelMapper();
@@ -54,6 +55,15 @@ public class SeasonServiceImpl implements SeasonService {
   }
 
   @Override
+  public SeasonDTO getSeasonById(String id) {
+    Season season = seasonRepository.findById(id).orElse(null);
+    if(season == null) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Season id not found" + id);
+    }
+    return mapToView(season);
+  }
+
+  @Override
   public List<SeasonDTO> findAllByIdLeague(String id) {
     List<Season> seasons = seasonRepository.findAllByIdLeague(id);
     if(seasons == null) {
@@ -83,6 +93,7 @@ public class SeasonServiceImpl implements SeasonService {
     if(season == null) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Season id  not found " + id);
     }
+    teamRepository.deleteAllByIdSeason(id);
     seasonRepository.delete(season);
     return mapToView(season);
   }

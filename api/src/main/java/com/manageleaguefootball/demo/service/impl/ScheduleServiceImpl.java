@@ -1,10 +1,7 @@
 package com.manageleaguefootball.demo.service.impl;
 
 import com.manageleaguefootball.demo.dto.ScheduleDTO;
-import com.manageleaguefootball.demo.dto.SeasonDTO;
-import com.manageleaguefootball.demo.dto.TeamDTO;
 import com.manageleaguefootball.demo.model.Schedule;
-import com.manageleaguefootball.demo.model.Season;
 import com.manageleaguefootball.demo.model.Team;
 import com.manageleaguefootball.demo.repository.ScheduleRepository;
 import com.manageleaguefootball.demo.repository.TeamRepository;
@@ -12,10 +9,11 @@ import com.manageleaguefootball.demo.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +45,32 @@ public class ScheduleServiceImpl implements ScheduleService {
   }
 
   @Override
+  public List<ScheduleDTO> getSchedules() {
+    return mapToView(scheduleRepository.findAll());
+  }
+
+  @Override
+  public List<ScheduleDTO> getSchedulesByIdSeason(String idSeason) {
+    List<Schedule> schedules = scheduleRepository.findAllByIdSeason(idSeason);
+    if(schedules == null) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found");
+    }
+    return mapToView(schedules);
+  }
+
+  @Override
+  public ScheduleDTO updateScore(String idSchedule, int homeScore, int awayScore) {
+    Schedule schedule = scheduleRepository.findById(idSchedule).orElse(null);
+    if(schedule == null) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found");
+    }
+    schedule.setHomeScore(homeScore);
+    schedule.setAwayScore(awayScore);
+    scheduleRepository.save(schedule);
+    return mapToView(schedule);
+  }
+
+  @Override
   public List<ScheduleDTO> generateRound(String id) {
     List<Team> teams = teamRepository.findAllByIdSeason(id);
     List<Schedule> schedules = new ArrayList<>();
@@ -54,7 +78,7 @@ public class ScheduleServiceImpl implements ScheduleService {
       for (int j = i + 1; j < teams.size(); j++) {
         // Tạo lịch thi đấu cho mỗi cặp đấu
         Schedule schedule1 = new Schedule();
-        schedule1.setId(id);
+        schedule1.setIdSeason(id);
         schedule1.setTeamHome(teams.get(i).getName());
         schedule1.setTeamAway(teams.get(j).getName());
         schedules.add(schedule1);
@@ -63,6 +87,7 @@ public class ScheduleServiceImpl implements ScheduleService {
       }
     }
     scheduleRepository.saveAll(schedules);
+
     return mapToView(schedules);
   }
 
@@ -75,33 +100,16 @@ public class ScheduleServiceImpl implements ScheduleService {
     for (int i = 0; i < teams.size(); i += 2) {
       if (i + 1 < teams.size()) {
         Schedule schedule = new Schedule();
-        schedule.setId(idSeason);
+        schedule.setIdSeason(idSeason);
         schedule.setTeamHome(teams.get(i).getName());
         schedule.setTeamAway(teams.get(i + 1).getName());
         schedules.add(schedule);
         Collections.shuffle(schedules);
+
       }
     }
-
-    // Tạo các vòng đấu tiếp theo (tùy vào số lượng đội)
-//    while (teams.size() > 1) {
-//      List<Team> winners = new ArrayList<>();
-//      for (int i = 0; i < teams.size() - 1; i += 2) {
-//        // Tạo lịch thi đấu cho trận đấu tiếp theo
-//        Schedule schedule = new Schedule();
-//        schedule.setId(idSeason);
-//        schedule.setTeamHome(teams.get(i).getName());
-//        schedule.setTeamAway(teams.get(i + 1).getName());
-//        schedules.add(schedule);
-//
-//        // Lưu đội chiến thắng để tham gia vòng đấu tiếp theo
-//        winners.add(teams.get(i));
-//      }
-//
-//      // Cập nhật danh sách các đội tham gia vòng đấu tiếp theo
-//      teams = winners;
-//    }
     scheduleRepository.saveAll(schedules);
+
     return mapToView(schedules);
   }
 

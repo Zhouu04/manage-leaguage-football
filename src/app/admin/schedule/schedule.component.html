@@ -1,1 +1,36 @@
-<p>schedule works!</p>
+<h1>
+  <i class="fa-regular fa-calendar-days" style="color: #74C0FC"></i>
+  Lịch thi đấu
+</h1>
+<div *ngFor="let group of groupedSchedule; let i = index">
+    <div class="card" >
+        <div class="card-title p-2" style="background-color: #43ae43">
+          <span class="text-white">
+              Vòng {{i + 1}}
+          </span>
+        </div>
+        <table class="table table-bordered ">
+          <thead>
+          <tr>
+            <th>Stt</th>
+            <th class="text-center">Chủ nhà</th>
+            <th class="text-center">Tỉ số</th>
+            <th class="text-center">Đội khách</th>
+            <th>Cấu hình</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of group; let j =  index">
+            <td>{{j + 1}}</td>
+            <td class="text-center">{{data.teamHome}}</td>
+            <td class="text-center">vs</td>
+            <td class="text-center">{{data.teamAway}}</td>
+            <td>
+              <button class="btn btn-sm btn-danger">Cập nhật tỉ số</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+
+</div>

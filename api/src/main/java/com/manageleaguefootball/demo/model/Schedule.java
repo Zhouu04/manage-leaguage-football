@@ -13,5 +13,7 @@ public class Schedule {
   private String teamHome;
   private String teamAway;
   private String time;
+  private int homeScore;
+  private int awayScore;
   private String result;
 }

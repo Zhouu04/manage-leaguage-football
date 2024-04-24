@@ -22,6 +22,12 @@ public class SeasonController {
     return ResponseEntity.ok(seasons);
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<SeasonDTO> getSeasonById(@PathVariable("id") String id) {
+    SeasonDTO season = service.getSeasonById(id);
+    return ResponseEntity.ok(season);
+  }
+
   @GetMapping("/league/{id}")
   public ResponseEntity<List<SeasonDTO>> getAllByIdLeague(@PathVariable("id") String id) {
     List<SeasonDTO> seasons = service.findAllByIdLeague(id);
@@ -41,7 +47,7 @@ public class SeasonController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<SeasonDTO> deleteSeaon(@PathVariable("id") String id) {
+  public ResponseEntity<SeasonDTO> deleteSeason(@PathVariable("id") String id) {
     SeasonDTO season = service.deleteSeason(id);
     return ResponseEntity.ok(season);
   }
