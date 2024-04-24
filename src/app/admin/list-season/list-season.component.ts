@@ -19,13 +19,14 @@ export class ListSeasonComponent implements OnInit{
   dataUpdate: any;
   @ViewChild(FormAddSeasonComponent) formAddSeasonComponent: FormAddSeasonComponent;
 
-  constructor(private sharedDataService: SharedDataService,
+  constructor(
               private modalService: NgbModal,
               private router: ActivatedRoute,
               private seasonService: SeasonService) {}
 
   ngOnInit() {
     let id = this.router.snapshot.paramMap.get('id');
+    this.idLeague = id;
     this.seasonService.getAllByIdLeague(id).subscribe(data => {
       this.seasons = data;
     })
