@@ -7,6 +7,8 @@ import java.util.List;
 public interface SeasonService {
   SeasonDTO createSeason(SeasonDTO model);
 
+  SeasonDTO getSeasonById(String id);
+
   List<SeasonDTO> findAllByIdLeague(String id);
 
   List<SeasonDTO> getAllSeasons();
