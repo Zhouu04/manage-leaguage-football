@@ -24,4 +24,8 @@ export class ScheduleService {
   getSchedulesBySeasonId(id: string | null): Observable<ScheduleDTO[]> {
     return this.http.get<ScheduleDTO[]>(`${this.baseUrl}/${id}`);
   }
+
+  updateScore(data:ScheduleDTO): Observable<ScheduleDTO> {
+    return this.http.put<ScheduleDTO>(this.baseUrl, data);
+  }
 }
