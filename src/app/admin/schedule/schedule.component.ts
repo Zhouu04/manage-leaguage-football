@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit{
-  schedule: any;
+  schedules: any;
   typeTournament: any;
   groupedSchedule: any[];
   dataUpdate: any;
@@ -41,8 +41,7 @@ export class ScheduleComponent implements OnInit{
         this.typeTournament = data.typeTournament;
         this.scheduleService.getSchedulesBySeasonId(id).subscribe(data => {
           if(data.length > 0) {
-            this.schedule = data;
-            this.groupedSchedule = this.chunkArray(data, 4);
+            this.schedules = this.chunkArray(data, 4);;
             console.log('data co san', data);
           } else {
             if(this.typeTournament == 'vongtron')
@@ -58,14 +57,14 @@ export class ScheduleComponent implements OnInit{
 
   generateRoundSchedule(id: string|null) {
     this.scheduleService.addScheduleRound(id).subscribe(data => {
-      this.schedule = data;
+      this.schedules = this.chunkArray(data, 4);
       console.log(data, 'add data round');
     })
   }
 
   generateKnockOutSchedule(id: string|null) {
     this.scheduleService.addScheduleKnockOut(id).subscribe(data => {
-      this.schedule = data;
+      this.schedules = this.chunkArray(data, 4);;
       console.log(data, 'add data knock-out');
     })
   }

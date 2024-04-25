@@ -2,7 +2,7 @@
   <i class="fa-regular fa-calendar-days" style="color: #74C0FC"></i>
   Lịch thi đấu
 </h1>
-<div *ngFor="let group of groupedSchedule; let i = index">
+<div *ngFor="let schedule of schedules; let i = index">
     <div class="card" >
         <div class="card-title p-2" style="background-color: #43ae43">
           <span class="text-white">
@@ -20,7 +20,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let data of group; let j =  index">
+          <tr *ngFor="let data of schedule; let j =  index">
             <td>{{j + 1}}</td>
             <td class="text-center">{{data.teamHome}}</td>
             <td class="text-center">{{data.homeScore}} - {{data.awayScore}}</td>
