@@ -24,9 +24,9 @@ export class FormAddTeamComponent implements OnInit {
   ngOnInit() {
     this.formteam = this.fb.group({
       name: ['', Validators.required],
-      coach: [''],
+      captainName: [''],
       facebook: [''],
-      phone: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     });
 
@@ -47,9 +47,9 @@ export class FormAddTeamComponent implements OnInit {
 
     const formData = {
       name: this.formteam.value.name,
-      coach: this.formteam.value.coach,
+      captainName: this.formteam.value.captainName,
       facebook: this.formteam.value.facebook,
-      phone: this.formteam.value.phone,
+      phoneNumber: this.formteam.value.phoneNumber,
       email: this.formteam.value.email,
       idSeason: this.idSeason
     };
@@ -71,11 +71,11 @@ export class FormAddTeamComponent implements OnInit {
   }
 
   setDataUpdate() {
-    this.formteam.setValue({
+    this.formteam = this.fb.group({
       name: this.dataUpdate.name,
-      coach: this.dataUpdate.coach,
+      captainName: this.dataUpdate.captainName,
       facebook: this.dataUpdate.facebook,
-      phone: this.dataUpdate.phone,
+      phoneNumber: this.dataUpdate.phoneNumber,
       email: this.dataUpdate.email
     });
   }

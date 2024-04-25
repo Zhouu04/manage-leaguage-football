@@ -33,3 +33,7 @@
   color: #db4437; /* Màu của biểu tượng Google */
 }
 
+.red-text-button a {
+  color: white;
+  text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+}

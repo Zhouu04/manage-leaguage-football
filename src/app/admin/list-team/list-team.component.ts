@@ -28,8 +28,10 @@ export class ListTeamComponent implements OnInit{
   ngOnInit() {
     let id: string | null = this.router.snapshot.paramMap.get('id');
     console.log(id);
+    this.idSeason = id;
     this.teamService.getTeamsBySeason(id).subscribe(data => {
       this.teams$ = data;
+      console.log(data);
     })
   }
   open(content: any) {
@@ -51,6 +53,7 @@ export class ListTeamComponent implements OnInit{
     this.teamService.getTeamsBySeason(this.idSeason).subscribe(
       data => {
         this.teams$ = data;
+        
       }
     );
   }
