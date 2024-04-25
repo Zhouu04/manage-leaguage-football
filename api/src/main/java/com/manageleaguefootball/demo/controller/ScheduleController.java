@@ -2,6 +2,7 @@ package com.manageleaguefootball.demo.controller;
 
 import com.manageleaguefootball.demo.dto.ScheduleDTO;
 import com.manageleaguefootball.demo.service.ScheduleService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,11 +34,9 @@ public class ScheduleController {
     return ResponseEntity.ok(schedules);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<ScheduleDTO> updateScore(@PathVariable("id") String id,
-                                                 @RequestParam("homeScore") int homeScore,
-                                                 @RequestParam("awayScore") int awayScore) {
-    ScheduleDTO schedule = scheduleService.updateScore(id, homeScore, awayScore);
+  @PutMapping("")
+  public ResponseEntity<ScheduleDTO> updateScore(@RequestBody @Valid ScheduleDTO model) {
+    ScheduleDTO schedule = scheduleService.updateScore(model);
     return ResponseEntity.ok(schedule);
   }
 }

@@ -59,13 +59,13 @@ public class ScheduleServiceImpl implements ScheduleService {
   }
 
   @Override
-  public ScheduleDTO updateScore(String idSchedule, int homeScore, int awayScore) {
-    Schedule schedule = scheduleRepository.findById(idSchedule).orElse(null);
+  public ScheduleDTO updateScore(ScheduleDTO model) {
+    Schedule schedule = scheduleRepository.findById(model.getId()).orElse(null);
     if(schedule == null) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found");
     }
-    schedule.setHomeScore(homeScore);
-    schedule.setAwayScore(awayScore);
+    schedule.setHomeScore(model.getHomeScore());
+    schedule.setAwayScore(model.getAwayScore());
     scheduleRepository.save(schedule);
     return mapToView(schedule);
   }

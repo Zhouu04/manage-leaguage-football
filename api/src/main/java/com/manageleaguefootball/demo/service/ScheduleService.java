@@ -7,7 +7,7 @@ import java.util.List;
 public interface ScheduleService {
   List<ScheduleDTO> getSchedules();
   List<ScheduleDTO> getSchedulesByIdSeason(String idSeason);
-  ScheduleDTO updateScore(String idSchedule, int homeScore, int awayScore);
+  ScheduleDTO updateScore(ScheduleDTO scheduleDTO);
   List<ScheduleDTO> generateRound(String idSeason);
   List<ScheduleDTO> generateKnockOut(String idSeason);
 }

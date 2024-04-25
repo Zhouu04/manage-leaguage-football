@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ScheduleService} from "../service/schedule.service";
 import {SeasonService} from "../service/season.service";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-schedule',
@@ -12,15 +14,24 @@ export class ScheduleComponent implements OnInit{
   schedule: any;
   typeTournament: any;
   groupedSchedule: any[];
+  dataUpdate: any;
+  closeResult: any;
+  form: FormGroup;
 
   constructor(
+    private modalService: NgbModal,
     private router: ActivatedRoute,
     private scheduleService: ScheduleService,
-    private seasonService: SeasonService
+    private seasonService: SeasonService,
+    private fb: FormBuilder,
   ) {}
 
   ngOnInit() {
     this.initData();
+    this.form = this.fb.group({
+      homeScore: '',
+      awayScore: '',
+    })
 
   }
 
@@ -65,6 +76,49 @@ export class ScheduleComponent implements OnInit{
       result.push(array.slice(i, i + chunkSize));
     }
     return result;
+  }
+
+  openFormUpdate(content: any, data: any) {
+    this.dataUpdate = data;
+    if(this.dataUpdate.homeScore != null) {
+      this.form = this.fb.group({
+        homeScore: this.dataUpdate.homeScore,
+        awayScore: this.dataUpdate.awayScore,
+      })
+    }
+    this.modalService.open(content, { size: '' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
+  }
+
+  close(){
+    this.modalService.dismissAll();
+  }
+
+  updateScore() {
+    this.dataUpdate.homeScore = this.form.value.homeScore;
+    this.dataUpdate.awayScore = this.form.value.awayScore;
+    this.scheduleService.updateScore(this.dataUpdate).subscribe(data => {
+      console.log(data);
+      this.modalService.dismissAll()
+    })
+    this.form.reset();
+  }
+
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 
