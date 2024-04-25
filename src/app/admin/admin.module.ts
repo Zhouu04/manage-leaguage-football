@@ -18,6 +18,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ListSeasonComponent } from './list-season/list-season.component';
 import { FormAddSeasonComponent } from './form-add-season/form-add-season.component';
 import { ListTeamComponent } from './list-team/list-team.component';
+import { FormAddTeamComponent } from "./form-add-team/form-add-team.component";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ListTeamComponent } from './list-team/list-team.component';
     ListSeasonComponent,
     FormAddSeasonComponent,
     ListTeamComponent,
+    FormAddTeamComponent
   ],
   imports: [
     CommonModule,

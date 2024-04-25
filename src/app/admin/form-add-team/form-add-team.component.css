@@ -1,0 +1,7 @@
+input.ng-invalid.ng-touched {
+    border-color: red; /* Thay đổi màu đường viền thành màu đỏ */
+  }
+  
+  select.ng-invalid.ng-touched {
+    border-color: red;
+  }

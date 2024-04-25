@@ -4,7 +4,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SeasonService} from "../service/season.service";
 import {FormAddSeasonComponent} from "../form-add-season/form-add-season.component";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TeamService} from "../service/team.service";
+
 
 @Component({
   selector: 'app-list-season',
@@ -29,6 +29,7 @@ export class ListSeasonComponent implements OnInit{
     this.idLeague = id;
     this.seasonService.getAllByIdLeague(id).subscribe(data => {
       this.seasons = data;
+      console.log(data);
     })
   }
 

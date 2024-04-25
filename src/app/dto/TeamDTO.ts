@@ -4,5 +4,4 @@ export interface TeamDTO {
   name?: string;
   phoneNumber?: string;
   captainName?: string;
-  score?: number ;
 }
