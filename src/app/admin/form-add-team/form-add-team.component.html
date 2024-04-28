@@ -19,11 +19,13 @@
     <div class="form-group col-md-6 mb-3">
       <label for="phoneNumber">Số điện thoại</label>
       <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber">
+      <app-control-messages [control]="formteam.controls['phoneNumber']" [label]="'Số điện thoại'"></app-control-messages>
     </div>
 
     <div class="form-group col-md-6 mb-3">
       <label for="email">Email</label>
       <input type="email" id="email" class="form-control" formControlName="email">
+      <app-control-messages [control]="formteam.controls['email']" [label]="'Email'"></app-control-messages>
     </div>
   </div>
 </form>
