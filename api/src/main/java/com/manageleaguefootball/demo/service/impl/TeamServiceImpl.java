@@ -89,7 +89,9 @@ public class TeamServiceImpl implements TeamService {
   @Override
   public List<TeamDTO> findTeamByOrderScore(String idSeason) {
     List<Team> teams = teamRepository.findAllByIdSeason(idSeason);
-    teams.sort(Comparator.comparingInt(Team::getScore).reversed());
+    teams.sort(Comparator.comparingInt(Team::getScore)
+      .thenComparingInt(team -> team.getGoalWin() - team.getGoalLoss())
+      .reversed());
 
     return mapToView(teams);
   }
