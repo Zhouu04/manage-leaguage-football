@@ -4,4 +4,6 @@ export interface TeamDTO {
   name?: string;
   phoneNumber?: string;
   captainName?: string;
+  facebook?: string;
+  email?: string;
 }
