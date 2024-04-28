@@ -59,15 +59,65 @@ public class ScheduleServiceImpl implements ScheduleService {
   }
 
   @Override
-  public ScheduleDTO updateScore(String idSchedule, int homeScore, int awayScore) {
-    Schedule schedule = scheduleRepository.findById(idSchedule).orElse(null);
+  public ScheduleDTO updateScore(ScheduleDTO model) {
+    Schedule schedule = scheduleRepository.findById(model.getId()).orElse(null);
     if(schedule == null) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Schedule not found");
     }
-    schedule.setHomeScore(homeScore);
-    schedule.setAwayScore(awayScore);
+    schedule.setHomeScore(model.getHomeScore());
+    schedule.setAwayScore(model.getAwayScore());
+    schedule.setStatus(true);
     scheduleRepository.save(schedule);
+    this.updatePoint(schedule, model.getHomeScore(), model.getAwayScore());
     return mapToView(schedule);
+  }
+
+  private void updatePoint(Schedule model, int homeScore, int awayScore) {
+    int win = 3;
+    int lose = 0;
+    int draw = 1;
+    Team teamHome = teamRepository.findByName(model.getTeamHome());
+    Team teamAway = teamRepository.findByName(model.getTeamAway());
+
+    if(homeScore > awayScore) {
+      teamHome.setScore(teamHome.getScore() + win);
+      teamHome.setGoalWin(teamHome.getGoalWin() + homeScore);
+      teamHome.setGoalLoss(teamHome.getGoalLoss() + awayScore);
+      teamHome.setWin(teamHome.getWin() + 1);
+      teamHome.setDifference(teamHome.getGoalWin() - teamHome.getGoalLoss());
+
+      teamAway.setScore(teamAway.getScore() + lose);
+      teamAway.setGoalWin(teamAway.getGoalWin() + awayScore);
+      teamAway.setGoalLoss(teamAway.getGoalLoss() + homeScore);
+      teamAway.setLoss(teamAway.getLoss() + 1);
+      teamAway.setDifference(teamAway.getGoalWin() - teamAway.getGoalLoss());
+
+    } else if (homeScore < awayScore) {
+      teamHome.setScore(teamHome.getScore() + lose);
+      teamHome.setGoalWin(teamHome.getGoalWin() + homeScore);
+      teamHome.setGoalLoss(teamHome.getGoalLoss() + awayScore);
+      teamHome.setLoss(teamHome.getLoss() + 1);
+      teamHome.setDifference(teamHome.getGoalWin() - teamHome.getGoalLoss());
+
+      teamAway.setScore(teamAway.getScore() + win);
+      teamAway.setGoalWin(teamAway.getGoalWin() + awayScore);
+      teamAway.setGoalLoss(teamAway.getGoalLoss() + homeScore);
+      teamAway.setWin(teamAway.getWin() + 1);
+      teamAway.setDifference(teamAway.getGoalWin() - teamAway.getGoalLoss());
+    } else {
+      teamHome.setScore(teamHome.getScore() + draw);
+      teamHome.setGoalWin(teamHome.getGoalWin() + homeScore);
+      teamHome.setGoalLoss(teamHome.getGoalLoss() + awayScore);
+      teamHome.setDraw(teamHome.getDraw() + 1);
+
+      teamAway.setScore(teamAway.getScore() + draw);
+      teamAway.setGoalWin(teamAway.getGoalWin() + awayScore);
+      teamAway.setGoalLoss(teamAway.getGoalLoss() + homeScore);
+      teamAway.setDraw(teamAway.getDraw() + 1);
+
+    }
+    teamRepository.save(teamHome);
+    teamRepository.save(teamAway);
   }
 
   @Override

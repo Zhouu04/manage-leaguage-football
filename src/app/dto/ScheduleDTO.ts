@@ -4,5 +4,8 @@ export interface ScheduleDTO {
   teamHome?: string;
   teamAway?: string;
   time?: string;
+  homeScore?: number;
+  awayScore?: number;
   result?: string;
+  status?: boolean;
 }

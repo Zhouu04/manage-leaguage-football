@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ScheduleRepository extends MongoRepository<Schedule, String> {
   List<Schedule> findAllByIdSeason(String idSeason);
+  void deleteAllByIdSeason(String idSeason);
 }

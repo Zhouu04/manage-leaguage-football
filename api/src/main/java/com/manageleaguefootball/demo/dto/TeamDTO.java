@@ -12,4 +12,10 @@ public class TeamDTO {
     private String facebook;
     private String email;
     private int score = 0;
+    private int win;
+    private int loss;
+    private int draw;
+    private int goalWin;
+    private int goalLoss;
+    private int difference;
 }

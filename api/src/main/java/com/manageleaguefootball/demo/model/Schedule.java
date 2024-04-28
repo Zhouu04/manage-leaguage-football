@@ -16,4 +16,5 @@ public class Schedule {
   private int homeScore;
   private int awayScore;
   private String result;
+  private boolean status = false;
 }

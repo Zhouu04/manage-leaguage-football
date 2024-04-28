@@ -4,6 +4,7 @@ import com.manageleaguefootball.demo.dto.SeasonDTO;
 import com.manageleaguefootball.demo.model.League;
 import com.manageleaguefootball.demo.model.Season;
 import com.manageleaguefootball.demo.repository.LeagueRepository;
+import com.manageleaguefootball.demo.repository.ScheduleRepository;
 import com.manageleaguefootball.demo.repository.SeasonRepository;
 import com.manageleaguefootball.demo.repository.TeamRepository;
 import com.manageleaguefootball.demo.service.SeasonService;
@@ -23,6 +24,7 @@ public class SeasonServiceImpl implements SeasonService {
   private final SeasonRepository seasonRepository;
   private final LeagueRepository leagueRepository;
   private final TeamRepository teamRepository;
+  private final ScheduleRepository scheduleRepository;
 
   public static ModelMapper mapper() {
     ModelMapper modelMapper = new ModelMapper();
@@ -95,6 +97,7 @@ public class SeasonServiceImpl implements SeasonService {
     }
     teamRepository.deleteAllByIdSeason(id);
     seasonRepository.delete(season);
+    scheduleRepository.deleteAllByIdSeason(id);
     return mapToView(season);
   }
 }

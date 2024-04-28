@@ -2,7 +2,7 @@
   <i class="fa-regular fa-calendar-days" style="color: #74C0FC"></i>
   Lịch thi đấu
 </h1>
-<div *ngFor="let group of groupedSchedule; let i = index">
+<div *ngFor="let schedule of schedules; let i = index">
     <div class="card" >
         <div class="card-title p-2" style="background-color: #43ae43">
           <span class="text-white">
@@ -16,21 +16,59 @@
             <th class="text-center">Chủ nhà</th>
             <th class="text-center">Tỉ số</th>
             <th class="text-center">Đội khách</th>
+            <th class="text-center">Trạng thái</th>
             <th>Cấu hình</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let data of group; let j =  index">
+          <tr *ngFor="let data of schedule; let j =  index">
             <td>{{j + 1}}</td>
             <td class="text-center">{{data.teamHome}}</td>
-            <td class="text-center">vs</td>
+            <td class="text-center">{{data.homeScore}} - {{data.awayScore}}</td>
             <td class="text-center">{{data.teamAway}}</td>
+            <td class="text-center">
+
+              <span *ngIf="data.status; else update" class="badge text-bg-success">Đã thi đấu</span>
+              <ng-template #update >
+                <span class="badge text-bg-danger">
+                  Chưa thi đấu
+                </span>
+              </ng-template>
+            </td>
             <td>
-              <button class="btn btn-sm btn-danger">Cập nhật tỉ số</button>
+              <button class="btn btn-sm btn-danger" (click)="openFormUpdate(formUpdate, data)" >Cập nhật tỉ số</button>
             </td>
           </tr>
           </tbody>
         </table>
     </div>
-
 </div>
+
+<ng-template #formUpdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-update">Cập nhật tỉ số</h4>
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="row" [formGroup]="form">
+      <div class="col-sm-6 text-end" >
+        <span style="margin-right: 10px; margin-bottom: 8px">
+          {{dataUpdate.teamHome}}
+        </span>
+        <input formControlName="homeScore" type="number" >
+      </div>
+
+      <div class="col-sm-6">
+        <input formControlName="awayScore" style="margin-right: 10px" type="number" >
+        <span style="margin-bottom: 8px">
+          {{dataUpdate.teamAway}}
+        </span>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" (click)="updateScore()">Cập nhật</button>
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Đóng</button>
+  </div>
+</ng-template>

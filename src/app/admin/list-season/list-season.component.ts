@@ -20,7 +20,7 @@ export class ListSeasonComponent implements OnInit{
   @ViewChild(FormAddSeasonComponent) formAddSeasonComponent: FormAddSeasonComponent;
 
   constructor(
-              private modalService: NgbModal,
+                private modalService: NgbModal,
               private router: ActivatedRoute,
               private seasonService: SeasonService) {}
 

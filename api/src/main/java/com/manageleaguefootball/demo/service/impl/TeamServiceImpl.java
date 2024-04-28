@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,5 +84,13 @@ public class TeamServiceImpl implements TeamService {
     }
     teamRepository.delete(team);
     return mapToView(team);
+  }
+
+  @Override
+  public List<TeamDTO> findTeamByOrderScore(String idSeason) {
+    List<Team> teams = teamRepository.findAllByIdSeason(idSeason);
+    teams.sort(Comparator.comparingInt(Team::getScore).reversed());
+
+    return mapToView(teams);
   }
 }

@@ -16,5 +16,10 @@ public class Team {
   private int score;
   private String facebook;
   private String email;
-
+  private int win;
+  private int loss;
+  private int draw;
+  private int goalWin;
+  private int goalLoss;
+  private int difference;
 }
