@@ -24,9 +24,9 @@ public class Season {
 
   private String typeTournament;
 
-  private int numberOfPlayers;
+  private String numberOfPlayers;
 
-  private int numberOfCoach;
+  private String numberOfCoach;
 
   private int timeOfHalf;
 }

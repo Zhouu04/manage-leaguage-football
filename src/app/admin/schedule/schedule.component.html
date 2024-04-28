@@ -16,6 +16,7 @@
             <th class="text-center">Chủ nhà</th>
             <th class="text-center">Tỉ số</th>
             <th class="text-center">Đội khách</th>
+            <th class="text-center">Trạng thái</th>
             <th>Cấu hình</th>
           </tr>
           </thead>
@@ -25,6 +26,15 @@
             <td class="text-center">{{data.teamHome}}</td>
             <td class="text-center">{{data.homeScore}} - {{data.awayScore}}</td>
             <td class="text-center">{{data.teamAway}}</td>
+            <td class="text-center">
+
+              <span *ngIf="data.status; else update" class="badge text-bg-success">Đã thi đấu</span>
+              <ng-template #update >
+                <span class="badge text-bg-danger">
+                  Chưa thi đấu
+                </span>
+              </ng-template>
+            </td>
             <td>
               <button class="btn btn-sm btn-danger" (click)="openFormUpdate(formUpdate, data)" >Cập nhật tỉ số</button>
             </td>

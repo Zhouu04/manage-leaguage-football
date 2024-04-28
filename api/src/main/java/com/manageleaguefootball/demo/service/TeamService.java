@@ -10,4 +10,5 @@ public interface TeamService {
   TeamDTO updateTeam(TeamDTO team);
   List<TeamDTO> findTeamByIdSeason(String id);
   TeamDTO deleteTeam(String id);
+  List<TeamDTO> findTeamByOrderScore(String idSeason);
 }

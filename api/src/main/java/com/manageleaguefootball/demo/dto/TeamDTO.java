@@ -10,4 +10,10 @@ public class TeamDTO {
     private String phoneNumber;
     private String captainName;
     private int score = 0;
+    private int win;
+    private int loss;
+    private int draw;
+    private int goalWin;
+    private int goalLoss;
+    private int difference;
 }

@@ -12,4 +12,5 @@ public class ScheduleDTO {
   private int awayScore;
   private String time;
   private String result;
+  private boolean status = false;
 }

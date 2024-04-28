@@ -15,6 +15,11 @@ export class TeamService {
     return this.http.get<TeamDTO[]>(this.apiUrl);
   }
 
+  //bxh
+  getTeamOrderByScore(id: string): Observable<TeamDTO[]> {
+    return this.http.get<TeamDTO[]>(`${this.apiUrl}/rank/${id}`);
+  }
+
   getTeamsBySeason(id: string | null): Observable<TeamDTO[]> {
     return this.http.get<TeamDTO[]>(`${this.apiUrl}/season/${id}`);
   }
