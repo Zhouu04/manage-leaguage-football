@@ -13,7 +13,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class ScheduleComponent implements OnInit{
   schedules: any;
   typeTournament: any;
-  groupedSchedule: any[];
   dataUpdate: any;
   closeResult: any;
   form: FormGroup;
@@ -103,9 +102,10 @@ export class ScheduleComponent implements OnInit{
     this.dataUpdate.homeScore = this.form.value.homeScore;
     this.dataUpdate.awayScore = this.form.value.awayScore;
     this.scheduleService.updateScore(this.dataUpdate).subscribe(data => {
-      console.log(data);
+      this.initData();
       this.modalService.dismissAll()
     })
+
     this.form.reset();
   }
 

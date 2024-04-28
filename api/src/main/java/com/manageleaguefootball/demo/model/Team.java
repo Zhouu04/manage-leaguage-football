@@ -14,4 +14,10 @@ public class Team {
   private String phoneNumber;
   private String captainName;
   private int score;
+  private int win;
+  private int loss;
+  private int draw;
+  private int goalWin;
+  private int goalLoss;
+  private int difference;
 }

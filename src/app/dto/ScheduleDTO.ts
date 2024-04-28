@@ -7,4 +7,5 @@ export interface ScheduleDTO {
   homeScore?: number;
   awayScore?: number;
   result?: string;
+  status?: boolean;
 }

@@ -1,6 +1,7 @@
 package com.manageleaguefootball.demo.controller;
 
 import com.manageleaguefootball.demo.dto.TeamDTO;
+import com.manageleaguefootball.demo.model.Team;
 import com.manageleaguefootball.demo.service.TeamService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,12 @@ public class TeamController {
   @GetMapping("/season/{id}")
   public ResponseEntity<List<TeamDTO>> getTeamByIdSeason(@PathVariable("id") String id) {
     List<TeamDTO> teams = teamService.findTeamByIdSeason(id);
+    return ResponseEntity.ok(teams);
+  }
+
+  @GetMapping("rank/{id}")
+  public ResponseEntity<List<TeamDTO>> getAllTeamOrderByScore(@PathVariable("id") String id) {
+    List<TeamDTO> teams = teamService.findTeamByOrderScore(id);
     return ResponseEntity.ok(teams);
   }
 
