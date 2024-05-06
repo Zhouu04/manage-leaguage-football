@@ -1,7 +1,8 @@
-<h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
-<button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
-<table class="table  table-striped table-bordered">
-  <thead>
+<ng-container *ngIf="seasons ; else loading">
+  <h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
+  <button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
+  <table class="table  ">
+    <thead>
     <tr>
       <th>Stt</th>
       <th>Tên mùa giải</th>
@@ -10,8 +11,8 @@
       <th>Thể thức</th>
       <th>Cấu hình</th>
     </tr>
-  </thead>
-  <tbody *ngIf="seasons?.length > 0; else noData">
+    </thead>
+    <tbody>
     <tr *ngFor="let season of seasons; let i = index">
       <td>{{i + 1}}</td>
       <td>{{season.name}}</td>
@@ -42,8 +43,14 @@
       </td>
 
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</ng-container>
+<div *ngIf="seasons?.length == 0">
+  Chưa có giải đấu được tạo
+</div>
+
+<!--form add-->
 <ng-template #form let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-add">Thêm mùa giải</h4>
@@ -56,7 +63,9 @@
     <button type="button" class="btn btn-outline-dark" (click)="close()">Thoát</button>
   </div>
 </ng-template>
+<!--end-->
 
+<!--delete modal-->
 <ng-template #deleteModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="delete-modal">Xóa mùa giải</h4>
@@ -71,6 +80,9 @@
     <button type="button" class="btn btn-danger" (click)="deleteSeason()">Xóa</button>
   </div>
 </ng-template>
+<!--end-->
+
+<!--update modal-->
 <ng-template #update let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-update">Cập nhật mùa giải</h4>
@@ -83,10 +95,89 @@
     <button type="button" class="btn btn-outline-dark" (click)="close()">Thoát</button>
   </div>
 </ng-template>
+<!--end-->
 
-<ng-template #noData>
-  Chưa có mùa giải
+<ng-template #loading>
+  <p-skeleton width="15rem" height="2rem" styleClass="mb-4"></p-skeleton>
+  <p-skeleton width="8rem" height="2rem" styleClass="mb-4"></p-skeleton>
+  <table class="table ">
+    <thead>
+    <tr>
+      <th>Stt</th>
+      <th>Tên mùa giải</th>
+      <th>Địa điểm</th>
+      <th class="text-end">Số lượng đội tham gia</th>
+      <th>Thể thức</th>
+      <th class="w-50">Cấu hình</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr style="height: 40px">
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+      </tr>
+      <tr style="height: 40px">
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+      </tr>
+      <tr style="height: 40px">
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+      </tr>
+      <tr style="height: 40px">
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+      </tr>
+      <tr style="height: 40px">
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+        <td><p-skeleton></p-skeleton></td>
+        <td>
+          <p-skeleton></p-skeleton>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ng-template>
+
+
+
 
 
 

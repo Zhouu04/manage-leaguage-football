@@ -4,6 +4,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SeasonService} from "../service/season.service";
 import {FormAddSeasonComponent} from "../form-add-season/form-add-season.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import {delay} from "rxjs";
 
 
 @Component({
@@ -27,10 +28,11 @@ export class ListSeasonComponent implements OnInit{
   ngOnInit() {
     let id = this.router.snapshot.paramMap.get('id');
     this.idLeague = id;
-    this.seasonService.getAllByIdLeague(id).subscribe(data => {
+    this.seasonService.getAllByIdLeague(id).pipe(delay(2000)).subscribe(data => {
       this.seasons = data;
       console.log(data);
     })
+
   }
 
   open(content: any) {
