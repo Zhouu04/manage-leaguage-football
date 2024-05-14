@@ -11,4 +11,5 @@ public interface PlayerService {
   PlayerDTO updatePlayer(PlayerDTO model);
   PlayerDTO deletePlayer(String id);
   List<PlayerDTO> findPlayerByIdTeam(String id);
+  List<PlayerDTO> getPlayerByOrderGoal(String id);
 }

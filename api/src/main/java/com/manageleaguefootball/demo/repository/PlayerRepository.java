@@ -10,4 +10,5 @@ import java.util.List;
 public interface PlayerRepository  extends MongoRepository<Player, String> {
   List<Player> findAllByIdTeam(String idTeam);
   void deleteById ( String idPlayer);
+
 }

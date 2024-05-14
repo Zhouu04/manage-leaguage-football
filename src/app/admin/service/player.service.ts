@@ -28,5 +28,8 @@ export class PlayerService {
     getplayerByIdTeam(id: string | null): Observable<PlayerDTO[]> {
         return this.http.get<PlayerDTO[]>(`${this.apiUrl}/team/${id}`);
       }
+    getPlayerByOrderGoal(id: string | null): Observable<PlayerDTO[]> {
+      return this.http.get<PlayerDTO[]>(`${this.apiUrl}/ranks/${id}`);
+    }
 
 }

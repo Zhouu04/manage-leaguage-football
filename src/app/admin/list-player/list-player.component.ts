@@ -4,37 +4,18 @@ import { PlayerService } from '../service/player.service';
 import {ActivatedRoute} from "@angular/router";
 import { FormAddPlayerComponent } from '../form-add-player/form-add-player.component';
 
-@Pipe({
-    name: 'sortByGoals'
-  })
-  export class SortByGoalsPipe implements PipeTransform {
-    transform(array: any[], field: string): any[] {
-      if (!Array.isArray(array)) {
-        return [];
-      }
-      array.sort((a: any, b: any) => {
-        if (a[field] < b[field]) {
-          return 1;
-        } else if (a[field] > b[field]) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
-      return array;
-    }
-  }
 @Component({
     selector: 'app-list-player',
     templateUrl: './list-player.component.html',
     styleUrls: ['./list-player.component.css'],
-    providers: [SortByGoalsPipe]
+
   })
 
 export class ListPlayerComponent implements OnInit{
     players$: any;
     idTeam : any;
     idPlayer : any;
+    topPlayers$: any;
  
     closeResult: any;
     dataUpdate: any;
@@ -119,4 +100,25 @@ export class ListPlayerComponent implements OnInit{
         },
       );
     }
+    getTopPlayers() {
+      this.playerService.getPlayerByOrderGoal(this.idTeam).subscribe((data) => {
+        this.topPlayers$ = data; 
+        console.log(this.topPlayers$);
+      });
+    }
+
+    openTopGoalModal(content: any) {
+      this.getTopPlayers(); 
+      this.modalService.open(content, { size: 'lg' }).result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+    }
+    
+
+
 }

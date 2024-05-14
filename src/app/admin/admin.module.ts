@@ -19,7 +19,13 @@ import { ListSeasonComponent } from './list-season/list-season.component';
 import { FormAddSeasonComponent } from './form-add-season/form-add-season.component';
 import { ListTeamComponent } from './list-team/list-team.component';
 import { FormAddTeamComponent } from "./form-add-team/form-add-team.component";
+import { StepComponent } from './step/step.component';
+import {ToastModule} from "primeng/toast";
+import {StepsModule} from "primeng/steps";
+import {SkeletonModule} from "primeng/skeleton";
+import { FormAddPlayerComponent } from "./form-add-player/form-add-player.component";
 
+import { ListPlayerComponent } from "./list-player/list-player.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +41,10 @@ import { FormAddTeamComponent } from "./form-add-team/form-add-team.component";
     ListSeasonComponent,
     FormAddSeasonComponent,
     ListTeamComponent,
-    FormAddTeamComponent
+    FormAddTeamComponent,
+    FormAddPlayerComponent,
+    ListPlayerComponent,
+    StepComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +58,7 @@ import { FormAddTeamComponent } from "./form-add-team/form-add-team.component";
     ToastModule,
     StepsModule,
     SkeletonModule,
+    
   ],
   exports: [
 

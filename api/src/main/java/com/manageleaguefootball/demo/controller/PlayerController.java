@@ -47,4 +47,10 @@ public class PlayerController {
     return ResponseEntity.ok(player);
   }
 
+  @GetMapping("ranks/{id}")
+  public ResponseEntity<List<PlayerDTO>> getPlayerByOrderGoal(@PathVariable("id") String id) {
+    List<PlayerDTO> players = playerService.getPlayerByOrderGoal(id);
+    return ResponseEntity.ok(players);
+  }
+
 }

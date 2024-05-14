@@ -1,7 +1,7 @@
 <h1> <i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách cầu thủ</h1>
 <div class="button-container">
     <button class="btn btn-primary mb-3" (click)="open(formplayer)">Thêm cầu thủ</button>
-    <button class="btn btn-primary mb-3" (click)="open(formgoal)">Top ghi bàn</button>
+    <button class="btn btn-primary mb-3" (click)="openTopGoalModal(formtopgoal)">Top ghi bàn</button>
   </div>
 <table class="table table-striped">
   <thead>
@@ -78,33 +78,33 @@
     </div>
  </ng-template>
 
- <ng-template #formgoal let-modal>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>Stt</th>
-          <th>Tên cầu thủ</th>
-          <th>Tuổi </th>
-          <th >Số bàn thắng</th>
-          <th>Số kiến tạo</th>
-        </tr>
-        </thead>
-        <tbody *ngIf="players$?.length > 0; else noData">
-        <tr *ngFor="let player of players$ | sortByGoals: 'goal'; let i = index">
+ <ng-template #formtopgoal let modal>
+  <h2 class="topvua">Danh sách vua phá lưới</h2>
+  <table class="table">
+    
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Vị trí</th>
+        <th scope="col">Số bàn thắng</th>
+        
+        
+      </tr>
+    </thead>
+    
+      <tbody *ngIf="players$?.length > 0; else noData">
+        <tr *ngFor="let player of players$; let i = index">
           <td>{{i + 1}}</td>
           <td>{{player.name}}</td>
-          <td>{{player.age}}</td>
+          <td>{{player.country}}</td>
           <td>
             {{player.goal}}
           </td>
-          <td>
-              {{player.assist}}
-            </td>
-          
-      
-        </tr>
-        </tbody>
-      </table>
+    </tbody>
+  </table>
+  
+
 
  </ng-template>
  

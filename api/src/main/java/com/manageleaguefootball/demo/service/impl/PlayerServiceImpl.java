@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -84,6 +85,19 @@ public class PlayerServiceImpl implements PlayerService {
     }
     playerRepository.delete(player);
     return mapToViews(player);
+  }
+
+  @Override
+  public List<PlayerDTO> getPlayerByOrderGoal(String idTeam) {
+    List<Player> players = playerRepository.findAllByIdTeam(idTeam);
+
+
+    players.sort(Comparator.comparingInt(Player::getGoal).reversed());
+
+
+    List<Player> top5Players = players.stream().limit(5).collect(Collectors.toList());
+
+    return mapToView(top5Players);
   }
 
 
