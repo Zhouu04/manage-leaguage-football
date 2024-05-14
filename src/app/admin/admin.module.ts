@@ -19,10 +19,6 @@ import { ListSeasonComponent } from './list-season/list-season.component';
 import { FormAddSeasonComponent } from './form-add-season/form-add-season.component';
 import { ListTeamComponent } from './list-team/list-team.component';
 import { FormAddTeamComponent } from "./form-add-team/form-add-team.component";
-import { StepComponent } from './step/step.component';
-import {ToastModule} from "primeng/toast";
-import {StepsModule} from "primeng/steps";
-import {SkeletonModule} from "primeng/skeleton";
 
 
 @NgModule({
@@ -39,8 +35,7 @@ import {SkeletonModule} from "primeng/skeleton";
     ListSeasonComponent,
     FormAddSeasonComponent,
     ListTeamComponent,
-    FormAddTeamComponent,
-    StepComponent
+    FormAddTeamComponent
   ],
   imports: [
     CommonModule,

@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface PlayerRepository  extends MongoRepository<Player, String> {
   List<Player> findAllByIdTeam(String idTeam);
-  void deleteByIdPlayer ( String idPlayer);
+  void deleteById ( String idPlayer);
 }

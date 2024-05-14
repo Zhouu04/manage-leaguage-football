@@ -15,5 +15,6 @@ public class Player {
   private int assist;
   private int age;
   private String idTeam;
+  private String logoUrl;
 
 }
