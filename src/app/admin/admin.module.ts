@@ -23,7 +23,9 @@ import { StepComponent } from './step/step.component';
 import {ToastModule} from "primeng/toast";
 import {StepsModule} from "primeng/steps";
 import {SkeletonModule} from "primeng/skeleton";
+import { FormAddPlayerComponent } from "./form-add-player/form-add-player.component";
 
+import { ListPlayerComponent } from "./list-player/list-player.component";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {SkeletonModule} from "primeng/skeleton";
     FormAddSeasonComponent,
     ListTeamComponent,
     FormAddTeamComponent,
+    FormAddPlayerComponent,
+    ListPlayerComponent,
     StepComponent
   ],
   imports: [
@@ -54,6 +58,7 @@ import {SkeletonModule} from "primeng/skeleton";
     ToastModule,
     StepsModule,
     SkeletonModule,
+    
   ],
   exports: [
 

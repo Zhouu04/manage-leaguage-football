@@ -1,0 +1,9 @@
+.button-container {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các phần tử con */
+  }
+.topvua {
+  text-align: center;
+  color: blue;
+  font-weight: bold;
+}

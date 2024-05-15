@@ -5,36 +5,34 @@
     <tr>
       <th>STT</th>
       <th>Tên đội bóng</th>
-      <th>Số điểm</th>
+      
+      <th>Số trận thắng</th>
+      <th>Số trận thua</th>
       <th>Số bàn thắng</th>
       <th>Số bàn thua</th>
       <th>Hiệu số</th>
-      <th>Cập nhật</th>
+      <th>Số điểm</th>
+     
     </tr>
   </thead>
   <tbody >
     <tr *ngFor="let team of teams; let i = index" >
-      <td>{{ i + 1 }}</td>
-      <td>
-        <input type="text" formControlName="name">
-      </td>
-      <td>
-        <input type="number" formControlName="points">
-      </td>
-      <td>
-        <input type="number" formControlName="goalsFor">
-      </td>
-      <td>
-        <input type="number" formControlName="goalsAgainst">
-      </td>
-      <td>
-        <input type="number" formControlName="goalDifference">
-      </td>
-      <td>
+          <td>{{ i + 1 }}</td>
+      
+          <td>{{team.name}}</td>
+          
+          <td>{{team.win}}</td>
+          <td>{{team.loss}}</td>
+          <td>{{team.goalWin}}</td>
+          <td>{{team.goalLoss}}</td>
+          <td>{{team.difference}}</td>
+          <td>{{team.score}}</td>
+         
+      <!-- <td>
         <button class="btn btn-sm btn-success" placement="top" ngbTooltip="Cập nhật" >
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
         </button>
-      </td>
+      </td> -->
     </tr>
   </tbody>
 </table>
