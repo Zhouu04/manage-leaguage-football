@@ -1,37 +1,48 @@
-<h1> <i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách đội bóng</h1>
-<button class="btn btn-primary mb-3"   (click)="open(formteam)">Thêm đội bóng</button>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Stt</th>
-    <th>Tên đội bóng </th>
-    <th>Số điện thoại </th>
-    <th >Đội trưởng</th>
-    <th>Cấu hình</th>
-  </tr>
-  </thead>
-  <tbody *ngIf="teams$?.length > 0; else noData">
-  <tr *ngFor="let team of teams$; let i = index">
-    <td>{{i + 1}}</td>
-    <td>{{team.name}}</td>
-    <td>{{team.phoneNumber}}</td>
-    <td>
-      {{team.captainName}}
-    </td>
-    <td>
-      
+<ng-container *ngIf="teams$; else loadingValue">
+  <h1> <i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách đội bóng</h1>
+  <button class="btn btn-primary mb-3"   (click)="open(formteam)">Thêm đội bóng</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Stt</th>
+      <th>Tên đội bóng </th>
+      <th>Số điện thoại </th>
+      <th >Đội trưởng</th>
+      <th>Cấu hình</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="teams$?.length > 0; else noData">
+    <tr *ngFor="let team of teams$; let i = index">
+      <td>{{i + 1}}</td>
+      <td>
+        <img *ngIf="team.logoUrl; else noLogo" [src]="team.logoUrl" alt="{{team.name}} logo" class="team-logo">
+        <ng-template #noLogo>
+          <img src="./assets/img/defaultLogo.jpg" class="team-logo" alt="">
+        </ng-template>
+        {{team.name}}
+      </td>
+      <td>{{team.phoneNumber}}</td>
+      <td>
+        {{team.captainName}}
+      </td>
+      <td>
         <button class="btn btn-sm btn-success" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, team)">
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
         </button>
         <button class="btn btn-sm btn-danger" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, team.id)">
           <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
         </button>
-     
-    </td>
+        <button class="btn btn-sm btn-info" placement="top" ngbTooltip="Cập nhật logo đội bóng" (click)="openUploadImage(uploadModal, team.id)">
+          <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
+        </button>
+      </td>
 
-  </tr>
-  </tbody>
-</table>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+
 <ng-template #formteam let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-add">Thêm đội bóng</h4>
@@ -61,7 +72,7 @@
  </ng-template>
  <ng-template #update let-modal>
   <div class="modal-header">
-   <h4 class="modal-title" id="modal-update">Cập nhật thông tin đội bóng</h4> 
+   <h4 class="modal-title" id="modal-update">Cập nhật thông tin đội bóng</h4>
     <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
@@ -71,7 +82,88 @@
     <button type="button" class="btn btn-outline-dark" (click)="close()">Thoát</button>
     </div>
  </ng-template>
- 
+
+<ng-template #uploadModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Cập nhật logo đội bóng</h4>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <input type="file" (change)="onFileSelected($event)">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">Đóng lại</button>
+    <button type="button" class="btn btn-primary" [disabled]="isLoading"  (click)="uploadImage(modal)"><i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i> {{button}}</button>
+  </div>
+</ng-template>
+
+<ng-template #loadingValue>
+  <p-skeleton width="15rem" height="2rem" styleClass="mb-4"></p-skeleton>
+  <p-skeleton width="8rem" height="2rem" styleClass="mb-4"></p-skeleton>
+  <table class="table ">
+    <thead>
+    <tr>
+      <th>Stt</th>
+      <th>Tên đội bóng </th>
+      <th>Số điện thoại </th>
+      <th >Đội trưởng</th>
+      <th>Cấu hình</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr style="height: 40px">
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+    </tr>
+    <tr style="height: 40px">
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+    </tr>
+    <tr style="height: 40px">
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+    </tr>
+    <tr style="height: 40px">
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+      <td><p-skeleton></p-skeleton></td>
+      <td>
+        <p-skeleton></p-skeleton>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+
 
 <ng-template #noData>
   Chưa có đội bóng nào được thêm
