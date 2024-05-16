@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {TeamDTO} from "../../dto/TeamDTO";
+import { TeamDTO } from '../../dto/TeamDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
   private apiUrl = 'http://localhost:8080/api/v1/teams';
+  private cloudinaryUrl = 'http://localhost:8080/api/v1/cloudinary';
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +16,6 @@ export class TeamService {
     return this.http.get<TeamDTO[]>(this.apiUrl);
   }
 
-  //bxh
   getTeamOrderByScore(id: string): Observable<TeamDTO[]> {
     return this.http.get<TeamDTO[]>(`${this.apiUrl}/rank/${id}`);
   }
@@ -34,5 +34,16 @@ export class TeamService {
 
   deleteTeam(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  uploadImage(file: File, teamId: string): Observable<TeamDTO> {
+    const formData: FormData = new FormData();
+    formData.append('image', file);
+
+    return this.http.post<TeamDTO>(`${this.cloudinaryUrl}/${teamId}`, formData, {
+      headers: new HttpHeaders({
+        'enctype': 'multipart/form-data'
+      })
+    });
   }
 }

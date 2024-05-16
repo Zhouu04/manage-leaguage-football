@@ -3,6 +3,7 @@ package com.manageleaguefootball.demo.model;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @Document(collection = "team")
@@ -20,4 +21,5 @@ public class Team {
   private int goalWin;
   private int goalLoss;
   private int difference;
+  private String logoUrl; // Thêm thuộc tính này
 }

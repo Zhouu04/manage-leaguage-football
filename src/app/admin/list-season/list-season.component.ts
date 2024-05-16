@@ -28,7 +28,7 @@ export class ListSeasonComponent implements OnInit{
   ngOnInit() {
     let id = this.router.snapshot.paramMap.get('id');
     this.idLeague = id;
-    this.seasonService.getAllByIdLeague(id).pipe(delay(2000)).subscribe(data => {
+    this.seasonService.getAllByIdLeague(id).pipe(delay(700)).subscribe(data => {
       this.seasons = data;
       console.log(data);
     })
