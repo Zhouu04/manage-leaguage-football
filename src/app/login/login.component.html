@@ -1,40 +1,52 @@
-
 <div class="background-image" style="background-image: url('./assets/img/3393544.jpg')">
   <div class="container">
-
     <a routerLink="/home" class="logo-container">
       <img src="./assets/img/dyvi.png" class="logo" alt="Logo">
     </a>
 
     <form [formGroup]="loginForm" class="sign-in-form bg-white p-3" style="border-radius: 10px; width: 400px">
-      <h2 class="text-center">Đăng nhập</h2>
-      <div class="">
+      <h2 class="text-center">Đăng Nhập</h2>
+
+      <div class="form-group">
         <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Tên đăng nhập</mat-label>
-          <input formControlName="username" matInput placeholder="Tên đăng nhập"/>
-          <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.errors">
-            Tên đăng nhập không được bỏ trống
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput placeholder="Email">
+          <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">
+            Email không được bỏ trống
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.errors?.['minlength']">
+            Email phải chứa ít nhất 6 ký tự
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="">
+
+      <div class="form-group">
         <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Mật khẩu </mat-label>
-          <input formControlName="password" type="password" matInput placeholder="Mật khẩu " />
-          <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.errors">
-            Mật khẩu  không được bỏ trống
+          <mat-label>Mật khẩu</mat-label>
+          <input formControlName="password" type="password" matInput placeholder="Mật khẩu">
+          <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">
+            Mật khẩu không được bỏ trống
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Mật khẩu phải chứa ít nhất 6 ký tự
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="mb-4 text-danger"><p>{{errMsg}}</p></div>
-      <div class="row-control">
-        <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
+
+      <div class="form-group">
+        <mat-checkbox formControlName="rememberMe" class="remember-me">Ghi nhớ tôi</mat-checkbox>
       </div>
-      <div class="row-control row-actions">
-        <button mat-raised-button color="primary" (click)="login()" type="submit">Đăng nhập</button>
+
+      <div class="form-group">
+        <button mat-raised-button color="primary" (click)="login()" class="login-button">Đăng nhập</button>
       </div>
+
+      <div class="text-center mt-3">
+        <p>Bạn chưa có tài khoản? <a routerLink="/register">Đăng ký</a></p>
+      </div>
+
+      <div class="text-danger mt-2" *ngIf="errMsg">{{ errMsg }}</div>
+      
     </form>
   </div>
 </div>
-
-

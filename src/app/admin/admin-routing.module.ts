@@ -9,6 +9,7 @@ import {ScheduleComponent} from "./schedule/schedule.component";
 import {ListSeasonComponent} from "./list-season/list-season.component";
 import {ListLeaguageComponent} from "./list-leaguage/list-leaguage.component";
 import {ListTeamComponent} from "./list-team/list-team.component";
+import {ListPlayerComponent} from "./list-player/list-player.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'league', component: LeaguageComponent},
       {path: 'season/standing/:id', component: StandingComponent},
       {path: 'season/schedule/:id', component: ScheduleComponent},
+      {path: 'player/:id', component: ListPlayerComponent},
     ]
   },
 

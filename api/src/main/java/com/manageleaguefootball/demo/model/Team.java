@@ -15,6 +15,8 @@ public class Team {
   private String phoneNumber;
   private String captainName;
   private int score;
+  private String facebook;
+  private String email;
   private int win;
   private int loss;
   private int draw;
