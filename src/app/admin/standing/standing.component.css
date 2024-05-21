@@ -1,0 +1,11 @@
+.team-logo {
+  width: 30px;  /* Adjust the width as needed */
+  height: 30px;  /* Adjust the height as needed */
+  object-fit: cover;
+  margin-right: 10px;  /* Adjust the spacing as needed */
+  vertical-align: middle;  /* Aligns the image with the text */
+  border-radius: 50%;  /* Makes the image circular if it's a square */
+}
+.top-team {
+  border-left: 3px solid green;
+}
