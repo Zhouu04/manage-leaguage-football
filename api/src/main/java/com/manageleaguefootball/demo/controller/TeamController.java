@@ -1,7 +1,7 @@
 package com.manageleaguefootball.demo.controller;
 
+import com.manageleaguefootball.demo.dto.Info.TeamPageInfo;
 import com.manageleaguefootball.demo.dto.TeamDTO;
-import com.manageleaguefootball.demo.model.Team;
 import com.manageleaguefootball.demo.service.TeamService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +16,18 @@ import java.util.List;
 @RequestMapping("api/v1/teams")
 public class TeamController {
   private final TeamService teamService;
+
+  @PostMapping("search/{id}")
+  public ResponseEntity<List<TeamDTO>> search(@PathVariable("id") String id, @RequestBody TeamPageInfo model) {
+    List<TeamDTO> teams = teamService.search(id, model);
+    return ResponseEntity.ok(teams);
+  }
+
+  @PostMapping("count/{id}")
+  public Long count(@PathVariable("id") String id, @RequestBody TeamPageInfo model) {
+    return teamService.count(id, model);
+  }
+
 
   @GetMapping()
   public ResponseEntity<List<TeamDTO>> getAllTeams() {

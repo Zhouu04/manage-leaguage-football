@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TeamDTO } from '../../dto/TeamDTO';
+import {TeamPageInfo} from "../../dto/TeamPageInfo";
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,16 @@ export class TeamService {
         'enctype': 'multipart/form-data'
       })
     });
+  }
+
+  search(id: string | null, model: TeamPageInfo | number): Observable<TeamDTO[]> {
+    const url = `${this.apiUrl}/search/${id}`;
+    return this.http.post<TeamDTO[]>(url, model);
+  }
+
+  count(id: String, model: TeamPageInfo): Observable<number> {
+    const url = `${this.apiUrl}/count/${id}`;
+    return this.http.post<number>(url, model);
   }
 
 }

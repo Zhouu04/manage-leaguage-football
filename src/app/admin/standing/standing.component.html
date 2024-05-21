@@ -1,38 +1,39 @@
 <h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Bảng xếp hạng</h1>
 
-<table class="table table-striped table-bordered">
+<table class="table table-responsive ">
   <thead>
     <tr>
-      <th>STT</th>
-      <th>Tên đội bóng</th>
-      
-      <th>Số trận thắng</th>
-      <th>Số trận thua</th>
-      <th>Số bàn thắng</th>
-      <th>Số bàn thua</th>
-      <th>Hiệu số</th>
-      <th>Số điểm</th>
-     
+      <th class="text-body-secondary">STT</th>
+      <th class="text-body-secondary"> Tên đội bóng</th>
+      <th class="text-end text-body-secondary"> Số trận thắng</th>
+      <th class="text-end text-body-secondary"> Số trận thua</th>
+      <th class="text-end text-body-secondary"> Số trận  hòa</th>
+      <th class="text-end text-body-secondary"> Bàn thắng</th>
+      <th class="text-end text-body-secondary">  Bàn thua</th>
+      <th class="text-end text-body-secondary">Hiệu số</th>
+      <th class="text-end" > Điểm</th>
+
     </tr>
   </thead>
   <tbody >
     <tr *ngFor="let team of teams; let i = index" >
-          <td>{{ i + 1 }}</td>
-      
-          <td>{{team.name}}</td>
-          
-          <td>{{team.win}}</td>
-          <td>{{team.loss}}</td>
-          <td>{{team.goalWin}}</td>
-          <td>{{team.goalLoss}}</td>
-          <td>{{team.difference}}</td>
-          <td>{{team.score}}</td>
-         
-      <!-- <td>
-        <button class="btn btn-sm btn-success" placement="top" ngbTooltip="Cập nhật" >
-          <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-        </button>
-      </td> -->
+          <td [ngClass]="{'top-team': i === 0}">{{ i + 1 }}</td>
+          <td>
+            <img *ngIf="team.logoUrl; else noLogo" [src]="team.logoUrl" alt="{{team.name}} logo" class="team-logo">
+            <ng-template #noLogo>
+              <img src="./assets/img/defaultLogo.jpg" class="team-logo" alt="">
+            </ng-template>
+            {{team.name}}
+          </td>
+
+          <td class="text-end">{{team.win}}</td>
+          <td class="text-end">{{team.loss}}</td>
+          <td class="text-end">{{team.draw}}</td>
+          <td class="text-end">{{team.goalWin}}</td>
+          <td class="text-end">{{team.goalLoss}}</td>
+          <td class="text-end">{{team.difference}}</td>
+          <td class="text-end fw-bold" >{{team.score}}</td>
+
     </tr>
   </tbody>
 </table>

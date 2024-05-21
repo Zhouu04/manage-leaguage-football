@@ -3,7 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { TeamService } from "../service/team.service";
 import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormAddTeamComponent } from '../form-add-team/form-add-team.component';
-import {delay} from "rxjs";
+import {delay, Observable} from "rxjs";
+import {TeamPageInfo} from "../../dto/TeamPageInfo";
 
 @Component({
   selector: 'app-list-team',
@@ -13,6 +14,7 @@ import {delay} from "rxjs";
 export class ListTeamComponent implements OnInit {
   teams$: any;
   idTeam: any;
+  searchText: any;
   loadingValue: boolean;
   button = 'Cập nhật';
   isLoading = false;
@@ -21,23 +23,33 @@ export class ListTeamComponent implements OnInit {
   idSeason: any;
   season: any;
   selectedFile: File | null = null;
+  pageableInfo: TeamPageInfo = {
+    currentPage: 1,
+    recordPerPage: 5,
+  };
+  totalRecords: number ;
 
   @ViewChild(FormAddTeamComponent) formAddTeamComponent: FormAddTeamComponent;
 
-  constructor(private router: ActivatedRoute, private teamService: TeamService, private modalService: NgbModal) {
-  }
+  constructor(private router: ActivatedRoute, private teamService: TeamService, private modalService: NgbModal) {}
 
   ngOnInit() {
     let id: string | null = this.router.snapshot.paramMap.get('id');
-    console.log(id);
     this.idSeason = id;
-    this.teamService.getTeamsBySeason(id).pipe(delay(500)).subscribe(data => {
+    this.teamService.search(id, this.pageableInfo).pipe(delay(500)).subscribe(data => {
       this.loadingValue = true;
       this.teams$ = data;
-      console.log(data);
     })
+    this.teamService.count(this.idSeason, this.pageableInfo).subscribe(data => {
+      this.totalRecords = data;
+    });
     this.loadingValue = false;
+  }
 
+  onPageChange(event: any) {
+    this.pageableInfo.currentPage = event.page + 1;
+    this.pageableInfo.recordPerPage = event.rows;
+    this.reloadData();
   }
 
   open(content: any) {
@@ -57,7 +69,7 @@ export class ListTeamComponent implements OnInit {
   }
 
   reloadData() {
-    this.teamService.getTeamsBySeason(this.idSeason).subscribe(
+    this.teamService.search(this.idSeason, this.pageableInfo).subscribe(
       data => {
         this.teams$ = data;
       }
