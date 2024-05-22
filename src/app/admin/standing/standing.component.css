@@ -1,0 +1,57 @@
+
+
+.left-align {
+    text-align: center;
+  }
+html,
+body {
+	background: white;
+	color: #212529;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+.table {
+	background: linear-gradient(45deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+	color: white;
+	border-collapse: separate;
+	border-spacing: 0;
+
+	
+}
+.table thead th {
+	background: #7e70702b;
+}
+.table tbody tr:nth-child(odd) {
+	background: rgba(255, 255, 255, 0.792);
+	opacity: 0.6;
+}
+.table th, .table td {
+	padding: 10px;
+	border: 0px solid rgba(255, 255, 255, 0.2);
+}
+.table tbody tr:hover {
+	background: rgba(176, 125, 210, 0.759);
+	
+}
+
+	/* background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);  */
+	.team-logo {
+		width: 30px;  /* Adjust the width as needed */
+		height: 30px;  /* Adjust the height as needed */
+		object-fit: cover;
+		margin-right: 10px;  /* Adjust the spacing as needed */
+		vertical-align: middle;  /* Aligns the image with the text */
+		border-radius: 50%;  /* Makes the image circular if it's a square */
+	  }
+.table2{
+		background: linear-gradient(45deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+		color: white;
+		border-collapse: separate;
+		border-spacing: 5px;
+		border-radius: 10px;
+	
+		
+	}

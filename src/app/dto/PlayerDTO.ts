@@ -5,5 +5,5 @@ export interface PlayerDTO{
     goal?: number;
     assist?: number;
     name?: string;
-    country?: string;
+    role?: string;
 }

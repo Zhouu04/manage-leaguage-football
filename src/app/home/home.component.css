@@ -1,0 +1,74 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  /* Content Styling */
+  .bg-dark {
+    background-color: #343a40;
+    padding: 4rem 0;
+  }
+  
+  .title {
+    margin-bottom: 2rem;
+  }
+  
+  .title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .title p {
+    font-size: 1.2rem;
+    color: #ced4da;
+  }
+  
+  .card {
+    background-color: #212529;
+    border: none;
+  }
+  
+  .card-header {
+    background-color: #343a40;
+    border-bottom: 1px solid #454d55;
+    color: #fff;
+  }
+  
+  .card-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .list-step {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .list-step .step {
+    font-size: 1rem;
+    color: #ced4da;
+  }
+  
+  /* Footer Styling */
+  footer {
+    margin-top: 4rem;
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+  }
+  
+  footer span {
+    color: #6c757d;
+  }
+  

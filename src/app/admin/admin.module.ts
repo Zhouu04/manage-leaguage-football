@@ -24,7 +24,7 @@ import {ToastModule} from "primeng/toast";
 import {StepsModule} from "primeng/steps";
 import {SkeletonModule} from "primeng/skeleton";
 import { FormAddPlayerComponent } from "./form-add-player/form-add-player.component";
-
+import { TopScorersPipe } from "./list-player/list-player.component";
 import { ListPlayerComponent } from "./list-player/list-player.component";
 
 @NgModule({
@@ -44,7 +44,8 @@ import { ListPlayerComponent } from "./list-player/list-player.component";
     FormAddTeamComponent,
     FormAddPlayerComponent,
     ListPlayerComponent,
-    StepComponent
+    StepComponent,
+    TopScorersPipe
   ],
   imports: [
     CommonModule,

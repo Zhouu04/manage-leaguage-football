@@ -2,6 +2,9 @@ package com.manageleaguefootball.demo.controller;
 
 import com.manageleaguefootball.demo.dto.UserDTO;
 import com.manageleaguefootball.demo.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,4 +40,6 @@ public class UserController {
     boolean exists = userService.checkEmailExists(email);
     return ResponseEntity.ok(exists);
   }
+
+
 }

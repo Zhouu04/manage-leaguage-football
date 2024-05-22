@@ -1,18 +1,18 @@
 <ng-container *ngIf="seasons ; else loading">
   <h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
   <button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
-  <table class="table  ">
-    <thead>
+  <table class="table  " style="width: 1200px;">
+    <thead style="opacity: 0.9;">
     <tr>
-      <th>Stt</th>
-      <th>Tên mùa giải</th>
-      <th>Địa điểm</th>
-      <th class="text-end">Số lượng đội tham gia</th>
-      <th>Thể thức</th>
-      <th>Cấu hình</th>
+      <th style="color: yellow;">Stt</th>
+      <th style="color: yellow;">Tên mùa giải</th>
+      <th style="color: yellow;">Địa điểm</th>
+      <th style="color: yellow;" class="text-end">Số lượng đội tham gia</th>
+      <th style="color: yellow;">Thể thức</th>
+      <th style="color: yellow;" class="text-center">Cấu hình</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody style="opacity: 0.8;">
     <tr *ngFor="let season of seasons; let i = index">
       <td>{{i + 1}}</td>
       <td>{{season.name}}</td>

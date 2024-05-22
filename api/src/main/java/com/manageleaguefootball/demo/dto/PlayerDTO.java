@@ -8,7 +8,7 @@ import java.util.Set;
 public class PlayerDTO {
   private  String id;
   private String name;
-  private String country;
+  private String role;
   private int age;
   private int goal;
   private int assist;

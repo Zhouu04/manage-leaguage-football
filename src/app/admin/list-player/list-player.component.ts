@@ -4,10 +4,30 @@ import { PlayerService } from '../service/player.service';
 import {ActivatedRoute} from "@angular/router";
 import { FormAddPlayerComponent } from '../form-add-player/form-add-player.component';
 
+
+@Pipe({
+  name: 'topScorers'
+})
+export class TopScorersPipe implements PipeTransform {
+
+  transform(players: any[], top: number = 5): any[] {
+    if (!players || players.length === 0) {
+      return [];
+    }
+   
+    const sortedPlayers = players.sort((a, b) => b.goal - a.goal);
+
+
+    return sortedPlayers.slice(0, top);
+  }
+
+}
+
 @Component({
     selector: 'app-list-player',
     templateUrl: './list-player.component.html',
     styleUrls: ['./list-player.component.css'],
+    providers:[TopScorersPipe]
 
   })
 
@@ -15,8 +35,8 @@ export class ListPlayerComponent implements OnInit{
     players$: any;
     idTeam : any;
     idPlayer : any;
-    topPlayers$: any;
- 
+    topPlayers: any;
+    topAssist: any;
     closeResult: any;
     dataUpdate: any;
     
@@ -101,14 +121,28 @@ export class ListPlayerComponent implements OnInit{
       );
     }
     getTopPlayers() {
-      this.playerService.getPlayerByOrderGoal(this.idTeam).subscribe((data) => {
-        this.topPlayers$ = data; 
-        console.log(this.topPlayers$);
-      });
+      this.topPlayers = [...this.players$].sort((a, b) => b.goal - a.goal).slice(0, 3);
     }
+  
 
     openTopGoalModal(content: any) {
       this.getTopPlayers(); 
+      this.modalService.open(content, { size: 'lg' }).result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+    }
+
+    getTopAssist() {
+      this.topAssist = [...this.players$].sort((a, b) => b.assist - a.assist).slice(0, 3);
+    }
+
+    openTopAssistModal(content: any) {
+      this.getTopAssist(); 
       this.modalService.open(content, { size: 'lg' }).result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;

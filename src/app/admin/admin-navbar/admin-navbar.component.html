@@ -16,7 +16,7 @@
 
 
   <!--  profile-->
-  <div class="profile-logo dropdown mx-4">
+  <!-- <div class="profile-logo dropdown mx-4">
     <div class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
        data-bs-toggle="dropdown" aria-expanded="false">
       <img src="https://cdn.punchng.com/wp-content/uploads/2022/12/19070956/5f5e3cbe-1224-4a46-b8e7-612f5de03c8c.jpg"
@@ -29,10 +29,33 @@
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+      <li><a class="dropdown-item" href="#" (click)="logout()">Sign out</a></li> 
     </ul>
-  </div>
-</nav>
+</div> -->
+<!-- <div class="dropdown">
+  <button
+    class="btn btn-primary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-mdb-dropdown-init
+    data-mdb-ripple-init
+    aria-expanded="false"
+  >
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div> -->
+
+<div class="text-center mt-3">
+  <button class="red-button"><a routerLink="/home" style="color:white; text-decoration: none;">Sign out</a></button>
+</div>
+
+
+
 
 
 
