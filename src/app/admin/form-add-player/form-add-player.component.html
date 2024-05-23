@@ -9,11 +9,13 @@
       <div class="form-group col-md-6 mb-3">
         <label for="age">Tuổi</label>
         <input type="text" id="age" class="form-control" formControlName="age">
+        <app-control-messages [control]="formplayer.controls['age']" [label]="'Tuổi'"></app-control-messages>
       </div>
   
       <div class="form-group col-md-6 mb-3">
         <label for="goal">Số bàn thắng</label>
         <input type="text" id="goal" class="form-control" formControlName="goal">
+        <app-control-messages [control]="formplayer.controls['goal']" [label]="'Số bàn thắng'"></app-control-messages>
       </div>
   
       <div class="form-group col-md-6 mb-3">
@@ -23,9 +25,9 @@
       </div>
   
       <div class="form-group col-md-6 mb-3">
-        <label for="country">Quốc gia</label>
-        <input type="country" id="country" class="form-control" formControlName="country">
-        <app-control-messages [control]="formplayer.controls['country']" [label]="'Quốc gia'"></app-control-messages>
+        <label for="role">Vị trí</label>
+        <input type="text" id="role" class="form-control" formControlName="role">
+        <app-control-messages [control]="formplayer.controls['role']" [label]="'Vị trí'"></app-control-messages>
       </div>
     </div>
   </form>

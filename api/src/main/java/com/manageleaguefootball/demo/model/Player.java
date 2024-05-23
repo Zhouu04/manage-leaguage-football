@@ -10,7 +10,7 @@ public class Player {
   @Id
   private  String id;
   private String name;
-  private String country;
+  private String role;
   private int goal;
   private int assist;
   private int age;

@@ -6,3 +6,8 @@
   vertical-align: middle;  /* Aligns the image with the text */
   border-radius: 50%;  /* Makes the image circular if it's a square */
 }
+
+.table{
+  background-color: violet;
+  opacity: 0.8;
+}
