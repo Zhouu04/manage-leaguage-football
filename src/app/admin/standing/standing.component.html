@@ -1,60 +1,41 @@
 <h1 style="color: rgb(166, 27, 166);"><i class="bi bi-list-stars" style="color: rgb(166, 27, 166); "></i> Bảng xếp hạng</h1>
+<table class="table table-responsive ">
+  <thead>
+    <tr>
+      <th class="text-body-secondary">STT</th>
+      <th class="text-body-secondary"> Tên đội bóng</th>
+      <th class="text-end text-body-secondary"> Số trận thắng</th>
+      <th class="text-end text-body-secondary"> Số trận thua</th>
+      <th class="text-end text-body-secondary"> Số trận  hòa</th>
+      <th class="text-end text-body-secondary"> Bàn thắng</th>
+      <th class="text-end text-body-secondary">  Bàn thua</th>
+      <th class="text-end text-body-secondary">Hiệu số</th>
+      <th class="text-end" > Điểm</th>
 
-<table class="table " style="width: 1200px;" >
-  <thead  >
-    <tr >
-      <th >STT</th>
-      <th>Tên đội bóng</th>
-      
-      <th>Số trận thắng</th>
-      <th>Số trận thua</th>
-      <th>Số bàn thắng</th>
-      <th>Số bàn thua</th>
-      <th>Hiệu số</th>
-      <th>Số điểm</th>
-      
-     
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let team of teams; let i = index">
-      <td class="left-align">{{ i + 1 }}</td>
-      <td>
-        <img *ngIf="team.logoUrl; else noLogo" [src]="team.logoUrl" alt="{{team.name}} logo" class="team-logo">
-        <ng-template #noLogo>
-          <img src="./assets/img/defaultLogo.jpg" class="team-logo" alt="">
-        </ng-template>
-        {{team.name}}</td>
-      <td class="left-align">{{team.win}}</td>
-      <td class="left-align">{{team.loss}}</td>
-      <td class="left-align">{{team.goalWin}}</td>
-      <td class="left-align">{{team.goalLoss}}</td>
-      <td class="left-align">{{team.difference}}</td>
-      <td class="left-align">{{team.score}}</td>
-      
+  <tbody >
+    <tr *ngFor="let team of teams; let i = index" >
+          <td [ngClass]="{'top-team': i === 0}">{{ i + 1 }}</td>
+          <td>
+            <img *ngIf="team.logoUrl; else noLogo" [src]="team.logoUrl" alt="{{team.name}} logo" class="team-logo">
+            <ng-template #noLogo>
+              <img src="./assets/img/defaultLogo.jpg" class="team-logo" alt="">
+            </ng-template>
+            {{team.name}}
+          </td>
+
+          <td class="text-end">{{team.win}}</td>
+          <td class="text-end">{{team.loss}}</td>
+          <td class="text-end">{{team.draw}}</td>
+          <td class="text-end">{{team.goalWin}}</td>
+          <td class="text-end">{{team.goalLoss}}</td>
+          <td class="text-end">{{team.difference}}</td>
+          <td class="text-end fw-bold" >{{team.score}}</td>
+
     </tr>
-  </tbody>
-</table>
-
-<table class="table2" style="width: 300px;" >
-  <thead  >
-    <tr >
-      
-      <th colspan="3" class="left-align">Ghi chú</th>
-     
-    </tr>
-  </thead>
   <tbody>
-    
-      
-      <td class="left-align" >Thắng: +3</td>
-      <td class="left-align" >Hòa: +1</td>
-      <td class="left-align" >Thua: +0</td>
-   
-  </tbody>
 </table>
-
-
 <ng-template #noData>
   <tr>
     <td colspan="7" style="color: rgb(166, 27, 166);">Chưa có dữ liệu</td>

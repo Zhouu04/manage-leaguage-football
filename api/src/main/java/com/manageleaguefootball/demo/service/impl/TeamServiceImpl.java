@@ -1,5 +1,6 @@
 package com.manageleaguefootball.demo.service.impl;
 
+import com.manageleaguefootball.demo.dto.Info.TeamPageInfo;
 import com.manageleaguefootball.demo.dto.TeamDTO;
 import com.manageleaguefootball.demo.model.Season;
 import com.manageleaguefootball.demo.model.Team;
@@ -94,5 +95,15 @@ public class TeamServiceImpl implements TeamService {
       .reversed());
 
     return mapToView(teams);
+  }
+
+  @Override
+  public List<TeamDTO> search(String id,TeamPageInfo model) {
+    return  mapToView(teamRepository.search(id,model));
+  }
+
+  @Override
+  public Long count(String id,TeamPageInfo model) {
+    return teamRepository.count(id,model);
   }
 }
