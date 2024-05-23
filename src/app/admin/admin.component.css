@@ -1,54 +1,112 @@
 
-app-admin-navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 4rem;
-  z-index: 2;
+/*app-admin-navbar {*/
+/*  position: fixed;*/
+/*  width: 100%;*/
+/*  top: 0;*/
+/*  height: 4rem;*/
+/*  z-index: 2;*/
+/*}*/
+
+/*main {*/
+/*  position: absolute;*/
+/*  width: 100%;*/
+/*  top: 4rem;*/
+/*  z-index: 1;*/
+/*}*/
+
+/*app-admin-sidenav {*/
+/*  position: fixed;*/
+/*  width: 220px;*/
+/*  height: 100vh;*/
+/*  box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);*/
+/*  background-color: #343a40;*/
+/*  border-top: 1px solid white;*/
+/*  overflow-x: hidden;*/
+/*  white-space: nowrap;*/
+/*  transition: all 0.2s linear;*/
+/*}*/
+
+/*.display-are {*/
+/*  position: absolute;*/
+/*  left: 270px;*/
+/*  width: calc(100% - 270px);*/
+/*  transition: all 0.2s linear;*/
+/*}*/
+
+/*.display-are-shrink {*/
+/*  width: calc(100% - 50px);*/
+/*  left: 70px;*/
+/*}*/
+
+/*.app-side-nav-open {*/
+/*  width: 60px;*/
+/*}*/
+
+/*@media only screen and (max-width: 46.1875em) {*/
+/*  app-sidebar1 {*/
+/*    width: 60px;*/
+/*  }*/
+
+/*  .display-are {*/
+/*    width: calc(100% - 50px);*/
+/*    left: 70px;*/
+/*  }*/
+/*}*/
+
+
+mat-sidenav-content {
+  overflow-x: hidden; /* Ngăn chặn thanh trượt ngang */
 }
 
-main {
-  position: absolute;
-  width: 100%;
-  top: 4rem;
-  z-index: 1;
+.router-content {
+  width: 100%; /* Đảm bảo nội dung chiếm hết chiều rộng */
+  box-sizing: border-box; /* Bao gồm padding và border vào tổng chiều rộng */
 }
 
-app-admin-sidenav {
-  position: fixed;
-  width: 220px;
-  height: 100vh;
-  box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
+/* Nếu bạn sử dụng Flexbox */
+mat-sidenav-container {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-sidenav-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.router-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-toolbar-row ,  .mat-toolbar-single-row {
+  padding: 0;
+}
+
+.content {
+  padding: 24px;
+}
+
+mat-toolbar {
+  position: relative;
+  z-index: 5;
   background-color: #343a40;
-  border-top: 1px solid white;
-  overflow-x: hidden;
-  white-space: nowrap;
-  transition: all 0.2s linear;
 }
 
-.display-are {
-  position: absolute;
-  left: 270px;
-  width: calc(100% - 270px);
-  transition: all 0.2s linear;
+mat-sidenav {
+    background-color: #343a40;
 }
 
-.display-are-shrink {
-  width: calc(100% - 50px);
-  left: 70px;
+i {
+  color: #ffffff;
+}
+span {
+  color: #ffffff;
 }
 
-.app-side-nav-open {
-  width: 60px;
+mat-sidenav-container {
+  height: calc(100vh - 64px);
 }
 
-@media only screen and (max-width: 46.1875em) {
-  app-sidebar1 {
-    width: 60px;
-  }
-
-  .display-are {
-    width: calc(100% - 50px);
-    left: 70px;
-  }
-}
