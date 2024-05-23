@@ -28,14 +28,20 @@ app-admin-sidenav {
 
 .display-are {
   position: absolute;
-  left: 270px;
-  width: calc(100% - 270px);
+  left: 220px;
+  width: calc(100% - 220px);
   transition: all 0.2s linear;
+
+
+
+
 }
 
 .display-are-shrink {
   width: calc(100% - 50px);
   left: 70px;
+
+
 }
 
 .app-side-nav-open {
@@ -50,5 +56,38 @@ app-admin-sidenav {
   .display-are {
     width: calc(100% - 50px);
     left: 70px;
+
   }
 }
+/* .display-are {
+  background-image: url('https://e1.pxfuel.com/desktop-wallpaper/544/310/desktop-wallpaper-american-football-stadium-windows-10-spotlight-1920x1080-for-your-mobile-tablet-american-football-field.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+} */
+
+.background-image {
+  background-image: url('https://t3.ftcdn.net/jpg/06/50/44/22/360_F_650442270_YYTCE6rA3AUWolVUFuSCb8C7KElhz1nP.jpg'); /* Đặt đường dẫn ảnh nền của bạn */
+  background-size: cover; /* Điều chỉnh kích thước nền */
+  background-position: center; /* Vị trí nền */
+  background-attachment: fixed; /* Cố định nền */
+  width: 100%;
+  height: 100%;
+  position: fixed; /* Đảm bảo bao phủ toàn bộ không gian hiển thị */
+  top: 0;
+  left: 0;
+  z-index: 0; /* Đặt dưới các phần tử khác */
+}
+
+.container-fluid {
+  position: relative;
+  z-index: 1; /* Đảm bảo hiển thị trên nền */
+  height: 100vh;
+  overflow-y: auto; /* Thêm cuộn dọc cho nội dung */
+}
+
+
+
+
+

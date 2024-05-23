@@ -1,10 +1,11 @@
-<h1>
+<h1 style="color: #74C0FC;">
   <i class="fa-regular fa-calendar-days" style="color: #74C0FC"></i>
   Lịch thi đấu
 </h1>
+<div style="width: 1200px; opacity: 0.8;">
 <div *ngFor="let schedule of schedules; let i = index">
     <div class="card" >
-        <div class="card-title p-2" style="background-color: #43ae43">
+        <div class="card-title p-2" style="background-color: #74C0FC">
           <span class="text-white">
               Vòng {{i + 1}}
           </span>
@@ -17,7 +18,7 @@
             <th class="text-center">Tỉ số</th>
             <th class="text-center">Đội khách</th>
             <th class="text-center">Trạng thái</th>
-            <th>Cấu hình</th>
+            <th class="text-center">Cấu hình</th>
           </tr>
           </thead>
           <tbody>
@@ -35,13 +36,14 @@
                 </span>
               </ng-template>
             </td>
-            <td>
+            <td class="d-flex justify-content-center">
               <button class="btn btn-sm btn-danger" (click)="openFormUpdate(formUpdate, data)" >Cập nhật tỉ số</button>
             </td>
           </tr>
           </tbody>
         </table>
     </div>
+</div>
 </div>
 
 <ng-template #formUpdate let-modal>

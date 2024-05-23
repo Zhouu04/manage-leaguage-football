@@ -1,43 +1,10 @@
-<h1> <i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách cầu thủ</h1>
+<h1 style="color: yellow;"> <i class="bi bi-person-lines-fill" style="color: yellow;"></i> Danh sách cầu thủ </h1>
 <div class="button-container">
-    <button class="btn btn-primary mb-3" (click)="open(formplayer)">Thêm cầu thủ</button>
-    <button class="btn btn-primary mb-3" (click)="openTopGoalModal(formtopgoal)">Top ghi bàn</button>
+    <button class="btn btn-primary mb-3" (click)="open(formplayer)" style="color: yellow;">Thêm cầu thủ</button>
+    <button class="btn btn-primary mb-3" (click)="openTopGoalModal(formtopgoal)" style="color: yellow;">Top ghi bàn</button>
+    <button class="btn btn-primary mb-3" (click)="openTopAssistModal(formtopassist)" style="color: yellow;">Top kiến tạo</button>
   </div>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Stt</th>
-    <th>Tên cầu thủ</th>
-    <th>Tuổi </th>
-    <th >Số bàn thắng</th>
-    <th>Số kiến tạo</th>
-  </tr>
-  </thead>
-  <tbody *ngIf="players$?.length > 0; else noData">
-  <tr *ngFor="let player of players$; let i = index">
-    <td>{{i + 1}}</td>
-    <td>{{player.name}}</td>
-    <td>{{player.age}}</td>
-    <td>
-      {{player.goal}}
-    </td>
-    <td>
-        {{player.assist}}
-      </td>
-    <td>
-      
-        <button class="btn btn-sm btn-success" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, player)">
-          <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-        </button>
-        <button class="btn btn-sm btn-danger" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, player.id)">
-          <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-        </button>
-     
-    </td>
 
-  </tr>
-  </tbody>
-</table>
 <ng-template #formplayer let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-add">Thêm cầu thủ</h4>
@@ -79,35 +46,73 @@
  </ng-template>
 
  <ng-template #formtopgoal let modal>
-  <h2 class="topvua">Danh sách vua phá lưới</h2>
-  <table class="table">
+  <div class="modal-content" style="width: 1000px; ">
+    <h2 class="topvua" >Danh sách top ghi bàn</h2>
     
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">STT</th>
-        <th scope="col">Tên</th>
-        <th scope="col">Vị trí</th>
-        <th scope="col">Số bàn thắng</th>
+  
+    <div class="pricingdiv">
+      <div *ngIf="topPlayers?.length > 0; else noData" class="row row-cols-1 row-cols-md-4 g-3 " >
+      <ul class="theplan"  *ngFor="let player of topPlayers; let i = index">
+        <li class="title"><b>Top {{i+1}} </b><br />{{player.name}}</li>
+        <li><b>Vị trí:</b> {{player.role}}</li>
+        <li style="text-align: left;"><b >Số bàn thắng:</b> {{player.goal}}</li>
         
-        
-      </tr>
-    </thead>
-    
-      <tbody *ngIf="players$?.length > 0; else noData">
-        <tr *ngFor="let player of players$; let i = index">
-          <td>{{i + 1}}</td>
-          <td>{{player.name}}</td>
-          <td>{{player.country}}</td>
-          <td>
-            {{player.goal}}
-          </td>
-    </tbody>
-  </table>
+      </ul>
+      
+    </div>
+    </div>
+    </div>
+</ng-template>
+
+<ng-template #formtopassist  >
+  <div class="modal-content" style="width: 1000px; ">
+  <h2 class="topvua" >Danh sách top kiến tạo</h2>
   
 
+  <div class="pricingdiv">
+    <div *ngIf="topAssist?.length > 0; else noData" class="row row-cols-1 row-cols-md-4 g-3 " >
+    <ul class="theplan"  *ngFor="let player of topAssist; let i = index">
+      <li class="title"><b>Top {{i+1}} </b><br />{{player.name}}</li>
+      <li><b>Vị trí:</b> {{player.role}}</li>
+      <li style="text-align: left;"><b >Số kiến tạo:</b> {{player.assist}}</li>
+      
+    </ul>
+    
+  </div>
+  </div>
+  </div>
+</ng-template>
 
- </ng-template>
- 
+
+ <div *ngIf="players$.length > 0; else noData" class="row row-cols-1 row-cols-md-4 g-3 " >
+  <div *ngFor="let player of players$; let i = index">
+ <div class="d-flex justify-content-center container mt-7" >
+  <div class="card p-3 bg-white" >
+      <div class="about-product text-center mt-2"><img src="https://logowik.com/content/uploads/images/football-team321.logowik.com.webp" width="200">
+          <div style="background-color: black">
+              <h4 style="color: red; font-weight: bold; text-transform: uppercase;">{{player.name}}</h4>
+    
+          </div>
+      </div>
+      <div class="stats mt-2" >
+          <div class="d-flex justify-content-between p-price"><span>Tuổi</span><span>{{player.age}}</span></div>
+          <div class="d-flex justify-content-between p-price"><span>Bàn thắng</span><span>{{player.goal}}</span></div>
+          <div class="d-flex justify-content-between p-price"><span>Kiến tạo</span><span>{{player.assist}}</span></div>
+          <div class="d-flex justify-content-between p-price"><span>Vị trí</span><span>{{player.role}}</span></div>
+      </div>
+      
+      <div class="d-flex justify-content-center mt-2">
+        <button class="btn btn-sm btn-success" placement="top" ngbTooltip="Cập nhật" style="margin-right: 10px; width: 40px;" (click)="openUpdate(update, player)">
+          <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+        </button>
+        <button class="btn btn-sm btn-danger" placement="top" ngbTooltip="Xoá" style="margin-right: 10px; width: 40px;" (click)="openDelete(deleteModal, player.id)">
+          <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+        </button>
+      </div>
+  </div>
+</div>
+</div>
+ </div>
 
 <ng-template #noData>
   Chưa có cầu thủ nào được thêm
