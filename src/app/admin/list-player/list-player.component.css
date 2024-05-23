@@ -10,12 +10,16 @@
   padding:10px;
   background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-black-retro-football-movie-ad-background-picture-image_911623.jpg");
 }
-
+.modal-content{
+  background-color: #000;
+  width: 1000px;
+  border:0px;
+}
 .card {
-  background-color: rgba(255, 255, 255, 0.8); /* Màu trắng với độ trong suốt 80% */
-  border: none; /* Loại bỏ viền nếu cần */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm một chút bóng để phân biệt */
-  color: #000; /* Màu chữ bên trong thẻ */
+  background-color: rgba(255, 255, 255, 0.8); 
+  border: none; 
+  filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0,0,30,0.5));
+  color: #000; 
 }
 .table1{
   background-color: (45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);; 
@@ -33,6 +37,7 @@
   justify-content: center;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   background-image: url("https://watermark.lovepik.com/photo/50091/3009.jpg_wh1200.jpg");
+  
   
 }
 

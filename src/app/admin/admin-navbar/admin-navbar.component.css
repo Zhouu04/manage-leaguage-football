@@ -27,7 +27,8 @@ nav {
   border: none;
   border-radius: 10px;
   padding: 5px  ; 
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
+  margin-bottom: 15px; 
 }
 .red-button:hover {
   transform: scale(1.1); 
