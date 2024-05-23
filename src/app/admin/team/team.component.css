@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+body{
+	background: #F5F1EE;
+	font-family: 'Roboto', sans-serif;
+}
+.card{
+	width: 250px;
+	border-radius: 20px;
+	filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0,0,30,0.5));
+}
+
+.card-img-top{
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+span.text-muted{
+	font-size: 12px;
+}
+small.text-muted{
+	font-size: 8px;
+}
+h5.mb-0{
+	font-size: 1rem;
+}
+small.ghj{
+	font-size: 9px;
+}
+.mid{
+	background: #ECEDF1;
+}
+h6.ml-1{
+	font-size: 13px;
+}
+small.key{
+	text-decoration: underline;
+	font-size: 9px;
+	cursor: pointer;
+}
+.btn-danger{
+	color: #FFCBD2;
+}
+.btn-danger:focus{
+	box-shadow: none;
+}
+small.justify-content-center{
+	font-size: 9px;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+@media screen and (max-width:600px){
+    .col-sm-4{
+        margin-bottom: 50px;
+    }
+}
+.team-logo{
+	    width: 240px;  /* Adjust the width as needed */
+		height: 240px;  /* Adjust the height as needed */
+		object-fit: cover;
+		margin-right: 0px;  /* Adjust the spacing as needed */
+		vertical-align: middle;  /* Aligns the image with the text */
+		border-radius: 5%;  /* Makes the image circular if it's a square */
+}

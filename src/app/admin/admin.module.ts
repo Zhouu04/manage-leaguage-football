@@ -24,7 +24,7 @@ import {ToastModule} from "primeng/toast";
 import {StepsModule} from "primeng/steps";
 import {SkeletonModule} from "primeng/skeleton";
 import { FormAddPlayerComponent } from "./form-add-player/form-add-player.component";
-
+import { TopScorersPipe } from "./list-player/list-player.component";
 import { ListPlayerComponent } from "./list-player/list-player.component";
 import {FilterPipe} from "./filter.pipe";
 import {PaginatorModule} from "primeng/paginator";
@@ -51,7 +51,8 @@ import {MatButtonModule} from "@angular/material/button";
     FormAddTeamComponent,
     FormAddPlayerComponent,
     ListPlayerComponent,
-    StepComponent
+    StepComponent,
+    TopScorersPipe
   ],
   imports: [
     CommonModule,

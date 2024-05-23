@@ -9,4 +9,7 @@ public interface TeamRepositoryCustom {
   List<Team> search(String idSeason,TeamPageInfo model);
 
   Long count(String idSeason, TeamPageInfo model);
+
+  List<Team> searchT(TeamPageInfo model);
+  Long countT( TeamPageInfo model);
 }

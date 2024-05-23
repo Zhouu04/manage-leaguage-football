@@ -1,3 +1,53 @@
+
+
+.left-align {
+    text-align: center;
+  }
+html,
+body {
+	background: white;
+	color: #212529;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+.table {
+	background: linear-gradient(45deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+	color: white;
+	border-collapse: separate;
+	border-spacing: 0;
+
+	
+}
+.table thead th {
+	background: #7e70702b;
+}
+.table tbody tr:nth-child(odd) {
+	background: rgba(255, 255, 255, 0.792);
+	opacity: 0.6;
+}
+.table th, .table td {
+	padding: 10px;
+	border: 0px solid rgba(255, 255, 255, 0.2);
+}
+.table tbody tr:hover {
+	background: rgba(176, 125, 210, 0.759);
+	
+}
+
+	/* background: linear-gradient(45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);  */
+	
+.table2{
+		background: linear-gradient(45deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+		color: white;
+		border-collapse: separate;
+		border-spacing: 5px;
+		border-radius: 10px;
+	
+		
+	}
 .team-logo {
   width: 30px;  /* Adjust the width as needed */
   height: 30px;  /* Adjust the height as needed */
@@ -9,3 +59,28 @@
 .top-team {
   border-left: 3px solid green;
 }
+
+.notice-box {
+	
+	background-color: #fff8e1;
+	padding: 20px;
+	border-radius: 10px;
+	max-width: 400px;
+	margin: 0px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .notice-box h3 {
+	color: #d9534f;
+	margin-bottom: 10px;
+  }
+  .notice-box ul {
+	list-style-type: none;
+	padding: 0;
+  }
+  .notice-box li {
+	margin-bottom: 5px;
+	font-size: 1.2em;
+  }
+  .notice-box li span {
+	font-weight: bold;
+  }

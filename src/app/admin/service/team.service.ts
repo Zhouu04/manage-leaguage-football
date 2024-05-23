@@ -58,4 +58,13 @@ export class TeamService {
     return this.http.post<number>(url, model);
   }
 
+  searchTeam(model: TeamPageInfo | number): Observable<TeamDTO[]> {
+    const url = `${this.apiUrl}/search`;
+    return this.http.post<TeamDTO[]>(url, model);
+  }
+  
+  countTeam(model: TeamPageInfo): Observable<number> {
+    const url = `${this.apiUrl}/count`;
+    return this.http.post<number>(url, model);
+  }
 }

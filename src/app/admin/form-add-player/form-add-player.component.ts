@@ -25,9 +25,9 @@ export class FormAddPlayerComponent implements OnInit {
     ngOnInit() {
       this.formplayer = this.fb.group({
         name: ['', Validators.required],
-        age: [''],
-        goal: [''],
-        country: ['', Validators.required],
+        age: ['', Validators.required],
+        goal: ['', Validators.required],
+        role: ['', Validators.required],
         assist: ['', [Validators.required]]
       });
   
@@ -50,7 +50,7 @@ export class FormAddPlayerComponent implements OnInit {
         name: this.formplayer.value.name,
         age: this.formplayer.value.age,
         goal: this.formplayer.value.goal,
-        country: this.formplayer.value.country,
+        role: this.formplayer.value.role,
         assist: this.formplayer.value.assist,
         idTeam: this.idTeam
       };
@@ -76,7 +76,7 @@ export class FormAddPlayerComponent implements OnInit {
         name: this.formplayer.value.name,
         age: this.formplayer.value.age,
         goal: this.formplayer.value.goal,
-        country: this.formplayer.value.country,
+        role: this.formplayer.value.role,
         assist: this.formplayer.value.assist
       });
   
