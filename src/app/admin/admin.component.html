@@ -1,10 +1,76 @@
 
-<div class="container-fluid p-0">
-  <app-admin-navbar  (sideNavToggled)="sideNavStatus = $event"></app-admin-navbar>
-  <main >
-    <app-admin-sidenav [sidenavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}" ></app-admin-sidenav>
-    <div class="display-are p-3" [ngClass]="{'display-are-shrink': sideNavStatus}">
+<!--<div class="container-fluid p-0">-->
+<!--  <app-admin-navbar  (sideNavToggled)="sideNavStatus = $event"></app-admin-navbar>-->
+<!--  <main >-->
+<!--    <app-admin-sidenav [sidenavStatus]="sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}" ></app-admin-sidenav>-->
+<!--    <div class="display-are p-3" [ngClass]="{'display-are-shrink': sideNavStatus}">-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--  </main>-->
+<!--</div>-->
+<!--<mat-toolbar color="primary">-->
+<!--  <mat-toolbar-row>-->
+<!--    <button (click)="sidenav.toggle()" mat-icon-button>-->
+<!--      <i class="fa-solid fa-bars"></i>-->
+<!--    </button>-->
+<!--    <h1>Angular Material</h1>-->
+<!--  </mat-toolbar-row>-->
+<!--</mat-toolbar>-->
+<!--<mat-sidenav-container>-->
+<!--  <mat-sidenav opened="true" #sidenav style="background-color: #000">-->
+<!--    <mat-nav-list>-->
+<!--      <a  mat-list-item routerLink="league">-->
+<!--        <i class="fa-solid fa-house" style="color: #ffffff;"></i>-->
+<!--        Quản lý giải đấu-->
+<!--      </a>-->
+<!--      <a  mat-list-item routerLink="team">-->
+<!--        <i class="fa-solid fa-user" style="color: #ffffff;"></i>-->
+<!--        Quản lý đội bóng-->
+<!--      </a>-->
+<!--    </mat-nav-list>-->
+<!--  </mat-sidenav>-->
+<!--  <mat-sidenav-content>-->
+<!--    <div class="" style="height: 88vh">-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--  </mat-sidenav-content>-->
+<!--</mat-sidenav-container>-->
+<mat-toolbar  class="mat-elevation-z3">
+  <button (click)="collapsed.set(!collapsed())" mat-icon-button>
+    <i style="color: #ffffff" class="fa-solid fa-bars"></i>
+  </button>
+  <a routerLink="../admin">
+    <img src="./assets/img/dyvi.png"  style="width: 126px; height: 42px"  alt="anhlogo">
+  </a>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav  opened mode="side" [style.width]="sideNavWidth()">
+    <mat-nav-list>
+      <a  mat-list-item routerLink="league"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [activated]="rla.isActive"
+      >
+        <i class="fa-solid fa-house" ></i>
+        <span>
+          Quản lý giải đấu
+        </span>
+      </a>
+      <a  mat-list-item routerLink="team"
+          routerLinkActive
+          #rla1="routerLinkActive"
+          [activated]="rla1.isActive">
+        <i class="fa-solid fa-user" ></i>
+        <span>
+          Quản lý đội bóng
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content" [style.margin-left]="sideNavWidth()">
+    <div class="router-content">
       <router-outlet></router-outlet>
     </div>
-  </main>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

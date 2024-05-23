@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  sideNavStatus: boolean = false;
+  collapsed = signal(false);
+
+  sideNavWidth = computed(() => this.collapsed() ? '50px' : '200px')
 }
