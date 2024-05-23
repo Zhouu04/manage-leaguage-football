@@ -28,6 +28,11 @@ import { TopScorersPipe } from "./list-player/list-player.component";
 import { ListPlayerComponent } from "./list-player/list-player.component";
 import {FilterPipe} from "./filter.pipe";
 import {PaginatorModule} from "primeng/paginator";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -49,22 +54,26 @@ import {PaginatorModule} from "primeng/paginator";
     StepComponent,
     TopScorersPipe
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        AdminRoutingModule,
-        ReactiveFormsModule,
-        NgbModule,
-        MatInputModule,
-        HttpClientModule,
-        ControlMessagesComponent,
-        ToastModule,
-        StepsModule,
-        SkeletonModule,
-        FilterPipe,
-        PaginatorModule,
-
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    NgbModule,
+    MatInputModule,
+    HttpClientModule,
+    ControlMessagesComponent,
+    ToastModule,
+    StepsModule,
+    SkeletonModule,
+    FilterPipe,
+    PaginatorModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+  ],
   exports: [
 
   ]

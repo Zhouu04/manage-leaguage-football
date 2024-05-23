@@ -1,93 +1,59 @@
 
-app-admin-navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 4rem;
-  z-index: 2;
+
+
+mat-sidenav-content {
+  overflow-x: hidden; /* Ngăn chặn thanh trượt ngang */
 }
 
-main {
-  position: absolute;
-  width: 100%;
-  top: 4rem;
-  z-index: 1;
+.router-content {
+  width: 100%; /* Đảm bảo nội dung chiếm hết chiều rộng */
+  box-sizing: border-box; /* Bao gồm padding và border vào tổng chiều rộng */
 }
 
-app-admin-sidenav {
-  position: fixed;
-  width: 220px;
-  height: 100vh;
-  box-shadow: 0px 0px 10px  rgba(0, 0, 0, 0.5);
-  background-color: #343a40;
-  border-top: 1px solid white;
-  overflow-x: hidden;
-  white-space: nowrap;
-  transition: all 0.2s linear;
+/* Nếu bạn sử dụng Flexbox */
+mat-sidenav-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.display-are {
-  position: absolute;
-  left: 220px;
-  width: calc(100% - 220px);
-  transition: all 0.2s linear;
-
-
-
-
+mat-sidenav-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.display-are-shrink {
-  width: calc(100% - 50px);
-  left: 70px;
-
-
+.router-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.app-side-nav-open {
-  width: 60px;
+.mat-toolbar-row ,  .mat-toolbar-single-row {
+  padding: 0;
 }
 
-@media only screen and (max-width: 46.1875em) {
-  app-sidebar1 {
-    width: 60px;
-  }
-
-  .display-are {
-    width: calc(100% - 50px);
-    left: 70px;
-
-  }
-}
-/* .display-are {
-  background-image: url('https://e1.pxfuel.com/desktop-wallpaper/544/310/desktop-wallpaper-american-football-stadium-windows-10-spotlight-1920x1080-for-your-mobile-tablet-american-football-field.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 100vh;
-} */
-
-.background-image {
-  background-image: url('https://t3.ftcdn.net/jpg/06/50/44/22/360_F_650442270_YYTCE6rA3AUWolVUFuSCb8C7KElhz1nP.jpg'); /* Đặt đường dẫn ảnh nền của bạn */
-  background-size: cover; /* Điều chỉnh kích thước nền */
-  background-position: center; /* Vị trí nền */
-  background-attachment: fixed; /* Cố định nền */
-  width: 100%;
-  height: 100%;
-  position: fixed; /* Đảm bảo bao phủ toàn bộ không gian hiển thị */
-  top: 0;
-  left: 0;
-  z-index: 0; /* Đặt dưới các phần tử khác */
+.content {
+  padding: 24px;
 }
 
-.container-fluid {
+mat-toolbar {
   position: relative;
-  z-index: 1; /* Đảm bảo hiển thị trên nền */
-  height: 100vh;
-  overflow-y: auto; /* Thêm cuộn dọc cho nội dung */
+  z-index: 5;
+  background-color: #343a40;
 }
 
+mat-sidenav {
+    background-color: #343a40;
+}
 
+i {
+  color: #ffffff;
+}
+span {
+  color: #ffffff;
+}
 
-
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
 
