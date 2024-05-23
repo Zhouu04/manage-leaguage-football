@@ -3,7 +3,9 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { TeamDTO } from 'src/app/dto/TeamDTO';
 import { TeamService } from '../service/team.service';
-
+import {TeamPageInfo} from "../../dto/TeamPageInfo";
+import {delay, Observable} from "rxjs";
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -14,9 +16,17 @@ export class TeamComponent{
   dataUpdate: TeamDTO;
   closeResult = '';
   form: FormGroup;
+  idTeam: any;
+  searchText: any;
+  loadingValue: boolean;
+  pageableInfo: TeamPageInfo = {
+    currentPage: 1,
+    recordPerPage: 5,
+  };
+  totalRecords: number ;
   constructor(private teamService: TeamService,
               private modalService: NgbModal,
-              private fb: FormBuilder) {
+              private fb: FormBuilder, private router: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -24,6 +34,15 @@ export class TeamComponent{
     this.form = this.fb.group({
       name: ['', Validators.required],
     })
+    
+    this.teamService.searchTeam(this.pageableInfo).pipe(delay(500)).subscribe(data => {
+      this.loadingValue = true;
+      this.team = data;
+    })
+    this.teamService.countTeam(this.pageableInfo).subscribe(data => {
+      this.totalRecords = data;
+    });
+    this.loadingValue = false;
   }
 
   initData() {
@@ -56,6 +75,20 @@ export class TeamComponent{
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  onPageChange(event: any) {
+    this.pageableInfo.currentPage = event.page + 1;
+    this.pageableInfo.recordPerPage = event.rows;
+    this.reloadData();
+  }
+
+  reloadData() {
+    this.teamService.searchTeam(this.pageableInfo).subscribe(
+      data => {
+        this.team = data;
+      }
+    );
   }
 
 }

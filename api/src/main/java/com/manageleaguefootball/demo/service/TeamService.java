@@ -14,4 +14,7 @@ public interface TeamService {
   List<TeamDTO> findTeamByOrderScore(String idSeason);
   List<TeamDTO> search(String idSeason,TeamPageInfo model);
   Long count(String idSeason,TeamPageInfo model);
+
+  List<TeamDTO> searchTeam(TeamPageInfo model);
+  Long countTeam(TeamPageInfo model);
 }

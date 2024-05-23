@@ -64,4 +64,15 @@ public class TeamController {
     TeamDTO team = teamService.deleteTeam(id);
     return ResponseEntity.ok(team);
   }
+
+  @PostMapping("search")
+  public ResponseEntity<List<TeamDTO>> searchTeam( @RequestBody TeamPageInfo model) {
+    List<TeamDTO> teams = teamService.searchTeam(model);
+    return ResponseEntity.ok(teams);
+  }
+
+  @PostMapping("count")
+  public Long countTeam( @RequestBody TeamPageInfo model) {
+    return teamService.countTeam(model);
+  }
 }

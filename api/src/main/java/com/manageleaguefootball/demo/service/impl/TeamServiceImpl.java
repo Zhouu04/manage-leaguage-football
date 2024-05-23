@@ -106,4 +106,14 @@ public class TeamServiceImpl implements TeamService {
   public Long count(String id,TeamPageInfo model) {
     return teamRepository.count(id,model);
   }
+
+  @Override
+  public List<TeamDTO> searchTeam(TeamPageInfo model) {
+    return  mapToView(teamRepository.searchT(model));
+  }
+
+  @Override
+  public Long countTeam(TeamPageInfo model) {
+    return teamRepository.countT(model);
+  }
 }

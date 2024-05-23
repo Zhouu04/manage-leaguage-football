@@ -23,6 +23,13 @@ public class TeamRepositoryImpl implements TeamRepositoryCustom {
     return query;
   }
 
+  private Query buildSearchQuery2(TeamPageInfo model, boolean count) {
+    Query query = new Query();
+    if (!count) {
+      QueryUtils.getQuerySortAndPageable(query, model);}
+    return query;
+  }
+
 
   @Override
   public List<Team> search(String idSeason,TeamPageInfo model) {
@@ -32,5 +39,15 @@ public class TeamRepositoryImpl implements TeamRepositoryCustom {
   @Override
   public Long count( String idSeason, TeamPageInfo model) {
     return mongoTemplate.count(buildSearchQuery(idSeason ,model, true), Team.class);
+  }
+
+  @Override
+  public List<Team> searchT(TeamPageInfo model) {
+    return mongoTemplate.find(buildSearchQuery2(model, false), Team.class);
+  }
+
+  @Override
+  public Long countT( TeamPageInfo model) {
+    return mongoTemplate.count(buildSearchQuery2(model, true), Team.class);
   }
 }
