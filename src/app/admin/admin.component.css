@@ -29,19 +29,19 @@ app-admin-sidenav {
 .display-are {
   position: absolute;
   left: 220px;
-  width: calc(100% -220px);
+  width: calc(100% - 220px);
   transition: all 0.2s linear;
- 
- 
-  
-  
+
+
+
+
 }
 
 .display-are-shrink {
   width: calc(100% - 50px);
   left: 70px;
 
- 
+
 }
 
 .app-side-nav-open {
@@ -56,15 +56,15 @@ app-admin-sidenav {
   .display-are {
     width: calc(100% - 50px);
     left: 70px;
-    
+
   }
 }
 /* .display-are {
   background-image: url('https://e1.pxfuel.com/desktop-wallpaper/544/310/desktop-wallpaper-american-football-stadium-windows-10-spotlight-1920x1080-for-your-mobile-tablet-american-football-field.jpg');
-  background-size: cover; 
-  background-position: center; 
-  background-attachment: fixed; 
-  min-height: 100vh; 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
 } */
 
 .background-image {
@@ -87,7 +87,7 @@ app-admin-sidenav {
   overflow-y: auto; /* Thêm cuộn dọc cho nội dung */
 }
 
-  
+
 
 
 
