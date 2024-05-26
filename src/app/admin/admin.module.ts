@@ -31,7 +31,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
-
+import {BreadcrumbModule} from 'xng-breadcrumb';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -48,7 +48,7 @@ import {MatButtonModule} from "@angular/material/button";
     FormAddPlayerComponent,
     ListPlayerComponent,
     StepComponent,
-    TopScorersPipe
+    TopScorersPipe,
   ],
   imports: [
     CommonModule,
@@ -59,6 +59,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatInputModule,
     HttpClientModule,
     ControlMessagesComponent,
+    BreadcrumbModule,
     ToastModule,
     StepsModule,
     SkeletonModule,

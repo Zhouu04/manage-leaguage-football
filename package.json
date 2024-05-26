@@ -28,6 +28,7 @@
     "primeng": "~16.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "xng-breadcrumb": "^10.0.2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

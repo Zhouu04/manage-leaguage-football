@@ -33,6 +33,14 @@
   </mat-sidenav>
   <mat-sidenav-content class="content" [style.margin-left]="sideNavWidth()">
     <div class="router-content">
+      <xng-breadcrumb style="background: #eef0f8; padding: 8px; margin-bottom: 8px" >
+        <ng-container
+          *xngBreadcrumbItem="let breadcrumb; let info = info; let first = first"
+        >
+          <mat-icon *ngIf="info"><i class="fa-solid fa-house" style="color: #6c757d;"></i></mat-icon>
+          <ng-container >{{ breadcrumb }}</ng-container>
+        </ng-container>
+      </xng-breadcrumb>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

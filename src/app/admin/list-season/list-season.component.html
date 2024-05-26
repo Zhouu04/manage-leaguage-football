@@ -1,8 +1,8 @@
 <ng-container *ngIf="seasons ; else loading">
   <h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
   <button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
-  <table class="table  " style="width: 1200px;">
-    <thead style="opacity: 0.9;">
+  <table class="table  ">
+    <thead >
     <tr>
       <th >Stt</th>
       <th >Tên mùa giải</th>
@@ -12,7 +12,7 @@
       <th class="text-center">Cấu hình</th>
     </tr>
     </thead>
-    <tbody style="opacity: 0.8;">
+    <tbody>
     <tr *ngFor="let season of seasons; let i = index">
       <td>{{i + 1}}</td>
       <td>{{season.name}}</td>
@@ -22,18 +22,19 @@
       </td>
       <td>{{season.typeTournament}}</td>
       <td>
-        <a class="btn btn-sm btn-primary" style="margin-right: 10px" [routerLink]="'../teams/' + season.id">
+        <a class="btn btn-sm btn-primary" style="margin-right: 10px" [routerLink]="['../teams', season.id]">
           <i class="fa-solid fa-people-group" style="color: #ffffff;"></i>
           Đội bóng
         </a>
-        <a class="btn btn-sm btn-info" style="margin-right: 10px" [routerLink]="'../schedule/' + season.id">
+        <a class="btn btn-sm btn-info" style="margin-right: 10px" [routerLink]="['../schedule', season.id]">
           <i class="fa-regular fa-calendar-days" style="color: #FFFFFF"></i>
           Lịch thi đấu
         </a>
-        <button class="btn btn-sm btn-warning" style="margin-right: 10px" [routerLink]="'../standing/' + season.id">
+        <a class="btn btn-sm btn-warning" style="margin-right: 10px" [routerLink]="['../standing', season.id]">
           <i class="fa-solid fa-list-ol" style="color: #FFFFFF"></i>
           Bảng xếp hạng
-        </button>
+        </a>
+
         <button class="btn btn-sm btn-success" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, season)">
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
         </button>
@@ -46,7 +47,7 @@
     </tbody>
   </table>
 </ng-container>
-<div *ngIf="seasons?.length == 0">
+<div *ngIf="!seasons">
   Chưa có giải đấu được tạo
 </div>
 
