@@ -7,6 +7,10 @@ body{
 	width: 250px;
 	border-radius: 20px;
 	filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0,0,30,0.5));
+	display: flex;                /* Make the card a flex container */
+    justify-content: center;      /* Center horizontally */
+    align-items: center; 
+	background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7a43d2cc-ab3b-4345-9c26-6b6d4b3cf994/d69rp0f-0652780d-3395-44a3-9ce8-4282b8e0b413.png/v1/fill/w_1024,h_576,q_80,strp/football_background__1_by_destroyer53_d69rp0f-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvN2E0M2QyY2MtYWIzYi00MzQ1LTljMjYtNmI2ZDRiM2NmOTk0XC9kNjlycDBmLTA2NTI3ODBkLTMzOTUtNDRhMy05Y2U4LTQyODJiOGUwYjQxMy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.UvqE1Xu4a_QSno1oApepMMJNJSQFzun3eB-LWnSL_aA"); 
 }
 
 .card-img-top{
@@ -54,10 +58,13 @@ small.justify-content-center{
     }
 }
 .team-logo{
-	    width: 240px;  /* Adjust the width as needed */
-		height: 240px;  /* Adjust the height as needed */
+	    width: 150px;  /* Adjust the width as needed */
+		height: 150px;  /* Adjust the height as needed */
 		object-fit: cover;
 		margin-right: 0px;  /* Adjust the spacing as needed */
 		vertical-align: middle;  /* Aligns the image with the text */
-		border-radius: 5%;  /* Makes the image circular if it's a square */
+		border-radius: 100%; 
+		margin-top: 10px;
+		border: 5px solid rgb(189, 130, 238);
+
 }

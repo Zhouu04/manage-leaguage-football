@@ -13,8 +13,8 @@
     <tr >
       <th>Stt</th>
       <th>Tên đội bóng </th>
-      <th>Số điện thoại </th>
-      <th >Đội trưởng</th>
+      <th  class="text-end d-none-sm"> Số điện thoại </th>
+      <th  class="text-end d-none-sm"> Đội trưởng</th>
       <th>Cấu hình</th>
     </tr>
     </thead>
@@ -28,23 +28,32 @@
         </ng-template>
         {{team.name}}
       </td>
-      <td>{{team.phoneNumber}}</td>
-      <td>
+      <td  class="text-end d-none-sm">{{team.phoneNumber}}</td>
+      <td  class="text-end d-none-sm">
         {{team.captainName}}
       </td>
       <td>
-        <button class="btn btn-sm btn-success" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, team)">
+        <button class="btn btn-sm btn-success btn-config" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, team)">
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
           Cập nhật
         </button>
-        <button class="btn btn-sm btn-danger" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, team.id)">
+        <button class="btn btn-sm btn-danger btn-config" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, team.id)">
           <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
           Xoá
         </button>
-        <button class="btn btn-sm btn-info" placement="top" ngbTooltip="Cập nhật logo đội bóng" (click)="openUploadImage(uploadModal, team.id)">
+        <button class="btn btn-sm btn-info btn-config" placement="top" ngbTooltip="Cập nhật logo đội bóng" (click)="openUploadImage(uploadModal, team.id)">
           <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
           Cập nhật logo
         </button>
+      </td>
+
+      <td class="text-end "> 
+        <button class="btn btn-sm btn-info d-sm-none" (click)="toggleDetails(i)">Chi tiết</button>
+        <div class="details" *ngIf="team.showDetails">
+          <p>- Số điện thoại: {{team.phoneNumber}}</p>
+          <p>- Đội trưởng: {{team.captainName}}</p>
+
+        </div>
       </td>
 
     </tr>

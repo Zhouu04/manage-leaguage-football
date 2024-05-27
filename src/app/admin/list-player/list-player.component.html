@@ -46,7 +46,7 @@
  </ng-template>
 
  <ng-template #formtopgoal let modal>
-  <div class="modal-content" style="width: 1000px; ">
+  <div class="modal-content" >
     <h2 class="topvua" >Danh sách top ghi bàn</h2>
     
   
@@ -88,9 +88,9 @@
   <div *ngFor="let player of players$; let i = index">
  <div class="d-flex justify-content-center container mt-7" >
   <div class="card p-3 bg-white" >
-      <div class="about-product text-center mt-2"><img src="https://logowik.com/content/uploads/images/football-team321.logowik.com.webp" width="200">
-          <div style="background-color: black">
-              <h4 style="color: red; font-weight: bold; text-transform: uppercase;">{{player.name}}</h4>
+      <div class="about-product text-center mt-2"><img src="https://cdn.vectorstock.com/i/preview-1x/42/06/avatar-winner-soccer-ball-sport-design-vector-29004206.jpg" width="200" style="border-radius:100%;">
+          <div >
+              <h4 style="color: red; font-weight: bold; text-transform: uppercase; margin-top: 10px;">{{player.name}}</h4>
     
           </div>
       </div>

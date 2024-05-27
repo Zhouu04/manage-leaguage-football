@@ -11,15 +11,15 @@
   background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-black-retro-football-movie-ad-background-picture-image_911623.jpg");
 }
 .modal-content{
-  background-color: #000;
-  width: 1000px;
+  
+  width: 110%;
   border:0px;
 }
 .card {
   background-color: rgba(255, 255, 255, 0.8); 
   border: none; 
   filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0,0,30,0.5));
-  color: #000; 
+  background-image: url("https://t3.ftcdn.net/jpg/01/91/49/26/360_F_191492670_3c0KFlQkkJAtsyamdOGWssR1AWvgVagP.jpg"); 
 }
 .table1{
   background-color: (45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);; 
@@ -121,6 +121,15 @@
   margin-top: auto; 
 }  
 
+.search-container {
+  margin-bottom: 15px; /* Space below search bar */
+  width: 100%;
+  max-width: 400px; /* Adjust the max-width to the desired size */
+}
+
+.search-container .form-control {
+  width: 100%; /* Full width of the container */
+}
 
 
 @media only screen and (max-width: 200px) {
@@ -138,5 +147,22 @@
   .pricingdiv a.pricebutton{
     display: block;
   }
+  
+  .button-container {
+    justify-content: space-between;
+  }
+
+  .search-container  {
+    width: 100%; 
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-content {
+      width: 100%;
+     
+      padding: 0px;
+  }
+
   
 }
