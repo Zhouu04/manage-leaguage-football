@@ -27,15 +27,13 @@ export class StandingComponent implements OnInit {
       console.log(data);
     })
 
-    // this.getTeams();
+    
   }
 
 
-  // getTeams(): void {
-  //   this.teamService.getAllTeams().subscribe(teams => {
-  //     // Sắp xếp các đội theo số điểm
-  //     this.teams = teams;
-  //   });
-  // }
+  toggleDetails(index: number): void {
+    this.teams[index].showDetails = !this.teams[index].showDetails;
+  }
+  
 }
 

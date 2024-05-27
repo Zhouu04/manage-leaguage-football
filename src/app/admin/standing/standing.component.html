@@ -4,12 +4,12 @@
     <tr>
       <th class="text-body-secondary">STT</th>
       <th class="text-body-secondary"> Tên đội bóng</th>
-      <th class="text-end text-body-secondary"> Số trận thắng</th>
-      <th class="text-end text-body-secondary"> Số trận thua</th>
-      <th class="text-end text-body-secondary"> Số trận  hòa</th>
-      <th class="text-end text-body-secondary"> Bàn thắng</th>
-      <th class="text-end text-body-secondary">  Bàn thua</th>
-      <th class="text-end text-body-secondary">Hiệu số</th>
+      <th class="text-end text-body-secondary d-none-sm"> Số trận thắng</th>
+      <th class="text-end text-body-secondary d-none-sm"> Số trận thua</th>
+      <th class="text-end text-body-secondary d-none-sm"> Số trận  hòa</th>
+      <th class="text-end text-body-secondary d-none-sm"> Bàn thắng</th>
+      <th class="text-end text-body-secondary d-none-sm">  Bàn thua</th>
+      <th class="text-end text-body-secondary d-none-sm">Hiệu số</th>
       <th class="text-end" > Điểm</th>
 
     </tr>
@@ -25,13 +25,24 @@
             {{team.name}}
           </td>
 
-          <td class="text-end">{{team.win}}</td>
-          <td class="text-end">{{team.loss}}</td>
-          <td class="text-end">{{team.draw}}</td>
-          <td class="text-end">{{team.goalWin}}</td>
-          <td class="text-end">{{team.goalLoss}}</td>
-          <td class="text-end">{{team.difference}}</td>
+          <td class="text-end d-none-sm">{{team.win}}</td>
+          <td class="text-end d-none-sm">{{team.loss}}</td>
+          <td class="text-end d-none-sm">{{team.draw}}</td>
+          <td class="text-end d-none-sm">{{team.goalWin}}</td>
+          <td class="text-end d-none-sm">{{team.goalLoss}}</td>
+          <td class="text-end d-none-sm">{{team.difference}}</td>
           <td class="text-end fw-bold" >{{team.score}}</td>
+          <td class="text-end "> 
+            <button class="btn btn-sm btn-info d-sm-none" (click)="toggleDetails(i)">Chi tiết</button>
+            <div class="details" *ngIf="team.showDetails">
+              <p>Thắng: {{team.win}}</p>
+              <p>Thua: {{team.loss}}</p>
+              <p>Hòa: {{team.draw}}</p>
+              <p>Bàn thắng: {{team.goalWin}}</p>
+              <p>Bàn thua: {{team.goalLoss}}</p>
+              <p>Hiệu số: {{team.difference}}</p>
+            </div>
+          </td>
 
     </tr>
   <tbody>

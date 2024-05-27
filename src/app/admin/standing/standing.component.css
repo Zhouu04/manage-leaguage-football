@@ -84,3 +84,23 @@ body {
   .notice-box li span {
 	font-weight: bold;
   }
+
+
+
+  @media (max-width: 768px) {
+	
+	.d-none-sm {
+	  display: none !important;
+	}
+  
+	
+	.details {
+	  display: block;
+	  margin-top: 10px;
+	}
+  
+	.details p {
+	  margin: 0;
+	  padding: 2px 0;
+	}
+  }
