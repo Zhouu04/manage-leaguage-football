@@ -8,6 +8,7 @@
   font-weight: bold;
   font-size: 2.5em;
   padding:10px;
+  margin-bottom: 0%;
   background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-black-retro-football-movie-ad-background-picture-image_911623.jpg");
 }
 .modal-content{
@@ -34,7 +35,7 @@
   display: flex;
   flex-wrap: wrap;
   font-size: 16px;
-  justify-content: center;
+  align-items: center;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   background-image: url("https://watermark.lovepik.com/photo/50091/3009.jpg_wh1200.jpg");
   
@@ -68,6 +69,7 @@
 .pricingdiv ul.theplan .center{
   margin: 0 auto;
   text-align: center;
+  
 }
 
 .pricingdiv ul.theplan img{
@@ -89,7 +91,7 @@
   color: white;
   box-shadow: 0 -10px 5px rgba(0,0,0,.1) inset;
   text-transform: uppercase;
- 
+
   
 }
 
@@ -112,7 +114,7 @@
 }
 
 .pricingdiv ul.theplan:last-of-type{ 
-  margin-right: 0;
+  margin-right: 10px;
 }
 
 
@@ -136,9 +138,11 @@
   .pricingdiv ul.theplan{
     border-radius: 0;
     width: 100%;
-    margin-right: 0;
+    margin-right: 0px;
+    
   }
-  
+
+ 
   .pricingdiv ul.theplan:hover{
     transform: none;
     box-shadow: none;
@@ -151,18 +155,23 @@
   .button-container {
     justify-content: space-between;
   }
+  
+ 
 
-  .search-container  {
-    width: 100%; 
-  }
+  
 }
 
 @media only screen and (max-width: 768px) {
   .modal-content {
       width: 100%;
-     
+      display: flex;
+      justify-content: center;
+   
       padding: 0px;
   }
 
   
+}
+.text1{
+  color: goldenrod;
 }

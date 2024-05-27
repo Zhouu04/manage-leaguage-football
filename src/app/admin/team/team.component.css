@@ -10,7 +10,7 @@ body{
 	display: flex;                /* Make the card a flex container */
     justify-content: center;      /* Center horizontally */
     align-items: center; 
-	background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7a43d2cc-ab3b-4345-9c26-6b6d4b3cf994/d69rp0f-0652780d-3395-44a3-9ce8-4282b8e0b413.png/v1/fill/w_1024,h_576,q_80,strp/football_background__1_by_destroyer53_d69rp0f-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvN2E0M2QyY2MtYWIzYi00MzQ1LTljMjYtNmI2ZDRiM2NmOTk0XC9kNjlycDBmLTA2NTI3ODBkLTMzOTUtNDRhMy05Y2U4LTQyODJiOGUwYjQxMy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.UvqE1Xu4a_QSno1oApepMMJNJSQFzun3eB-LWnSL_aA"); 
+	
 }
 
 .card-img-top{
@@ -51,11 +51,39 @@ small.justify-content-center{
 	cursor: pointer;
 	text-decoration: underline;
 }
+.search-container {
+	width: 100%;
+	max-width: 600px; /* Đặt độ rộng tối đa cho thanh tìm kiếm */
+	margin: 0 auto 20px auto; /* Căn giữa và thêm khoảng cách dưới */
+  }
+  
+  .search-input {
+	width: 100%; /* Đảm bảo thanh tìm kiếm chiếm hết độ rộng của container */
+  }
 
 @media screen and (max-width:600px){
     .col-sm-4{
         margin-bottom: 50px;
     }
+	.search-container  {
+    
+		width: 100%;
+		max-width: 400px; 
+		height: auto; 
+		padding: 8px; 
+		margin: 0 auto;
+	  }
+	.pageable{
+		width:100%;
+		max-width: 400px; 
+		height: auto; 
+		padding: 2px; 
+		margin: 0 auto;
+	}
+
+	.d-none-sm {
+		display: none !important;
+	  }
 }
 .team-logo{
 	    width: 150px;  /* Adjust the width as needed */
@@ -66,5 +94,6 @@ small.justify-content-center{
 		border-radius: 100%; 
 		margin-top: 10px;
 		border: 5px solid rgb(189, 130, 238);
+		
 
 }

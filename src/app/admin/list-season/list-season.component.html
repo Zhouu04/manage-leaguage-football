@@ -1,68 +1,60 @@
-<ng-container *ngIf="seasons ; else loading">
+<ng-container *ngIf="seasons; else loading">
   <h1><i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách mùa giải</h1>
   <button class="btn btn-primary mb-3" (click)="open(form)">Thêm mùa giải</button>
-  <table class="table  ">
-    <thead >
-    <tr>
-      <th >Stt</th>
-      <th >Tên mùa giải</th>
-      <th class="text-end d-none-sm" >Địa điểm</th>
-      <th class="text-end d-none-sm">Số lượng đội tham gia</th>
-      <th class="text-end d-none-sm">Thể thức</th>
-      <th class="text-center">Cấu hình</th>
-    </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Stt</th>
+        <th>Tên mùa giải</th>
+        <th class="text-end d-none-sm">Địa điểm</th>
+        <th class="text-end d-none-sm">Số lượng đội tham gia</th>
+        <th class="text-end d-none-sm">Thể thức</th>
+        <th class="text-center ">Cấu hình</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let season of seasons; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{season.name}}</td>
-      
-      <td class="text-end d-none-sm">{{season.place}}</td>
-      <td class="text-end d-none-sm">
-        {{season.numberOfTeams}}
-      </td>
-      <td class="text-end d-none-sm">{{season.typeTournament}}</td>
-      <td>
-        <a class="btn btn-sm btn-primary btn-config" style="margin-right: 10px" [routerLink]="['../teams', season.id]">
-          <i class="fa-solid fa-people-group" style="color: #ffffff;"></i>
-          Đội bóng
-        </a>
-        <a class="btn btn-sm btn-info btn-config" style="margin-right: 10px" [routerLink]="['../schedule', season.id]">
-          <i class="fa-regular fa-calendar-days" style="color: #FFFFFF"></i>
-          Lịch thi đấu
-        </a>
-        <a class="btn btn-sm btn-warning btn-config" style="margin-right: 10px" [routerLink]="['../standing', season.id]">
-          <i class="fa-solid fa-list-ol" style="color: #FFFFFF"></i>
-          Bảng xếp hạng
-        </a>
-
-        <button class="btn btn-sm btn-success btn-config" placement="top"   ngbTooltip="Cập nhật"  style="margin-right: 10px" (click)="openUpdate(update, season)">
-          <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-        </button>
-        <button class="btn btn-sm btn-danger btn-config" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, season.id)">
-          <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-        </button>
-      </td>
-
-      <td class="text-end "> 
-        <button class="btn btn-sm btn-info d-sm-none" (click)="toggleDetails(i)">Chi tiết</button>
-        <div class="details" *ngIf="season.showDetails">
-          <p>- Địa điểm: {{season.place}}</p>
-          <p>- Thể thức: {{season.typeTournament}}</p>
-          <p>- Số lượng đội tham gia: {{season.numberOfTeams}}</p>
-
-        </div>
-      </td>
-
-      
-
-    </tr>
+      <tr *ngFor="let season of seasons; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ season.name }}
+          <div class="details d-sm-none">
+            <p><strong>- Địa điểm:</strong> {{ season.place }}</p>
+            <p><strong>- Số lượng đội tham gia:</strong> {{ season.numberOfTeams }}</p>
+            <p><strong>- Thể thức:</strong> {{ season.typeTournament }}</p>
+            
+          </div>
+        </td>
+        <td class="text-end d-none-sm">{{ season.place }}</td>
+        <td class="text-end d-none-sm">{{ season.numberOfTeams }}</td>
+        <td class="text-end d-none-sm">{{ season.typeTournament }}</td>
+        <td class="text-center ">
+          <a class="btn btn-sm btn-primary btn-config" style="margin-right: 10px" [routerLink]="['../teams', season.id]">
+            <i class="fa-solid fa-people-group" style="color: #ffffff;"></i>
+            Đội bóng
+          </a>
+          <a class="btn btn-sm btn-info btn-config" style="margin-right: 10px" [routerLink]="['../schedule', season.id]">
+            <i class="fa-regular fa-calendar-days" style="color: #FFFFFF"></i>
+            Lịch thi đấu
+          </a>
+          <a class="btn btn-sm btn-warning btn-config" style="margin-right: 10px" [routerLink]="['../standing', season.id]">
+            <i class="fa-solid fa-list-ol" style="color: #FFFFFF"></i>
+            Bảng xếp hạng
+          </a>
+          <button class="btn btn-sm btn-success btn-con" placement="top" ngbTooltip="Cập nhật" style="margin-right: 10px" (click)="openUpdate(update, season)">
+            <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+          </button>
+          <button class="btn btn-sm btn-danger btn-con" placement="top" ngbTooltip="Xoá" style="margin-right: 10px" (click)="openDelete(deleteModal, season.id)">
+            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </ng-container>
 <div *ngIf="!seasons">
   Chưa có giải đấu được tạo
 </div>
+
 
 <!--form add-->
 <ng-template #form let-modal>

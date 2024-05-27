@@ -16,6 +16,17 @@
 	}
 
 	.btn-config {
-		margin-bottom: 10px;  
+		margin-bottom: 10px;
+        width: 70%;
 	  }
+	.btn-con {
+		margin-bottom: 10px;
+        width: 33%;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.details {
+	  display: none;
+	}
   }

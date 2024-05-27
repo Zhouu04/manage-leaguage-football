@@ -45,7 +45,7 @@
     </div>
  </ng-template>
 
- <ng-template #formtopgoal let modal>
+ <ng-template #formtopgoal  >
   <div class="modal-content" >
     <h2 class="topvua" >Danh sách top ghi bàn</h2>
     
@@ -69,9 +69,9 @@
   <div class="topvua" >Danh sách top kiến tạo</div>
   
 
-  <div class="pricingdiv">
+  <div class="pricingdiv ">
     <div *ngIf="topAssist?.length > 0; else noData" class="row row-cols-1 row-cols-md-4 g-3 " >
-    <ul class="theplan"  *ngFor="let player of topAssist; let i = index">
+    <ul class="theplan"   *ngFor="let player of topAssist; let i = index">
       <li class="title"><b>Top {{i+1}} </b><br />{{player.name}}</li>
       <li><b>Vị trí:</b> {{player.role}}</li>
       <li style="text-align: left;"><b >Số kiến tạo:</b> {{player.assist}}</li>
@@ -95,10 +95,10 @@
           </div>
       </div>
       <div class="stats mt-2" >
-          <div class="d-flex justify-content-between p-price"><span>Tuổi</span><span>{{player.age}}</span></div>
-          <div class="d-flex justify-content-between p-price"><span>Bàn thắng</span><span>{{player.goal}}</span></div>
-          <div class="d-flex justify-content-between p-price"><span>Kiến tạo</span><span>{{player.assist}}</span></div>
-          <div class="d-flex justify-content-between p-price"><span>Vị trí</span><span>{{player.role}}</span></div>
+          <div class="d-flex justify-content-between p-price text1"><span>Tuổi</span><span>{{player.age}}</span></div>
+          <div class="d-flex justify-content-between p-price text1" ><span>Bàn thắng</span><span>{{player.goal}}</span></div>
+          <div class="d-flex justify-content-between p-price text1"><span>Kiến tạo</span><span>{{player.assist}}</span></div>
+          <div class="d-flex justify-content-between p-price text1"><span>Vị trí</span><span>{{player.role}}</span></div>
       </div>
       
       <div class="d-flex justify-content-center mt-2">

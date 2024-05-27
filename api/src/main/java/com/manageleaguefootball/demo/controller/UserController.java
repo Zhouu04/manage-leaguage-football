@@ -26,7 +26,7 @@ public class UserController {
     return ResponseEntity.ok(savedUser);
   }
 
-  @PostMapping("/login")
+  @GetMapping("/login")
   public ResponseEntity<Boolean> loginUser(@RequestParam String email, @RequestParam String password) {
     boolean isValid = userService.checkPassword(email, password);
     if (isValid) {
