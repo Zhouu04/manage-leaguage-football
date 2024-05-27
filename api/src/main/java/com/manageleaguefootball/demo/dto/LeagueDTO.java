@@ -6,4 +6,5 @@ import lombok.Data;
 public class LeagueDTO {
     private String id;
     private String name;
+    private String logoUrl;
 }

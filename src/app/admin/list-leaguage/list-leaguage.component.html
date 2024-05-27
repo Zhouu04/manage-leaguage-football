@@ -2,7 +2,11 @@
 <div *ngIf="listLeaguage.length > 0; else noData" class="row row-cols-1 row-cols-md-3 g-4">
   <div *ngFor="let leaguage of listLeaguage; let i = index" class="col">
     <div  class="card">
-      <img src="./assets/img/anhbia1.jpg" class="card-img-top" alt="...">
+      <img src="./assets/img/anhbia2.jpg" class="card-img-top" alt="...">
+      <img *ngIf="leaguage.logoUrl; else noLogo" [src]="leaguage.logoUrl" class="card-img-top" style="object-fit: cover;" alt="logo">
+      <ng-template #noLogo>
+        <img src="./assets/img/anhbia2.jpg" class="card-img-top" alt="">
+      </ng-template>
       <div class="card-body">
         <h4 class="card-title">{{leaguage.name}}</h4>
         <button class="btn btn-sm btn-success" (click)="open(content, leaguage)" style="margin-right: 10px">
@@ -13,9 +17,13 @@
           <i class="fa-solid fa-trophy" style="color: #ffffff;"></i>
           Mùa giải
         </a>
-        <button class="btn btn-sm btn-danger" (click)="openDelete(deleteModal, leaguage)">
+        <button class="btn btn-sm btn-danger" style="margin-right: 10px" (click)="openDelete(deleteModal, leaguage)">
           <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
           Xóa
+        </button>
+        <button class="btn btn-sm btn-info" (click)="openUploadImage(uploadModal, leaguage.id)">
+          <i class="fa-regular fa-image" style="color: #ffffff;"></i>
+          Thêm ảnh bìa
         </button>
       </div>
       <ng-template #content let-modal>
@@ -59,84 +67,22 @@
   <p>Chưa có giải đấu nào được tạo</p>
 </ng-template>
 
-<!--<ng-container *ngIf="seasonValue">-->
-<!--  <div class="mt-7" *ngFor="let season of seasonValue">-->
-<!--    <div class="card">-->
-<!--      <div class="card-header">-->
-<!--        <h3>Danh sách mùa giải</h3>-->
-<!--      </div>-->
-<!--      <div class="card-body">-->
-<!--        <form [formGroup]="form">-->
-<!--          <div class="row">-->
-<!--            <div class="form-group mb-3">-->
-<!--              <label for="season">Tên mùa giải</label>-->
-<!--              <input type="text" id="season" class="form-control" [(ngModel)]="season.name" formControlName="season">-->
-<!--              <app-control-messages [control]="form.controls['season']" [label]="'Ten mua giai'"></app-control-messages>-->
-<!--            </div>-->
-
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--              <label for="place">Địa điểm thi đấu</label>-->
-<!--              <input type="text" id="place" class="form-control" [(ngModel)]="season.place" formControlName="place">-->
-<!--            </div>-->
-
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--              <label for="team">Số đội tham dự</label>-->
-<!--              <input type="number" id="team" class="form-control" [(ngModel)]="season.team" formControlName="team">-->
-<!--              <mat-error *ngIf="form.get('team')?.invalid && form .get('team')?.touched">-->
-<!--                Số đội tham dự không được bỏ trống-->
-<!--              </mat-error>-->
-<!--            </div>-->
-
-<!--&lt;!&ndash;            <div class="form-group col-md-6 mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;              <label>Thời gian bắt đầu</label>&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="input-group">&ndash;&gt;-->
-<!--&lt;!&ndash;                <input class="form-control" placeholder="dd-mm-yyyy" name="dp" [(ngModel)]="season.start" ngbDatepicker #d1="ngbDatepicker" formControlName="startTime">&ndash;&gt;-->
-<!--&lt;!&ndash;                <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d1.toggle()" type="button"></button>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <div class="form-group col-md-6 mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;              <label>Thời gian kết thúc</label>&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="input-group">&ndash;&gt;-->
-<!--&lt;!&ndash;                <input class="form-control" placeholder="dd-mm-yyyy" name="dp" [(ngModel)]="season.end" ngbDatepicker #d2="ngbDatepicker" formControlName="endTime">&ndash;&gt;-->
-<!--&lt;!&ndash;                <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--              <label for="tournamentType">Thể thức thi đấu</label>-->
-<!--              <select id="tournamentType" class="form-select" [(ngModel)]="season.tournamentType" formControlName="tournamentType">-->
-<!--                <option value="vongtron">Vòng tròn</option>-->
-<!--                <option value="loaitructiep">Loại trực tiếp</option>-->
-<!--              </select>-->
-<!--              <mat-error *ngIf="form.get('tournamentType')?.invalid && form .get('tournamentType')?.touched">-->
-<!--                Thể thức thi đấu không được bỏ trống-->
-<!--              </mat-error>-->
-<!--            </div>-->
-
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--              <label for="player">Số cầu thủ mỗi đội</label>-->
-<!--              <input type="number" id="player" class="form-control" [(ngModel)]="season.player" formControlName="player">-->
-<!--            </div>-->
-
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--              <label for="coach">Số thành viên ban huấn luyện</label>-->
-<!--              <input type="number" id="coach" class="form-control"  [(ngModel)]="season.coach" formControlName="coach">-->
-<!--            </div>-->
-
-<!--            <div class="form-group col-md-6 mb-3">-->
-<!--              <label for="time">Số phút 1 hiệp</label>-->
-<!--              <input type="number" id="time" class="form-control"  [(ngModel)]="season.time" formControlName="time">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--      <div class="card-footer">-->
-<!--        <button class="btn btn-sm btn-success" type="submit" (click)="submitForm()">Lưu</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</ng-container>-->
+<ng-template #uploadModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Cập nhật ảnh bìa giải đấu</h4>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group mb-3">
+      <label class="input-group-text"  for="inputGroupFile01">Upload</label>
+      <input type="file" (change)="onFileSelected($event)" class="form-control" id="inputGroupFile01">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">Đóng lại</button>
+    <button type="button" class="btn btn-primary" [disabled]="isLoading"  (click)="uploadImage(modal)"><i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i> {{button}}</button>
+  </div>
+</ng-template>
 
 
 

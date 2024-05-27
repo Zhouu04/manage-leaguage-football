@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {LeagueDTO} from "../../dto/LeagueDTO";
+import {TeamDTO} from "../../dto/TeamDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,16 @@ export class LeagueService {
 
   deleteLeague(id: any): Observable<void> {
     return this.http.delete<void>(this.apiUrl + "/" + id);
+  }
+
+  uploadImage(file: File, idLeague: string): Observable<LeagueDTO> {
+    const formData: FormData = new FormData();
+    formData.append('image', file);
+
+    return this.http.post<LeagueDTO>(`${this.apiUrl}/${idLeague}`, formData, {
+      headers: new HttpHeaders({
+        'enctype': 'multipart/form-data'
+      })
+    });
   }
 }

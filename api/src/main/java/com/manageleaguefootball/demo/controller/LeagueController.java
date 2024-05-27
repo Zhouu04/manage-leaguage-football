@@ -1,11 +1,14 @@
 package com.manageleaguefootball.demo.controller;
 
 import com.manageleaguefootball.demo.dto.LeagueDTO;
+import com.manageleaguefootball.demo.dto.TeamDTO;
 import com.manageleaguefootball.demo.service.LeagueService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -39,6 +42,12 @@ public class LeagueController {
         LeagueDTO league = service.deleteLeague(id);
         return ResponseEntity.ok(league);
     }
+
+  @PostMapping("/{id}")
+  public ResponseEntity<LeagueDTO> uploadImage(@RequestParam("image") MultipartFile file, @PathVariable String id){
+    LeagueDTO data = this.service.uploadImageLeague(file, id);
+    return new ResponseEntity<>(data, HttpStatus.OK);
+  }
 
 
 }
