@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(userDTO).subscribe({
       next: (success) => {
         if (success) {
+          localStorage.setItem('isLoggedIn', 'true');
           this.router.navigate(['admin']);
         } else {
           this.errMsg = 'User/Password is incorrect';
