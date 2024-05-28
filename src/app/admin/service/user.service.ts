@@ -20,12 +20,15 @@ export class UserService {
       );
   }
 
-  loginUser(email: string, password: string): Observable<boolean> {
-    return this.http.post<{ success: boolean }>(`${this.baseUrl}/login`, { email, password })
-      .pipe(
-        map(response => response.success),
-        catchError(this.handleError)
-      );
+  // loginUser(email: string, password: string): Observable<boolean> {
+  //   return this.http.post<{ success: boolean }>(`${this.baseUrl}/login`, { email, password })
+  //     .pipe(
+  //       map(response => response.success),
+  //       catchError(this.handleError)
+  //     );
+  // }
+  login(userDTO: UserDTO): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/login`, userDTO);
   }
 
   checkEmailExists(email: string): Observable<boolean> {
@@ -37,14 +40,14 @@ export class UserService {
   }
 
   private handleError(error: any): Observable<never> {
-    console.error('An error occurred', error); 
+    console.error('An error occurred', error);
     return throwError(error);
   }
 
   logout(): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/logout`, {}).pipe(
       map(() => {
-        
+
         this.router.navigateByUrl('/home');
       }),
       catchError(this.handleError)

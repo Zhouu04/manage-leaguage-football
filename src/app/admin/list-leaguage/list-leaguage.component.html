@@ -2,7 +2,7 @@
 <div *ngIf="listLeaguage.length > 0; else noData" class="row row-cols-1 row-cols-md-3 g-4">
   <div *ngFor="let leaguage of listLeaguage; let i = index" class="col">
     <div  class="card">
-      <img src="./assets/img/anhbia2.jpg" class="card-img-top" alt="...">
+<!--      <img src="./assets/img/anhbia2.jpg" class="card-img-top" alt="...">-->
       <img *ngIf="leaguage.logoUrl; else noLogo" [src]="leaguage.logoUrl" class="card-img-top" style="object-fit: cover;" alt="logo">
       <ng-template #noLogo>
         <img src="./assets/img/anhbia2.jpg" class="card-img-top" alt="">

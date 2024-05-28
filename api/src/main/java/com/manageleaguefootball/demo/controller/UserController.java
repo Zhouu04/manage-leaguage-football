@@ -26,13 +26,18 @@ public class UserController {
     return ResponseEntity.ok(savedUser);
   }
 
+//  @PostMapping("/login")
+//  public ResponseEntity<Boolean> loginUser(@RequestParam String email, @RequestParam String password) {
+//    boolean isValid = userService.checkPassword(email, password);
+//    if (isValid) {
+//      return ResponseEntity.ok(true);
+//    }
+//    return ResponseEntity.status(401).body(false);
+//  }
+
   @PostMapping("/login")
-  public ResponseEntity<Boolean> loginUser(@RequestParam String email, @RequestParam String password) {
-    boolean isValid = userService.checkPassword(email, password);
-    if (isValid) {
-      return ResponseEntity.ok(true);
-    }
-    return ResponseEntity.status(401).body(false);
+  public boolean login(@Valid @RequestBody UserDTO userDTO) {
+    return userService.login(userDTO);
   }
 
   @GetMapping("/check-email")

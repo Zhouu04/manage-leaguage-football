@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
   public boolean checkEmailExists(String email) {
     return userRepository.findUserByEmail(email).isPresent();
   }
+
+  @Override
+  public boolean login(UserDTO userDTO) {
+    return userRepository.existsByUsernameAndPassword(userDTO.getUsername(), userDTO.getPassword());
+  }
 }
