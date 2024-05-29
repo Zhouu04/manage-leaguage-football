@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      fullname: ['', Validators.required],
       username: ['', [Validators.required]],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', [Validators.required]],
@@ -55,23 +54,24 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
-      const user: UserDTO = this.registerForm.value;
-      console.log(user);
+    // this.submitted = true;
+      if(this.registerForm.valid) {
+        const user: UserDTO = this.registerForm.value;
+        this.userService.registerUser(user).subscribe(
+          response => {
+            console.log(response);
+            if(response) {
+              this.registrationSuccess = true;
+              this.router.navigate(['/login']);
+            }
+          },
+          error => {
+            this.errMsg = 'Registration failed. Please try again.';
+            console.error('Registration error:', error);
+          }
+        );
+      }
 
-      // this.userService.registerUser(user)
 
-      this.userService.registerUser(user).subscribe(
-        response => {
-          this.registrationSuccess = true;
-          this.router.navigate(['/login']);
-          console.log('Da chay vao submit')
-        },
-        error => {
-          this.errMsg = 'Registration failed. Please try again.';
-          console.error('Registration error:', error);
-        }
-      );
-    console.log('Da submit xong')
   }
 }
