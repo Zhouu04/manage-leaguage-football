@@ -1,6 +1,8 @@
 
 
-
+* {
+  transition: all 0.2s linear;
+}
 mat-sidenav-content {
   overflow-x: hidden; /* Ngăn chặn thanh trượt ngang */
 }

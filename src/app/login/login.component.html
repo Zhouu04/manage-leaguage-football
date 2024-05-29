@@ -6,16 +6,12 @@
 
     <form [formGroup]="loginForm" class="sign-in-form bg-white p-3" style="border-radius: 10px; width: 400px">
       <h2 class="text-center">Đăng Nhập</h2>
-
       <div class="form-group">
         <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Email</mat-label>
-          <input formControlName="email" matInput placeholder="Email">
-          <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">
-            Email không được bỏ trống
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.errors?.['minlength']">
-            Email phải chứa ít nhất 6 ký tự
+          <mat-label>Tên đăng nhập</mat-label>
+          <input formControlName="username" matInput placeholder="Ten dang nhap">
+          <mat-error *ngIf="loginForm.get('username')?.errors?.['required']">
+            Tên đăng nhập không được bỏ trống
           </mat-error>
         </mat-form-field>
       </div>
@@ -46,7 +42,7 @@
       </div>
 
       <div class="text-danger mt-2" *ngIf="errMsg">{{ errMsg }}</div>
-      
+
     </form>
   </div>
 </div>

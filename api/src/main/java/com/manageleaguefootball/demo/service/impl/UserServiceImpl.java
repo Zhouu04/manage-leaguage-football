@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     return userRepository.findUserByEmail(email).isPresent();
   }
 
-   @Override
+  @Override
   public boolean login(UserDTO userDTO) {
     return userRepository.existsByUsernameAndPassword(userDTO.getUsername(), userDTO.getPassword());
   }

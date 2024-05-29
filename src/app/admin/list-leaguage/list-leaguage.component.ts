@@ -14,8 +14,12 @@ import {Router} from "@angular/router";
 })
 export class ListLeaguageComponent implements OnInit{
   listLeaguage: any[] = [] ;
+  idLeague: any;
+  selectedFile: File | null = null;
   dataUpdate: LeagueDTO;
   closeResult = '';
+  isLoading = false;
+  button = 'Cập nhật';
   form: FormGroup;
   constructor(private leaguageService: LeagueService,
               private modalService: NgbModal,
@@ -90,6 +94,39 @@ export class ListLeaguageComponent implements OnInit{
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  uploadImage(modal: any) {
+    if (this.selectedFile && this.idLeague) {
+      this.isLoading = true;
+      this.button = 'Processing';
+      this.leaguageService.uploadImage(this.selectedFile, this.idLeague).subscribe(data => {
+        this.isLoading = false;
+        this.button = 'Cập nhật';
+        this.initData();
+        modal.close();
+      });
+    }
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
+
+  openUploadImage(content: any, id: string) {
+    this.idLeague = id;
+    this.selectedFile = null; // Reset the selected file
+    this.modalService.open(content, { size: '' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    );
   }
 
 }

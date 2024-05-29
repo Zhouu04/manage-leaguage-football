@@ -1,5 +1,6 @@
 package com.manageleaguefootball.demo.service.impl;
 
+import com.cloudinary.Cloudinary;
 import com.manageleaguefootball.demo.dto.LeagueDTO;
 import com.manageleaguefootball.demo.model.League;
 import com.manageleaguefootball.demo.repository.LeagueRepository;
@@ -10,9 +11,12 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,6 +24,8 @@ import java.util.stream.Collectors;
 public class LeagueServiceImpl implements LeagueService {
     private final LeagueRepository repository;
     private final SeasonRepository seasonRepository;
+    private final Cloudinary cloudinary;
+
 
     public static ModelMapper mapper() {
         ModelMapper modelMapper = new ModelMapper();
@@ -71,5 +77,21 @@ public class LeagueServiceImpl implements LeagueService {
         seasonRepository.deleteByIdLeague(id);
         repository.delete(league);
         return mapToView(league);
+    }
+    @Override
+    public LeagueDTO uploadImageLeague(MultipartFile file, String id)  {
+      try{
+        Map data = this.cloudinary.uploader().upload(file.getBytes(), Map.of());
+        String img = (String) data.get("secure_url");
+        League league = this.repository.findById(id).orElse(null);
+        if(league == null) {
+          throw new IllegalArgumentException("League not found");
+        }
+        league.setLogoUrl(img);
+        repository.save(league);
+        return mapToView(league);
+      }catch (IOException io){
+        throw new RuntimeException("Image upload fail");
+      }
     }
 }

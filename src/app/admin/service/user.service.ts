@@ -33,14 +33,14 @@ export class UserService {
   }
 
   private handleError(error: any): Observable<never> {
-    console.error('An error occurred', error); 
+    console.error('An error occurred', error);
     return throwError(error);
   }
 
   logout(): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/logout`, {}).pipe(
       map(() => {
-        
+
         this.router.navigateByUrl('/home');
       }),
       catchError(this.handleError)
