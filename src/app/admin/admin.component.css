@@ -70,3 +70,27 @@ mat-sidenav-container {
   padding: 0 4px;
 }
 
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sign-out-button {
+  color: white;
+  align-self: center;
+  background-color: red;
+  padding: 10px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+
+}
+.matt-tb{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sign-out-button:hover {
+  transform: scale(1.1);
+}
+

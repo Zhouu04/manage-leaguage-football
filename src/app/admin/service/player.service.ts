@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PlayerDTO } from 'src/app/dto/PlayerDTO';
 
@@ -9,6 +9,7 @@ import { PlayerDTO } from 'src/app/dto/PlayerDTO';
 
 export class PlayerService {
     private apiUrl = 'http://localhost:8080/api/v1/players';
+    private cloudinaryUrl = 'http://localhost:8080/api/v1/avatar';
 
     constructor(private http: HttpClient) { }
     createPlayer(playerData: PlayerDTO): Observable<any> {
@@ -30,6 +31,17 @@ export class PlayerService {
       }
     getPlayerByOrderGoal(id: string | null): Observable<PlayerDTO[]> {
       return this.http.get<PlayerDTO[]>(`${this.apiUrl}/ranks/${id}`);
+    }
+
+    uploadAvatar(file: File, playerId: string): Observable<PlayerDTO> {
+      const formData: FormData = new FormData();
+      formData.append('avatar', file);
+  
+      return this.http.post<PlayerDTO>(`${this.cloudinaryUrl}/${playerId}`, formData, {
+        headers: new HttpHeaders({
+          'enctype': 'multipart/form-data'
+        })
+      });
     }
 
 }

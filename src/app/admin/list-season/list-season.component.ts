@@ -101,4 +101,8 @@ export class ListSeasonComponent implements OnInit{
       return `with: ${reason}`;
     }
   }
+
+  toggleDetails(index: number): void {
+    this.seasons[index].showDetails = !this.seasons[index].showDetails;
+  }
 }

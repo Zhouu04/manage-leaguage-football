@@ -45,8 +45,8 @@
     </div>
  </ng-template>
 
- <ng-template #formtopgoal let modal>
-  <div class="modal-content" style="width: 1000px; ">
+ <ng-template #formtopgoal  >
+  <div class="modal-content" >
     <h2 class="topvua" >Danh sách top ghi bàn</h2>
     
   
@@ -69,9 +69,9 @@
   <div class="topvua" >Danh sách top kiến tạo</div>
   
 
-  <div class="pricingdiv">
+  <div class="pricingdiv ">
     <div *ngIf="topAssist?.length > 0; else noData" class="row row-cols-1 row-cols-md-4 g-3 " >
-    <ul class="theplan"  *ngFor="let player of topAssist; let i = index">
+    <ul class="theplan"   *ngFor="let player of topAssist; let i = index">
       <li class="title"><b>Top {{i+1}} </b><br />{{player.name}}</li>
       <li><b>Vị trí:</b> {{player.role}}</li>
       <li style="text-align: left;"><b >Số kiến tạo:</b> {{player.assist}}</li>
@@ -88,31 +88,56 @@
   <div *ngFor="let player of players$; let i = index">
  <div class="d-flex justify-content-center container mt-7" >
   <div class="card p-3 bg-white" >
-      <div class="about-product text-center mt-2"><img src="https://logowik.com/content/uploads/images/football-team321.logowik.com.webp" width="200">
-          <div style="background-color: black">
-              <h4 style="color: red; font-weight: bold; text-transform: uppercase;">{{player.name}}</h4>
+      <div class="about-product text-center mt-2">
+        <img *ngIf="player.avatar; else noLogo" [src]="player.avatar"  class="team-logo">
+        <ng-template #noLogo>
+          <img src="./assets/img/defaultLogo.jpg" class="team-logo" alt="">
+        </ng-template>
+          <div >
+              <h4 style="color: red; font-weight: bold; text-transform: uppercase; margin-top: 10px;">{{player.name}}</h4>
     
           </div>
       </div>
       <div class="stats mt-2" >
-          <div class="d-flex justify-content-between p-price"><span>Tuổi</span><span>{{player.age}}</span></div>
-          <div class="d-flex justify-content-between p-price"><span>Bàn thắng</span><span>{{player.goal}}</span></div>
-          <div class="d-flex justify-content-between p-price"><span>Kiến tạo</span><span>{{player.assist}}</span></div>
-          <div class="d-flex justify-content-between p-price"><span>Vị trí</span><span>{{player.role}}</span></div>
+          <div class="d-flex justify-content-between p-price text1"><span>Tuổi</span><span>{{player.age}}</span></div>
+          <div class="d-flex justify-content-between p-price text1" ><span>Bàn thắng</span><span>{{player.goal}}</span></div>
+          <div class="d-flex justify-content-between p-price text1"><span>Kiến tạo</span><span>{{player.assist}}</span></div>
+          <div class="d-flex justify-content-between p-price text1"><span>Vị trí</span><span>{{player.role}}</span></div>
       </div>
       
       <div class="d-flex justify-content-center mt-2">
-        <button class="btn btn-sm btn-success" placement="top" ngbTooltip="Cập nhật" style="margin-right: 10px; width: 40px;" (click)="openUpdate(update, player)">
+        <button class="btn btn-sm btn-success" placement="top" ngbTooltip="Cập nhật" style="margin-right: 10px; width: 40px; " (click)="openUpdate(update, player)">
           <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
         </button>
         <button class="btn btn-sm btn-danger" placement="top" ngbTooltip="Xoá" style="margin-right: 10px; width: 40px;" (click)="openDelete(deleteModal, player.id)">
           <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+        </button>
+        <button class="btn btn-sm btn-info" placement="top" ngbTooltip="Cập nhật avatar"  style="margin-right: 10px; width: 40px;"  (click)="openUploadAvatar(uploadModal, player.id)">
+          <i class="fa-solid fa-upload" style="color: #ffffff;"></i>
+     
         </button>
       </div>
   </div>
 </div>
 </div>
  </div>
+
+ <ng-template #uploadModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Cập nhật avatar</h4>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group mb-3">
+      <label class="input-group-text"  for="inputGroupFile01">Upload</label>
+      <input type="file" (change)="onFileSelected($event)" class="form-control" id="inputGroupFile01">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">Đóng lại</button>
+    <button type="button" class="btn btn-primary" [disabled]="isLoading"  (click)="uploadAvatar(modal)"><i class="fa" [ngClass]="{'fa-spin fa-spinner': isLoading, 'fa-check': !isLoading}"></i> {{button}}</button>
+  </div>
+</ng-template>
 
 <ng-template #noData>
   Chưa có cầu thủ nào được thêm

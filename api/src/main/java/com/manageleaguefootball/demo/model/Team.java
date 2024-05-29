@@ -23,5 +23,5 @@ public class Team {
   private int goalWin;
   private int goalLoss;
   private int difference;
-  private String logoUrl; // Thêm thuộc tính này
+  private String logoUrl;
 }

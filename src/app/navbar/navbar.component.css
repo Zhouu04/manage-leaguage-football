@@ -1,0 +1,14 @@
+@media screen and (max-width: 768px) {
+    .nav-item {
+      margin-right: 0px;
+    }
+    .navbar-nav {
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+      }
+  }
+
+  
+
+ 

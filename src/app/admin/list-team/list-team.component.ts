@@ -150,4 +150,8 @@ export class ListTeamComponent implements OnInit {
     );
   }
 
+  toggleDetails(index: number): void {
+    this.teams$[index].showDetails = !this.teams$[index].showDetails;
+  }
+
 }

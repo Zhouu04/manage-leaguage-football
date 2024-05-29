@@ -39,6 +39,9 @@ export class ListPlayerComponent implements OnInit{
     topAssist: any;
     closeResult: any;
     dataUpdate: any;
+    isLoading = false;
+    selectedFile: File | null = null;
+    button = 'Cập nhật';
     
     team: any;
   
@@ -151,6 +154,39 @@ export class ListPlayerComponent implements OnInit{
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+    }
+
+    uploadAvatar(modal: any) {
+      if (this.selectedFile && this.idPlayer) {
+        this.isLoading = true;
+        this.button = 'Processing';
+        this.playerService.uploadAvatar(this.selectedFile, this.idPlayer).subscribe(data => {
+          this.isLoading = false;
+          this.button = 'Cập nhật';
+          this.reloadData();
+          modal.close();
+        });
+      }
+    }
+
+    openUploadAvatar(content: any, id: string) {
+      this.idPlayer = id;
+      this.selectedFile = null; 
+      this.modalService.open(content, { size: '' }).result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        },
+      );
+    }
+
+    onFileSelected(event: any) {
+      const file: File = event.target.files[0];
+      if (file) {
+        this.selectedFile = file;
+      }
     }
     
 

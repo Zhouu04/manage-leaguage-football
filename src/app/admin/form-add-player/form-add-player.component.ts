@@ -72,14 +72,14 @@ export class FormAddPlayerComponent implements OnInit {
     }
   
     setDataUpdate() {
-      this.formplayer = this.fb.group({
-        name: this.formplayer.value.name,
-        age: this.formplayer.value.age,
-        goal: this.formplayer.value.goal,
-        role: this.formplayer.value.role,
-        assist: this.formplayer.value.assist
-      });
-  
-     
+      if (this.dataUpdate) {
+        this.formplayer.patchValue({
+          name: this.dataUpdate.name,
+          age: this.dataUpdate.age,
+          goal: this.dataUpdate.goal,
+          role: this.dataUpdate.role,
+          assist: this.dataUpdate.assist
+        });
+      }
     }
 }

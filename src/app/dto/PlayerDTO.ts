@@ -6,4 +6,5 @@ export interface PlayerDTO{
     assist?: number;
     name?: string;
     role?: string;
+    
 }

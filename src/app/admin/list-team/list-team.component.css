@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 .team-logo {
   width: 30px;  /* Adjust the width as needed */
   height: 30px;  /* Adjust the height as needed */
@@ -6,3 +8,58 @@
   vertical-align: middle;  /* Aligns the image with the text */
   border-radius: 50%;  /* Makes the image circular if it's a square */
 }
+
+
+
+.search-container {
+  display: flex;
+ 
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-input{
+  margin-right: 10px;
+}
+
+
+.btn-primary {
+  margin-left: 10px;
+}
+
+
+
+
+@media (max-width: 768px) {
+	
+	.d-none-sm {
+	  display: none !important;
+	}
+  
+	
+	.details {
+	  display: block;
+	  margin-top: 10px;
+	}
+  
+	.details p {
+	  margin: 0;
+	  padding: 2px 0;
+	}
+
+  .btn-config {
+    margin-bottom: 10px;
+	width: 70%;  
+  }
+  .btn-con {
+    margin-bottom: 10px;
+	width: 70%;  
+  }
+
+  
+
+  
+ 
+  
+}
+

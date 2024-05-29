@@ -7,6 +7,10 @@ body{
 	width: 250px;
 	border-radius: 20px;
 	filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0,0,30,0.5));
+	display: flex;                /* Make the card a flex container */
+    justify-content: center;      /* Center horizontally */
+    align-items: center; 
+	
 }
 
 .card-img-top{
@@ -47,17 +51,49 @@ small.justify-content-center{
 	cursor: pointer;
 	text-decoration: underline;
 }
+.search-container {
+	width: 100%;
+	max-width: 600px; /* Đặt độ rộng tối đa cho thanh tìm kiếm */
+	margin: 0 auto 20px auto; /* Căn giữa và thêm khoảng cách dưới */
+  }
+  
+  .search-input {
+	width: 100%; /* Đảm bảo thanh tìm kiếm chiếm hết độ rộng của container */
+  }
 
 @media screen and (max-width:600px){
     .col-sm-4{
         margin-bottom: 50px;
     }
+	.search-container  {
+    
+		width: 100%;
+		max-width: 400px; 
+		height: auto; 
+		padding: 8px; 
+		margin: 0 auto;
+	  }
+	.pageable{
+		width:100%;
+		max-width: 400px; 
+		height: auto; 
+		padding: 2px; 
+		margin: 0 auto;
+	}
+
+	.d-none-sm {
+		display: none !important;
+	  }
 }
 .team-logo{
-	    width: 240px;  /* Adjust the width as needed */
-		height: 240px;  /* Adjust the height as needed */
+	    width: 150px;  /* Adjust the width as needed */
+		height: 150px;  /* Adjust the height as needed */
 		object-fit: cover;
 		margin-right: 0px;  /* Adjust the spacing as needed */
 		vertical-align: middle;  /* Aligns the image with the text */
-		border-radius: 5%;  /* Makes the image circular if it's a square */
+		border-radius: 100%; 
+		margin-top: 10px;
+		
+		
+
 }

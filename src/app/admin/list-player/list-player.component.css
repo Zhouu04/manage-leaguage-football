@@ -8,18 +8,19 @@
   font-weight: bold;
   font-size: 2.5em;
   padding:10px;
+  margin-bottom: 0%;
   background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-black-retro-football-movie-ad-background-picture-image_911623.jpg");
 }
 .modal-content{
-  background-color: #000;
-  width: 1000px;
+  
+  width: 110%;
   border:0px;
 }
 .card {
   background-color: rgba(255, 255, 255, 0.8); 
   border: none; 
   filter: drop-shadow(0.4rem 0.4rem 0.45rem rgba(0,0,30,0.5));
-  color: #000; 
+  background-image: url("https://t3.ftcdn.net/jpg/01/91/49/26/360_F_191492670_3c0KFlQkkJAtsyamdOGWssR1AWvgVagP.jpg"); 
 }
 .table1{
   background-color: (45deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);; 
@@ -34,10 +35,11 @@
   display: flex;
   flex-wrap: wrap;
   font-size: 16px;
-  justify-content: center;
+  align-items: center;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   background-image: url("https://watermark.lovepik.com/photo/50091/3009.jpg_wh1200.jpg");
-  
+  justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
+  align-items: center; /* Căn giữa các phần tử theo chiều dọc */
   
 }
 
@@ -48,27 +50,19 @@
   display: flex;
   flex-direction: column;
   color: gold;
-  width: 260px; 
+  width: 230px; 
   margin-right: 20px; 
   margin-bottom: 1em;
   border: 1px solid gray;
   transition: all .5s;
   background-image: url("https://t3.ftcdn.net/jpg/06/70/44/34/360_F_670443478_r0mjj5XHq5twVf8FwPzRbfXHYSEVH0Fy.jpg");
   outline: none;
- 
+  border-radius: 3%;
 }
 
-.pricingdiv ul.theplan:hover{ 
-  transform: scale(1.05);
-  transition: all .5s;
-  z-index: 100;
-  box-shadow: 0 0 10px gray;
-}
 
-.pricingdiv ul.theplan .center{
-  margin: 0 auto;
-  text-align: center;
-}
+
+
 
 .pricingdiv ul.theplan img{
   max-width: 80%;
@@ -89,7 +83,7 @@
   color: white;
   box-shadow: 0 -10px 5px rgba(0,0,0,.1) inset;
   text-transform: uppercase;
- 
+
   
 }
 
@@ -112,7 +106,7 @@
 }
 
 .pricingdiv ul.theplan:last-of-type{ 
-  margin-right: 0;
+  margin-right: 10px;
 }
 
 
@@ -121,15 +115,45 @@
   margin-top: auto; 
 }  
 
+.search-container {
+  margin-bottom: 15px; /* Space below search bar */
+  width: 100%;
+  max-width: 400px; /* Adjust the max-width to the desired size */
+}
+
+.search-container .form-control {
+  width: 100%; /* Full width of the container */
+}
+
+.team-logo{
+  width: 150px;  /* Adjust the width as needed */
+height: 150px;  /* Adjust the height as needed */
+object-fit: cover;
+margin-right: 0px;  /* Adjust the spacing as needed */
+vertical-align: middle;  /* Aligns the image with the text */
+border-radius: 100%; 
+margin-top: 10px;
+border: 5px solid rgb(189, 130, 238);
 
 
-@media only screen and (max-width: 200px) {
-  .pricingdiv ul.theplan{
-    border-radius: 0;
-    width: 100%;
-    margin-right: 0;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .pricingdiv{
+    justify-content: center;
+    align-items: center;
   }
-  
+  .pricingdiv ul.theplan{
+     margin-left: 20%;
+     width: 260px;
+  }
+
+ 
   .pricingdiv ul.theplan:hover{
     transform: none;
     box-shadow: none;
@@ -139,4 +163,23 @@
     display: block;
   }
   
+  .button-container {
+    justify-content: space-between;
+  }
+  .modal-content {
+    width: 100%;
+    
+    justify-content: center;
+    
+    
+    padding: 0px;
+}
+ 
+
+  
+}
+
+
+.text1{
+  color: goldenrod;
 }
