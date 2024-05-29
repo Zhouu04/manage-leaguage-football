@@ -20,12 +20,8 @@ export class UserService {
       );
   }
 
-  loginUser(email: string, password: string): Observable<boolean> {
-    return this.http.post<{ success: boolean }>(`${this.baseUrl}/login`, { email, password })
-      .pipe(
-        map(response => response.success),
-        catchError(this.handleError)
-      );
+  login(userDTO: UserDTO): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/login`, userDTO);
   }
 
   checkEmailExists(email: string): Observable<boolean> {

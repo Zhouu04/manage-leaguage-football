@@ -7,3 +7,50 @@ input {
   color: #f34541;
   margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+  .d-sm{
+	  display: none !important;
+	}
+
+  .dd{
+    width:30%;
+  }
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-name {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.score-input {
+  width: 50px;
+  text-align: center;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  
+
+  
+
+  .score-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+

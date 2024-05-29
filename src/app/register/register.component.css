@@ -20,20 +20,20 @@
 }
 
 .logo {
-  width: 200px; /* Điều chỉnh kích thước của logo theo ý muốn */
+  width: 200px; 
   height: auto;
 }
 
 .social-login-icons button mat-icon {
-  font-size: 24px; /* Điều chỉnh kích thước của biểu tượng */
-  color: #3b5998; /* Màu của biểu tượng Facebook */
+  font-size: 24px; 
+  color: #3b5998; 
 }
 
 .social-login-icons button:nth-child(2) mat-icon {
-  color: #db4437; /* Màu của biểu tượng Google */
+  color: #db4437; 
 }
 
 .red-text-button a {
   color: white;
-  text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+  text-decoration: none; 
 }

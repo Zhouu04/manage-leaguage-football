@@ -15,36 +15,46 @@
           <tr>
             <th>Stt</th>
             <th class="text-center">Chủ nhà</th>
-            <th class="text-center">Tỉ số</th>
+            <th class="text-center dd">Tỉ số</th>
             <th class="text-center">Đội khách</th>
-            <th class="text-center">Trạng thái</th>
-            <th class="text-center">Cấu hình</th>
+            <th class="text-center d-sm">Trạng thái</th>
+            <th class="text-center d-sm">Cấu hình</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let data of schedule; let j =  index">
             <td>{{j + 1}}</td>
             <td class="text-center">{{data.teamHome}}</td>
-            <td class="text-center">
+            <td class="text-center dd">
               <div class="score"  *ngIf="data.status; else noScore" >
                 {{data.homeScore}} - {{data.awayScore}}
               </div>
               <ng-template #noScore >
                 <span>-</span>
               </ng-template>
+
+              <div class="d-block d-lg-none mt-2">
+                <span *ngIf="data.status; else update" class="badge text-bg-success">Đã thi đấu</span>
+                <ng-template #update>
+                  <span class="badge text-bg-danger">Chưa thi đấu</span>
+                </ng-template>
+                <button class="btn btn-sm btn-danger mt-2" (click)="openFormUpdate(formUpdate, data)">Cập nhật tỉ số</button>
+              </div>
+
             </td>
             <td class="text-center">{{data.teamAway}}</td>
-            <td class="text-center">
+            <td class="text-center d-sm">
 
-              <span *ngIf="data.status; else update" class="badge text-bg-success">Đã thi đấu</span>
+              <span *ngIf="data.status; else update" class="badge text-bg-success ">Đã thi đấu</span>
               <ng-template #update >
                 <span class="badge text-bg-danger">
                   Chưa thi đấu
                 </span>
               </ng-template>
+              
             </td>
-            <td class="d-flex justify-content-center">
-              <button class="btn btn-sm btn-danger" (click)="openFormUpdate(formUpdate, data)" >Cập nhật tỉ số</button>
+            <td class="d-flex justify-content-center d-sm">
+              <button class="btn btn-sm btn-danger " (click)="openFormUpdate(formUpdate, data)" >Cập nhật tỉ số</button>
             </td>
           </tr>
           </tbody>
@@ -59,22 +69,16 @@
     <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
-    <div class="row" [formGroup]="form">
-      <div class="col-sm-6 text-end" >
-        <span style="margin-right: 10px; margin-bottom: 8px">
-          {{dataUpdate.teamHome}}
-        </span>
-        <input formControlName="homeScore" type="number" >
+    <div class="form-container" [formGroup]="form">
+      <div class="team-score">
+        <span class="team-name">{{dataUpdate.teamHome}}</span>
+        <input formControlName="homeScore" type="number" class="score-input">
       </div>
-
-      <div class="col-sm-6">
-        <input formControlName="awayScore" style="margin-right: 10px" type="number" >
-        <span style="margin-bottom: 8px">
-          {{dataUpdate.teamAway}}
-        </span>
+      <div class="team-score">
+        <input formControlName="awayScore" type="number" class="score-input">
+        <span class="team-name">{{dataUpdate.teamAway}}</span>
       </div>
     </div>
-
   </div>
   <div class="modal-footer">
     <button class="btn btn-danger" (click)="updateScore()">Cập nhật</button>

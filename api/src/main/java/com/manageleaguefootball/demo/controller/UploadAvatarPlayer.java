@@ -11,19 +11,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v1/cloudinary")
+@RequestMapping("/api/v1/avatar")
 @RequiredArgsConstructor
-public class CloudinaryImageUploadController {
+public class UploadAvatarPlayer {
 
   private final CloudinaryService cloudinaryService;
 
+
+
   @PostMapping("/{id}")
-  public ResponseEntity<TeamDTO> uploadImage(@RequestParam("image") MultipartFile file, @PathVariable String id){
-    TeamDTO data = this.cloudinaryService.upload(file, id);
+  public ResponseEntity<PlayerDTO> uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable String id){
+    PlayerDTO data = this.cloudinaryService.uploadAvatar(file, id);
     return new ResponseEntity<>(data, HttpStatus.OK);
   }
-
-
 
 
 }

@@ -13,7 +13,7 @@ public class PlayerDTO {
   private int goal;
   private int assist;
   private String idTeam;
-
+   private String avatar;
 
 
 

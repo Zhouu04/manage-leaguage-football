@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../admin/service/user.service';
+import {UserDTO} from "../dto/UserDTO";
 
 @Component({
   selector: 'app-login',
@@ -20,28 +21,36 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      username: ['',Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       rememberMe: false
     });
   }
 
   login() {
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
-    this.userService.loginUser(email, password).subscribe(
-      success => {
+    const userDTO: UserDTO = {
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password,
+    };
+
+    console.log(userDTO);
+
+    this.userService.login(userDTO).subscribe({
+      next: (success) => {
         if (success) {
+          localStorage.setItem('isLoggedIn', 'true');
           this.router.navigate(['admin']);
         } else {
           this.errMsg = 'User/Password is incorrect';
         }
       },
-      error => {
-        console.error('An error occurred:', error);
-        this.errMsg = 'An error occurred. Please try again later.';
+      error: (error) => {
+        console.error('Login error', error);
+      },
+      complete: () => {
+        console.log('Login request completed');
       }
-    );
+    });
   }
-  
+
 }

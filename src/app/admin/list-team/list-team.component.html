@@ -1,12 +1,15 @@
  <ng-container *ngIf="teams$; else loadingValue">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between align-items-center">
     <h1> <i class="fa-solid fa-table-list mr-3" style="color: #74C0FC;"></i> Danh sách đội bóng</h1>
-    <div class="input-group mb-3 search-container">
-      <span class="input-group-text search" id="inputGroup-sizing-default"><i class="fa-solid fa-magnifying-glass" style="color: #B197FC"></i></span>
-      <input type="search" [(ngModel)]="searchText" class="form-control search-container" placeholder="Ten doi bong ">
-    </div>
   </div>
-  <button class="btn btn-primary mb-3"   (click)="open(formteam)">Thêm đội bóng</button>
+  <div class="input-group mb-3 search-container">
+    <span class="input-group-text" id="inputGroup-sizing-default">
+      <i class="fa-solid fa-magnifying-glass" style="color: #B197FC;"></i>
+    </span>
+    <input type="search" [(ngModel)]="searchText" class="form-control search-input" placeholder="Tên đội bóng ">
+    <button class="btn btn-primary" (click)="open(formteam)">Thêm đội bóng</button>
+  </div>
+  
 
   <table class="table">
     <thead>
