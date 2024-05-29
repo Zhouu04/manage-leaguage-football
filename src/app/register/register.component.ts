@@ -27,14 +27,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group({
       fullname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', [Validators.required]],
     },
-      {
-        validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
-      }
     );
   }
 
@@ -65,7 +61,7 @@ export class RegisterComponent implements OnInit {
       this.userService.registerUser(user).subscribe(
         response => {
           this.registrationSuccess = true;
-          this.router.navigate(['/login']); 
+          this.router.navigate(['/login']);
         },
         error => {
           this.errMsg = 'Registration failed. Please try again.';

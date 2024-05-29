@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password,
     };
 
-    console.log(userDTO);
-
     this.userService.login(userDTO).subscribe({
       next: (success) => {
         if (success) {

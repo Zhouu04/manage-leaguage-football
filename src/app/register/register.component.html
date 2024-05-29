@@ -7,29 +7,29 @@
 
     <form [formGroup]="registerForm" class="sign-in-form bg-white p-3" style="border-radius: 10px; width: 400px">
       <h2 class="text-center">Đăng Ký</h2>
-      <div class="form-group">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Tên</mat-label>
-          <input formControlName="fullname" matInput placeholder="Tên"/>
-          <mat-error *ngIf="fullname?.invalid && fullname?.errors">
-            Tên không được bỏ trống
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-group">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Email</mat-label>
-          <input formControlName="email" matInput placeholder="Email"/>
-          <mat-error *ngIf="email?.invalid && email?.errors">
-            Email không hợp lệ
-          </mat-error>
-        </mat-form-field>
-      </div>
+<!--      <div class="form-group">-->
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Tên</mat-label>-->
+<!--          <input formControlName="fullname" matInput placeholder="Tên"/>-->
+<!--          <mat-error *ngIf="registerForm.get('fullname')?.errors?.['required']">-->
+<!--            Tên không được bỏ trống-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Email</mat-label>-->
+<!--          <input formControlName="email" matInput placeholder="Email"/>-->
+<!--          <mat-error *ngIf="email?.invalid && email?.errors">-->
+<!--            Email không hợp lệ-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
       <div class="form-group">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Tên đăng nhập</mat-label>
           <input formControlName="username" matInput placeholder="Tên đăng nhập"/>
-          <mat-error *ngIf="username?.invalid && username?.errors">
+          <mat-error *ngIf="registerForm.get('username')?.errors?.['required']">
             Tên đăng nhập không hợp lệ
           </mat-error>
         </mat-form-field>
@@ -38,7 +38,7 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Mật khẩu</mat-label>
           <input formControlName="password" type="password" matInput placeholder="Mật khẩu"/>
-          <mat-error *ngIf="password?.invalid && password?.errors">
+          <mat-error *ngIf="registerForm.get('password')?.errors?.['required']">
             Mật khẩu không hợp lệ
           </mat-error>
         </mat-form-field>
@@ -47,20 +47,20 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Xác nhận mật khẩu</mat-label>
           <input formControlName="confirmPassword" type="password" matInput placeholder="Xác nhận mật khẩu"/>
-          <mat-error *ngIf="confirmPassword?.invalid && confirmPassword?.errors">
+          <mat-error *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">
             Mật khẩu xác nhận không khớp
           </mat-error>
         </mat-form-field>
       </div>
-      
+
       <div class="row-control row-actions">
-        <button mat-raised-button color="primary" (click)="onSubmit()" type="button" class="red-text-button">Đăng ký</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()"  class="red-text-button">Đăng ký</button>
       </div>
 
       <div class="text-center mt-3">
         <p>Bạn đã có tài khoản? <a routerLink="/login">Đăng nhập</a></p>
       </div>
-      
+
     </form>
   </div>
 
