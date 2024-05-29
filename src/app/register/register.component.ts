@@ -56,18 +56,22 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.registerForm.valid) {
       const user: UserDTO = this.registerForm.value;
+      console.log(user);
+
+      // this.userService.registerUser(user)
+
       this.userService.registerUser(user).subscribe(
         response => {
           this.registrationSuccess = true;
           this.router.navigate(['/login']);
+          console.log('Da chay vao submit')
         },
         error => {
           this.errMsg = 'Registration failed. Please try again.';
           console.error('Registration error:', error);
         }
       );
-    }
+    console.log('Da submit xong')
   }
 }

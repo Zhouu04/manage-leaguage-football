@@ -14,10 +14,7 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
   registerUser(user: UserDTO): Observable<UserDTO> {
-    return this.http.post<UserDTO>(`${this.baseUrl}/register`, user)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.post<UserDTO>(`${this.baseUrl}/register`, user);
   }
 
   login(userDTO: UserDTO): Observable<boolean> {

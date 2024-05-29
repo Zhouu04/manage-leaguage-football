@@ -19,9 +19,6 @@ public class UserController {
 
   @PostMapping("/register")
   public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody UserDTO userDTO) {
-    if (userService.checkEmailExists(userDTO.getEmail())) {
-      return ResponseEntity.badRequest().body(null);
-    }
     UserDTO savedUser = userService.saveUser(userDTO);
     return ResponseEntity.ok(savedUser);
   }
